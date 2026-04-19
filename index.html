@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lena</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <svg class="svg-defs" aria-hidden="true" focusable="false" width="0" height="0">
+        <defs>
+            <symbol id="icon-folder" viewBox="0 0 52 46">
+                <path fill="#e8dcc8" stroke="#6f6f6f" stroke-width="1" stroke-linejoin="miter" d="M4 8h14l4 6H4V8z"/>
+                <path fill="#f2ead8" stroke="#6f6f6f" stroke-width="1" stroke-linejoin="miter" d="M4 14h44v28H4V14z"/>
+            </symbol>
+        </defs>
+    </svg>
+    <div class="desktop" id="desktop">
+        <!-- File Explorer Window -->
+        <div class="window file-explorer active" id="fileExplorer" data-window-label="Projects" data-default-width="400" data-default-height="350">
+            <div class="title-bar">
+                <span class="title-bar-text">FILE EXPLORER: PROJECTS</span>
+                <div class="window-controls">
+                    <button type="button" class="window-control" data-action="minimize" title="Minimize" aria-label="Minimize window">_</button>
+                    <button type="button" class="window-control" data-action="maximize" title="Maximize" aria-label="Maximize window">□</button>
+                    <button type="button" class="window-control window-control--close" data-action="close" title="Close" aria-label="Close window">×</button>
+                </div>
+            </div>
+            <div class="menu-bar">
+                <span class="menu-item">HOME</span>
+                <span class="menu-item">OPTIONS</span>
+                <span class="menu-item">WINDOW</span>
+                <span class="menu-item">HELP</span>
+            </div>
+            <div class="window-content file-explorer-content">
+                <div class="project-icons-surface" id="projectIconsSurface" aria-label="Project folders">
+                    <button type="button" class="project-icon-btn" data-project-id="chip-design" title="Drag to move, click to open" aria-label="Chip design project">
+                        <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
+                        <span class="project-icon__label">Chip design</span>
+                    </button>
+                    <button type="button" class="project-icon-btn" data-project-id="drone" title="Drag to move, click to open" aria-label="Drone development project">
+                        <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
+                        <span class="project-icon__label">Drone development</span>
+                    </button>
+                    <button type="button" class="project-icon-btn" data-project-id="hackathons" title="Drag to move, click to open" aria-label="Hackathon organization project">
+                        <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
+                        <span class="project-icon__label">Hackathons</span>
+                    </button>
+                </div>
+            </div>
+            <div class="resize-layer" aria-hidden="true">
+                <div class="resize-handle resize-n" data-dir="n"></div>
+                <div class="resize-handle resize-ne" data-dir="ne"></div>
+                <div class="resize-handle resize-e" data-dir="e"></div>
+                <div class="resize-handle resize-se" data-dir="se"></div>
+                <div class="resize-handle resize-s" data-dir="s"></div>
+                <div class="resize-handle resize-sw" data-dir="sw"></div>
+                <div class="resize-handle resize-w" data-dir="w"></div>
+                <div class="resize-handle resize-nw" data-dir="nw"></div>
+            </div>
+        </div>
+        
+        <!-- Notepad Window -->
+        <div class="window notepad-window active" id="notepad" data-window-label="About" data-default-width="700" data-default-height="600">
+            <div class="title-bar">
+                <span class="title-bar-text">NOTEPAD.EXE — ABOUT_ME.TXT</span>
+                <div class="window-controls">
+                    <button type="button" class="window-control" data-action="minimize" title="Minimize" aria-label="Minimize window">_</button>
+                    <button type="button" class="window-control" data-action="maximize" title="Maximize" aria-label="Maximize window">□</button>
+                    <button type="button" class="window-control window-control--close" data-action="close" title="Close" aria-label="Close window">×</button>
+                </div>
+            </div>
+            <div class="menu-bar">
+                <span class="menu-item">FILE</span>
+                <span class="menu-item">OPTIONS</span>
+                <span class="menu-item">WINDOW</span>
+                <span class="menu-item">HELP</span>
+            </div>
+            <div class="window-content notepad-content">
+                
+                <div class="profile-section">
+                    <div class="profile-image">
+                        <img src="profile.jpg" alt="Profile" class="profile-photo">
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-line">I’m Lena, an electrical and computer engineering student interested in hardware and chip design, who first got into electronics through hands-on projects experimenting with circuits and signals and has since developed a deeper focus on how systems are designed, built, and optimized, with experience spanning PCB design, embedded systems, and custom silicon from the board level down to implementation in silicon.</div>
+                    </div>
+                </div>
+
+                <!-- <div class="section">
+                    <div class="section-title">SKILLS:</div>
+                    <div class="section-content">
+                        <div><span class="info-label">SOFTWARE</span></div>
+                        <div class="indent">KiCad, Altium, Intel Quartus, Cadence Virtuoso</div>
+                        <div><span class="info-label">CODING LANGUAGES</span></div>
+                        <div class="indent">Python, Typescript, MATLAB, AWS (Lambda, S3 CloudWatch), Verilog</div>
+                    </div>
+                </div> -->
+                
+                <div class="section">
+                    <div class="section-title">EDUCATION:</div>
+                    <div class="section-content">
+                        <div><span class="info-label">FRANKLIN W. OLIN COLLEGE OF ENGINEERING</span></div>
+                        <div class="indent">August 2026 — PRESENT · Electrical and Computer Engineering</div>
+                        <div><span class="info-label">Cornell University</span></div>
+                        <div class="indent">June 2024 — May 2026</div>
+                        <div><span class="info-label">RELEVANT COURSEWORK</span></div>
+                        <div class="indent">Microelectronics, Circuits, Digital Logic & Computer Organization, Computing With Python, Engineering Applications of Operations Research</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">WORK EXPERIENCE:</div>
+                    <div class="section-content section-content--work">
+                        <div class="work-entry">
+                            <div class="work-entry__title">Incoming Device Engineer Intern @ Global Foundries</div>
+                            <div class="work-entry__subtitle indent">June 2026 — August 2026 · ULP CMOS eNVM</div>
+                        </div>
+                        <div class="work-entry">
+                            <div class="work-entry__title">Software Developer Intern @ Amazon</div>
+                            <div class="work-entry__subtitle indent">May 2025 — August 2025 · Retail analytics with AWS</div>
+                        </div>
+                        <div class="work-entry">
+                            <div class="work-entry__title">MATLAB Ambassador @ Mathworks</div>
+                            <div class="work-entry__subtitle indent">Feb 2025 — Present</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="background-text">ᯓ★</div> 
+            </div>
+            <div class="resize-layer" aria-hidden="true">
+                <div class="resize-handle resize-n" data-dir="n"></div>
+                <div class="resize-handle resize-ne" data-dir="ne"></div>
+                <div class="resize-handle resize-e" data-dir="e"></div>
+                <div class="resize-handle resize-se" data-dir="se"></div>
+                <div class="resize-handle resize-s" data-dir="s"></div>
+                <div class="resize-handle resize-sw" data-dir="sw"></div>
+                <div class="resize-handle resize-w" data-dir="w"></div>
+                <div class="resize-handle resize-nw" data-dir="nw"></div>
+            </div>
+        </div>
+        
+        <!-- Contact Window -->
+        <div class="window contact-window active" id="contact" data-window-label="Contact" data-default-width="300" data-default-height="170">
+            <div class="title-bar">
+                <span class="title-bar-text">NOTEPAD.EXE — CONTACT.TXT</span>
+                <div class="window-controls">
+                    <button type="button" class="window-control" data-action="minimize" title="Minimize" aria-label="Minimize window">_</button>
+                    <button type="button" class="window-control" data-action="maximize" title="Maximize" aria-label="Maximize window">□</button>
+                    <button type="button" class="window-control window-control--close" data-action="close" title="Close" aria-label="Close window">×</button>
+                </div>
+            </div>
+            <div class="window-content contact-content">
+                <div class="contact-item">
+                    <span class="contact-label">Email:</span> <a href="mailto:lena.conde-araujo@csedge.org">lena.conde-araujo@csedge.org</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">LinkedIn:</span> <a href="https://www.linkedin.com/in/lena-conde-araujo/" target="_blank">linkedin.com/in/lena-conde-araujo/</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Substack:</span> <a href="https://substack.com/@lenaphobia/" target="_blank">substack.com/@lenaphobia/</a>
+                </div>
+                <!-- <pre class="contact-ascii">   |\---/|
+   | ,_, |
+    \_`_/-..----.
+ ___/ `   ' ,""+ \  
+(__...'   __\    |`.___.';
+  (_,...'(_,.`__)/'.....+
+</pre> -->
+            </div> 
+            <div class="resize-layer" aria-hidden="true">
+                <div class="resize-handle resize-n" data-dir="n"></div>
+                <div class="resize-handle resize-ne" data-dir="ne"></div>
+                <div class="resize-handle resize-e" data-dir="e"></div>
+                <div class="resize-handle resize-se" data-dir="se"></div>
+                <div class="resize-handle resize-s" data-dir="s"></div>
+                <div class="resize-handle resize-sw" data-dir="sw"></div>
+                <div class="resize-handle resize-w" data-dir="w"></div>
+                <div class="resize-handle resize-nw" data-dir="nw"></div>
+            </div>
+        </div>
+
+        <!-- Project detail modal -->
+        <div id="projectModal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle" hidden>
+            <div class="project-modal__backdrop" data-modal-dismiss="true"></div>
+            <div class="project-modal__panel">
+                <header class="project-modal__header">
+                    <h2 id="projectModalTitle" class="project-modal__title"></h2>
+                    <button type="button" class="window-control project-modal__close" data-modal-dismiss="true" title="Close" aria-label="Close project details">×</button>
+                </header>
+                <div class="project-modal__body" id="projectModalBody"></div>
+            </div>
+        </div>
+        
+        <nav class="window-launcher" id="windowLauncher" aria-label="Open or restore windows">
+            <button type="button" class="launcher-btn" data-launch="fileExplorer" aria-controls="fileExplorer">
+                <span class="launcher-btn__label">Projects</span>
+            </button>
+            <button type="button" class="launcher-btn" data-launch="notepad" aria-controls="notepad">
+                <span class="launcher-btn__label">About</span>
+            </button>
+            <button type="button" class="launcher-btn" data-launch="contact" aria-controls="contact">
+                <span class="launcher-btn__label">Contact</span>
+            </button>
+        </nav>
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-left">C:\portfolio\about_me.txt</div>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
