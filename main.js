@@ -117,6 +117,26 @@ function useCssFluidWidth() {
     return window.matchMedia('(max-width: 900px)').matches;
 }
 
+function enforceSingleOpenWindowOnMobile(preferredWindow = null) {
+    if (!useCssFluidWidth()) return;
+
+    const visible = windows().filter((w) => !w.classList.contains('is-closed') && !w.classList.contains('is-minimized'));
+    if (visible.length <= 1 && !preferredWindow) return;
+
+    const target =
+        (preferredWindow && !preferredWindow.classList.contains('is-closed') && !preferredWindow.classList.contains('is-minimized')
+            ? preferredWindow
+            : visible[visible.length - 1]) || null;
+    if (!target) return;
+
+    windows().forEach((win) => {
+        if (win === target) return;
+        if (!win.classList.contains('is-closed') && !win.classList.contains('is-minimized')) {
+            win.classList.add('is-minimized');
+        }
+    });
+}
+
 function clampWindowToViewport(win) {
     if (win.classList.contains('is-closed') || win.classList.contains('is-minimized')) return;
     if (win.classList.contains('is-maximized')) return;
@@ -186,6 +206,7 @@ function minimizeWindow(win) {
 
 function restoreWindow(win) {
     win.classList.remove('is-closed', 'is-minimized');
+    enforceSingleOpenWindowOnMobile(win);
     if (win.classList.contains('is-maximized')) {
         /* keep maximized */
     } else {
@@ -635,6 +656,7 @@ function initWindows() {
 }
 
 window.addEventListener('resize', () => {
+    enforceSingleOpenWindowOnMobile();
     windows().forEach((win) => {
         if (!useCssFluidWidth() && !win.style.width) {
             applyDefaultDimensions(win);
@@ -646,6 +668,7 @@ window.addEventListener('resize', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     windows().forEach(applyDefaultDimensions);
+    enforceSingleOpenWindowOnMobile();
     initWindows();
     wireLauncher();
     wireWindowFocus();
