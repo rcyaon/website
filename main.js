@@ -117,8 +117,15 @@ function useCssFluidWidth() {
     return window.matchMedia('(max-width: 900px)').matches;
 }
 
+function useSingleWindowMobileMode() {
+    return (
+        window.matchMedia('(max-width: 900px)').matches ||
+        window.matchMedia('(hover: none) and (pointer: coarse)').matches
+    );
+}
+
 function enforceSingleOpenWindowOnMobile(preferredWindow = null) {
-    if (!useCssFluidWidth()) return;
+    if (!useSingleWindowMobileMode()) return;
 
     const visible = windows().filter((w) => !w.classList.contains('is-closed') && !w.classList.contains('is-minimized'));
     if (visible.length <= 1 && !preferredWindow) return;
@@ -427,6 +434,7 @@ function wireWindowFocus() {
         win.addEventListener('mousedown', (e) => {
             if (e.target.closest('.title-bar')) return;
             if (win.classList.contains('is-closed') || win.classList.contains('is-minimized')) return;
+            enforceSingleOpenWindowOnMobile(win);
             bringToFront(win);
             setActiveLauncher(win);
         });
@@ -681,5 +689,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const topWin = windows().find((w) => !w.classList.contains('is-closed') && !w.classList.contains('is-minimized'));
-    if (topWin) setActiveLauncher(topWin);
+    if (topWin) {
+        setActiveLauncher(topWin);
+        enforceSingleOpenWindowOnMobile(topWin);
+    }
 });
