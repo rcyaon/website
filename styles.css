@@ -133,7 +133,7 @@ body {
 }
 
 .window-control--close:hover {
-    background: #c4a0a0;
+    background: #bfbfbf;
 }
 
 .menu-bar {
@@ -423,6 +423,24 @@ body {
     font-size: 12px;
     line-height: 1.75;
     font-family: 'IBM Plex Mono', monospace;
+}
+
+.project-modal__body::-webkit-scrollbar {
+    width: 12px;
+}
+
+.project-modal__body::-webkit-scrollbar-track {
+    background: #d9d9d9;
+    border-left: 1px solid #6f6f6f;
+}
+
+.project-modal__body::-webkit-scrollbar-thumb {
+    background: #bfbfbf;
+    border: 1px solid #6f6f6f;
+}
+
+.project-modal__body::-webkit-scrollbar-thumb:hover {
+    background: #9a9a9a;
 }
 
 .project-modal__body h3 {
