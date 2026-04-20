@@ -676,7 +676,8 @@ window.addEventListener('resize', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     windows().forEach(applyDefaultDimensions);
-    enforceSingleOpenWindowOnMobile();
+    const defaultMobileWindow = document.getElementById('notepad');
+    enforceSingleOpenWindowOnMobile(defaultMobileWindow);
     initWindows();
     wireLauncher();
     wireWindowFocus();
@@ -691,6 +692,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const topWin = windows().find((w) => !w.classList.contains('is-closed') && !w.classList.contains('is-minimized'));
     if (topWin) {
         setActiveLauncher(topWin);
-        enforceSingleOpenWindowOnMobile(topWin);
+        enforceSingleOpenWindowOnMobile(defaultMobileWindow || topWin);
     }
 });
