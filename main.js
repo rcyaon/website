@@ -22,7 +22,7 @@ const PROJECTS = {
         sections: [
             {
                 heading: '',
-                body: "Worked on Cornell Custom Silicon Systems' Analog subteam toward a full-chip tapeout in TSMC 180 nm. The block was an 8-bit successive-approximation-register (SAR) analog-to-digital converter (ADC)."
+                body: "Worked on Cornell Custom Silicon Systems' Analog subteam toward a full-chip tapeout in TSMC 180 nm of a 4.44 MS/s 8-bit differential SAR ADC."
             },
             {
                 heading: 'Links',
@@ -36,7 +36,7 @@ const PROJECTS = {
         sections: [
             {
                 heading: '',
-                body: 'Cornell Motion Studio project focused on a hobbyist-class multirotor: mechanical frame integration, wiring discipline, and flight-stack configuration rather than only off-the-shelf flying.',
+                body: 'Designed a custom quadcopter flight controller on a 4-layer mixed-signal PCB, integrating sensing, motor control, and onboard power systems. Developed embedded firmware for stable 6-DOF flight and autonomous control, while improving IMU accuracy through noise characterization and hardware optimization.',
             },
             {
                 heading: 'Links',
@@ -53,7 +53,7 @@ const PROJECTS = {
                 body: 'Organized and supported hackathons with Hack Club at Amazon and FUTO. Separately served as Logistics Team Lead for BigRed//Hacks, Cornell’s annual hackathon and makeathon.',
             },
             {
-                heading: 'Previous Hackathon Awards',
+                heading: 'Hackathon Awards',
                 body: 'I also participate at Hackathons!',
                 bullets: [
                     '3rd Place in Societal Impact Track @ YHack',
