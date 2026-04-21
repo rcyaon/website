@@ -505,6 +505,13 @@ body {
     object-fit: contain;
 }
 
+/* Wide diagrams: span full frame width, natural height (no side letterboxing). */
+.project-modal__image--wide {
+    max-height: none;
+    height: auto;
+    width: 100%;
+}
+
 .project-modal__image--cover {
     height: 280px;
     object-fit: cover;

@@ -7,7 +7,7 @@ const MIN_H = 160;
 
 /**
  * @typedef {{ heading: string; body: string; bullets?: string[] }} ProjectSection
- * @typedef {{ src: string; alt?: string; fit?: 'contain' | 'cover' }} ProjectImage
+ * @typedef {{ src: string; alt?: string; fit?: 'contain' | 'cover' | 'wide' }} ProjectImage
  * @typedef {{ title: string; sections: ProjectSection[]; imageSrc?: string; imageAlt?: string; images?: ProjectImage[] }} ProjectDetail
  */
 
@@ -63,24 +63,24 @@ const PROJECTS = {
             },
             {
                 heading: 'Links',
-                body: 'More about Days of Service: https://daysofservice.hackclub.com/'
+                bullets: [
+                    'More about Days of Service: https://daysofservice.hackclub.com/',
+                    'Built at YHack: https://devpost.com/software/canary-axf7o2',
+                ],
             },
         ],
     },
-    pcb: {
-        title: 'PCB_design.TXT',
+    processor: {
+        title: 'Single_Cycle_Processor.TXT',
+        images: [{ src: 'processor.png', alt: 'Single cycle processor', fit: 'wide' }],
         sections: [
             {
-                heading: '',
-                body: 'Project placeholder. Add your PCB design summary, scope, and outcomes here.',
-            },
-            {
-                heading: 'Links',
-                body: 'Project link: https://example.com',
+                heading: 'FPGA-Based Single-Cycle RISC-V Processor (TinyRV1)',
+                body: 'Final lab for ECE 2300: designed a single-cycle microprocessor in Verilog (excluding instruction/data RAM), including the ALU, decoder, register file, program counter, and branch logic. Built in Quartus, tested with ModelSim, and deployed on a Cyclone V FPGA for validation.',
             },
         ],
     },
-    embedded: {
+    /* embedded: {
         title: 'Embedded_systems.TXT',
         sections: [
             {
@@ -92,7 +92,7 @@ const PROJECTS = {
                 body: 'Repository: https://github.com/',
             },
         ],
-    },
+    }, */
 };
 
 const windows = () => Array.from(document.querySelectorAll('.desktop > .window'));
@@ -507,7 +507,7 @@ function renderProjectSection(s) {
     if (s.bullets && s.bullets.length > 0) {
         html +=
             '<ul class="project-modal__bullet-list">' +
-            s.bullets.map((item) => `<li>${escapeHtml(item)}</li>`).join('') +
+            s.bullets.map((item) => `<li>${linkifyText(item)}</li>`).join('') +
             '</ul>';
     }
     return html;
@@ -549,7 +549,9 @@ function renderProjectImageBlock(data) {
     if (data.images && data.images.length > 0) {
         data.images.forEach((img, i) => {
             const alt = img.alt || `Project image ${i + 1}`;
-            const fitClass = img.fit === 'cover' ? ' project-modal__image--cover' : '';
+            let fitClass = '';
+            if (img.fit === 'cover') fitClass = ' project-modal__image--cover';
+            else if (img.fit === 'wide') fitClass = ' project-modal__image--wide';
             figures.push(
                 `<figure class="project-modal__figure">` +
                     `<img class="project-modal__image${fitClass}" src="${escapeAttr(img.src)}" alt="${escapeHtml(alt)}" loading="lazy">` +
