@@ -50,7 +50,7 @@ const PROJECTS = {
         sections: [
             {
                 heading: '',
-                body: 'Organized and supported hackathons with Hack Club at Amazon and FUTO. Separately served as Logistics Team Lead for BigRed//Hacks, Cornell’s annual hackathon and makeathon.',
+                body: 'Organized hackathons with Hack Club at Amazon and FUTO. Separately served as Logistics Team Lead for BigRed//Hacks, Cornell’s annual hackathon and makeathon.',
             },
             {
                 heading: 'Hackathon Awards',
