@@ -279,8 +279,8 @@ body {
 .file-explorer {
     top: 5px;
     left: 20px;
-    width: 400px;
-    height: 350px;
+    width: 480px;
+    height: 400px;
     z-index: 10;
 }
 
@@ -864,7 +864,7 @@ a:hover {
         right: 12px;
         width: auto !important;
         max-width: none;
-        height: min(320px, 42vh) !important;
+        height: min(360px, 45vh) !important;
     }
 
     .contact-window {
@@ -880,7 +880,7 @@ a:hover {
 @media (max-width: 600px) {
     .file-explorer {
         top: 8px;
-        height: min(280px, 40vh) !important;
+        height: min(320px, 42vh) !important;
     }
 
     .notepad-window {
