@@ -67,6 +67,32 @@ const PROJECTS = {
             },
         ],
     },
+    pcb: {
+        title: 'PCB_design.TXT',
+        sections: [
+            {
+                heading: '',
+                body: 'Project placeholder. Add your PCB design summary, scope, and outcomes here.',
+            },
+            {
+                heading: 'Links',
+                body: 'Project link: https://example.com',
+            },
+        ],
+    },
+    embedded: {
+        title: 'Embedded_systems.TXT',
+        sections: [
+            {
+                heading: '',
+                body: 'Project placeholder. Add your embedded systems project details here.',
+            },
+            {
+                heading: 'Links',
+                body: 'Repository: https://github.com/',
+            },
+        ],
+    },
 };
 
 const windows = () => Array.from(document.querySelectorAll('.desktop > .window'));
@@ -475,7 +501,7 @@ function renderProjectSection(s) {
         html += s.body
             .split(/\n+/)
             .filter((p) => p.trim())
-            .map((p) => `<p>${escapeHtml(p)}</p>`)
+            .map((p) => `<p>${linkifyText(p)}</p>`)
             .join('');
     }
     if (s.bullets && s.bullets.length > 0) {
@@ -485,6 +511,24 @@ function renderProjectSection(s) {
             '</ul>';
     }
     return html;
+}
+
+function linkifyText(str) {
+    const urlRegex = /(https?:\/\/[^\s<]+)/g;
+    let lastIndex = 0;
+    let result = '';
+    let match;
+
+    while ((match = urlRegex.exec(str)) !== null) {
+        const url = match[0];
+        const start = match.index;
+        result += escapeHtml(str.slice(lastIndex, start));
+        result += `<a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(url)}</a>`;
+        lastIndex = start + url.length;
+    }
+
+    result += escapeHtml(str.slice(lastIndex));
+    return result;
 }
 
 function escapeHtml(str) {
@@ -563,24 +607,35 @@ function layoutProjectIconCluster() {
     if (icons.length === 0) return;
 
     const gap = 28;
+    const rowGap = 20;
     const surfW = surface.clientWidth;
     const surfH = surface.clientHeight;
     if (surfW < 48 || surfH < 48) return;
 
-    let totalW = 0;
-    icons.forEach((btn, i) => {
-        totalW += btn.offsetWidth;
-        if (i < icons.length - 1) totalW += gap;
-    });
+    const colsPerRow = 2;
+    const rows = [];
+    for (let i = 0; i < icons.length; i += colsPerRow) {
+        rows.push(icons.slice(i, i + colsPerRow));
+    }
 
-    let left = Math.floor((surfW - totalW) / 2);
-    const top = 12;
+    let y = 12;
+    rows.forEach((row) => {
+        let totalW = 0;
+        row.forEach((btn, i) => {
+            totalW += btn.offsetWidth;
+            if (i < row.length - 1) totalW += gap;
+        });
+        let left = Math.floor((surfW - totalW) / 2);
+        const rowHeight = Math.max(...row.map((b) => b.offsetHeight));
 
-    icons.forEach((btn) => {
-        btn.style.position = 'absolute';
-        btn.style.left = `${Math.max(0, left)}px`;
-        btn.style.top = `${top}px`;
-        left += btn.offsetWidth + gap;
+        row.forEach((btn) => {
+            btn.style.position = 'absolute';
+            btn.style.left = `${Math.max(0, left)}px`;
+            btn.style.top = `${y}px`;
+            left += btn.offsetWidth + gap;
+        });
+
+        y += rowHeight + rowGap;
     });
 }
 
