@@ -22,11 +22,11 @@ const PROJECTS = {
         sections: [
             {
                 heading: '',
-                body: "Worked on Cornell Custom Silicon Systems' Analog subteam toward a full-chip tapeout in TSMC 180 nm of a 4.44 MS/s 8-bit differential SAR ADC."
+                body: "Worked on Cornell Custom Silicon Systems' (C2S2) Analog subteam toward a full-chip tapeout in TSMC 180 nm of a 4.44 MS/s 8-bit differential SAR ADC."
             },
             {
                 heading: 'Links',
-                body: 'Team website: https://www.c2s2.dev/'
+                body: 'More about C2S2: https://c2s2.engineering.cornell.edu/'
             },
         ],
     },
@@ -46,7 +46,10 @@ const PROJECTS = {
     },
     hackathons: {
         title: 'Hackathons.TXT',
-        images: [{ src: 'blot.JPG', alt: 'Hackathon organization' }],
+        images: [
+        { src: 'blot.JPG', alt: 'Hackathon organization' },
+        { src: 'P1050057.JPG', alt: 'More hackathon photos', fit: 'wide' },
+        ],
         sections: [
             {
                 heading: '',
@@ -76,7 +79,7 @@ const PROJECTS = {
         sections: [
             {
                 heading: 'FPGA-Based Single-Cycle RISC-V Processor (TinyRV1)',
-                body: 'Final lab for ECE 2300: designed a single-cycle microprocessor in Verilog (excluding instruction/data RAM), including the ALU, decoder, register file, program counter, and branch logic. Built in Quartus, tested with ModelSim, and deployed on a Cyclone V FPGA for validation.',
+                body: 'Final lab for Digital Logic & Computer Organization: designed a single-cycle microprocessor in Verilog (excluding instruction/data RAM), including the ALU, decoder, register file, program counter, and branch logic. Built in Quartus, tested with ModelSim, and deployed on a Cyclone V FPGA for validation.',
             },
         ],
     },
@@ -620,15 +623,20 @@ function layoutProjectIconCluster() {
         rows.push(icons.slice(i, i + colsPerRow));
     }
 
-    let y = 12;
-    rows.forEach((row) => {
+    const rowHeights = rows.map((row) => Math.max(...row.map((b) => b.offsetHeight)));
+    const totalClusterHeight =
+        rowHeights.reduce((sum, h) => sum + h, 0) + rowGap * Math.max(0, rows.length - 1);
+    const topPad = 10;
+    let y = Math.max(topPad, Math.floor((surfH - totalClusterHeight) / 2));
+
+    rows.forEach((row, rowIndex) => {
         let totalW = 0;
         row.forEach((btn, i) => {
             totalW += btn.offsetWidth;
             if (i < row.length - 1) totalW += gap;
         });
         let left = Math.floor((surfW - totalW) / 2);
-        const rowHeight = Math.max(...row.map((b) => b.offsetHeight));
+        const rowHeight = rowHeights[rowIndex];
 
         row.forEach((btn) => {
             btn.style.position = 'absolute';
