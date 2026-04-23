@@ -725,7 +725,7 @@ function wireSpotifyNowPlaying() {
     const trackEl = document.getElementById('spotifyTrackText');
     const artistEl = document.getElementById('spotifyArtistText');
     const linkEl = document.getElementById('spotifyTrackLink');
-    if (!statusEl || !artworkEl || !trackEl || !artistEl || !linkEl) return;
+    if (!statusEl || !artworkEl || !trackEl || !artistEl) return;
 
     const NOW_PLAYING_API_URL = '/api/now-playing';
     let refreshTimer = null;
@@ -738,7 +738,7 @@ function wireSpotifyNowPlaying() {
         trackEl.textContent = '';
         artistEl.textContent = '';
         artworkEl.hidden = true;
-        linkEl.hidden = true;
+        if (linkEl) linkEl.hidden = true;
     }
 
     async function loadNowPlaying() {
@@ -773,10 +773,10 @@ function wireSpotifyNowPlaying() {
                 artworkEl.hidden = true;
             }
 
-            if (data.songUrl) {
+            if (linkEl && data.songUrl) {
                 linkEl.href = data.songUrl;
                 linkEl.hidden = false;
-            } else {
+            } else if (linkEl) {
                 linkEl.hidden = true;
             }
         } catch (_) {
