@@ -720,31 +720,16 @@ function wireProjectModal() {
 }
 
 function wireSpotifyNowPlaying() {
-    const connectBtn = document.getElementById('spotifyConnectBtn');
-    const disconnectBtn = document.getElementById('spotifyDisconnectBtn');
     const refreshBtn = document.getElementById('spotifyRefreshBtn');
     const statusEl = document.getElementById('spotifyStatusText');
     const artworkEl = document.getElementById('spotifyArtwork');
     const trackEl = document.getElementById('spotifyTrackText');
     const artistEl = document.getElementById('spotifyArtistText');
     const linkEl = document.getElementById('spotifyTrackLink');
-    const redirectUriText = document.getElementById('spotifyRedirectUriText');
-    if (!connectBtn || !disconnectBtn || !refreshBtn || !statusEl || !artworkEl || !trackEl || !artistEl || !linkEl || !redirectUriText) return;
+    if (!refreshBtn || !statusEl || !artworkEl || !trackEl || !artistEl || !linkEl) return;
 
-    // Set this to your Spotify app client ID.
-    const SPOTIFY_CLIENT_ID = 'ea80f652f9f245c3a60473df72a07829';
-    const SPOTIFY_SCOPES = 'user-read-currently-playing user-read-playback-state';
-    const REDIRECT_URI = `${window.location.origin}${window.location.pathname}`;
-    const LS = {
-        access: 'spotify_access_token',
-        refresh: 'spotify_refresh_token',
-        expiresAt: 'spotify_token_expires_at',
-        verifier: 'spotify_pkce_verifier',
-        state: 'spotify_oauth_state',
-    };
+    const NOW_PLAYING_API_URL = '/api/now-playing';
     let refreshTimer = null;
-
-    redirectUriText.textContent = REDIRECT_URI;
 
     function setStatus(text) {
         statusEl.textContent = text;
@@ -757,127 +742,10 @@ function wireSpotifyNowPlaying() {
         linkEl.hidden = true;
     }
 
-    function isConfigured() {
-        return Boolean(SPOTIFY_CLIENT_ID && SPOTIFY_CLIENT_ID.trim());
-    }
-
-    function randomString(length) {
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let result = '';
-        const bytes = new Uint8Array(length);
-        crypto.getRandomValues(bytes);
-        for (let i = 0; i < length; i += 1) result += chars[bytes[i] % chars.length];
-        return result;
-    }
-
-    async function sha256(plain) {
-        const encoder = new TextEncoder();
-        const data = encoder.encode(plain);
-        return crypto.subtle.digest('SHA-256', data);
-    }
-
-    function base64UrlEncode(buffer) {
-        return btoa(String.fromCharCode(...new Uint8Array(buffer)))
-            .replace(/\+/g, '-')
-            .replace(/\//g, '_')
-            .replace(/=+$/g, '');
-    }
-
-    async function exchangeCodeForTokens(code) {
-        const verifier = localStorage.getItem(LS.verifier);
-        if (!verifier) throw new Error('Missing PKCE verifier');
-
-        const body = new URLSearchParams({
-            client_id: SPOTIFY_CLIENT_ID,
-            grant_type: 'authorization_code',
-            code,
-            redirect_uri: REDIRECT_URI,
-            code_verifier: verifier,
-        });
-
-        const res = await fetch('https://accounts.spotify.com/api/token', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body,
-        });
-        if (!res.ok) throw new Error('Could not exchange code for token');
-        return res.json();
-    }
-
-    async function refreshAccessToken() {
-        const refreshToken = localStorage.getItem(LS.refresh);
-        if (!refreshToken) return null;
-
-        const body = new URLSearchParams({
-            client_id: SPOTIFY_CLIENT_ID,
-            grant_type: 'refresh_token',
-            refresh_token: refreshToken,
-        });
-        const res = await fetch('https://accounts.spotify.com/api/token', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body,
-        });
-        if (!res.ok) return null;
-        return res.json();
-    }
-
-    function saveTokens(tokenResponse) {
-        if (tokenResponse.access_token) {
-            localStorage.setItem(LS.access, tokenResponse.access_token);
-        }
-        if (tokenResponse.refresh_token) {
-            localStorage.setItem(LS.refresh, tokenResponse.refresh_token);
-        }
-        if (tokenResponse.expires_in) {
-            const expiresAt = Date.now() + tokenResponse.expires_in * 1000;
-            localStorage.setItem(LS.expiresAt, String(expiresAt));
-        }
-    }
-
-    async function ensureValidAccessToken() {
-        const accessToken = localStorage.getItem(LS.access);
-        const expiresAt = Number(localStorage.getItem(LS.expiresAt) || '0');
-        const hasFreshToken = accessToken && expiresAt > Date.now() + 60000;
-        if (hasFreshToken) return accessToken;
-
-        const refreshed = await refreshAccessToken();
-        if (!refreshed || !refreshed.access_token) return null;
-        saveTokens(refreshed);
-        return refreshed.access_token;
-    }
-
     async function loadNowPlaying() {
-        if (!isConfigured()) {
-            setStatus('Set SPOTIFY_CLIENT_ID in main.js first.');
-            clearTrack();
-            return;
-        }
-
-        const token = await ensureValidAccessToken();
-        if (!token) {
-            setStatus('Connect Spotify to auto-load your music.');
-            clearTrack();
-            return;
-        }
-
         setStatus('Loading now playing...');
         try {
-            const res = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-                headers: { Authorization: `Bearer ${token}` },
-            });
-
-            if (res.status === 204) {
-                setStatus('Nothing playing right now.');
-                clearTrack();
-                return;
-            }
-            if (res.status === 401) {
-                localStorage.removeItem(LS.access);
-                setStatus('Session expired, reconnect Spotify.');
-                clearTrack();
-                return;
-            }
+            const res = await fetch(NOW_PLAYING_API_URL);
             if (!res.ok) {
                 setStatus('Could not fetch Spotify status.');
                 clearTrack();
@@ -885,30 +753,30 @@ function wireSpotifyNowPlaying() {
             }
 
             const data = await res.json();
-            const item = data?.item;
-            if (!item) {
+            if (!data?.ok) {
+                setStatus(data?.message || 'Spotify status unavailable.');
+                clearTrack();
+                return;
+            }
+            if (!data?.isPlaying) {
                 setStatus('Nothing playing right now.');
                 clearTrack();
                 return;
             }
 
-            const artistNames = (item.artists || []).map((a) => a.name).join(', ');
-            const image = item.album?.images?.[1]?.url || item.album?.images?.[0]?.url || '';
-            const externalUrl = item.external_urls?.spotify || '';
+            setStatus('Now playing');
+            trackEl.textContent = data.title || '';
+            artistEl.textContent = data.artist || '';
 
-            setStatus(data?.is_playing ? 'Now playing' : 'Last played');
-            trackEl.textContent = item.name || '';
-            artistEl.textContent = artistNames || '';
-
-            if (image) {
-                artworkEl.src = image;
+            if (data.albumImageUrl) {
+                artworkEl.src = data.albumImageUrl;
                 artworkEl.hidden = false;
             } else {
                 artworkEl.hidden = true;
             }
 
-            if (externalUrl) {
-                linkEl.href = externalUrl;
+            if (data.songUrl) {
+                linkEl.href = data.songUrl;
                 linkEl.hidden = false;
             } else {
                 linkEl.hidden = true;
@@ -919,80 +787,13 @@ function wireSpotifyNowPlaying() {
         }
     }
 
-    async function connectSpotify() {
-        if (!isConfigured()) {
-            setStatus('Set SPOTIFY_CLIENT_ID in main.js first.');
-            return;
-        }
-        const state = randomString(16);
-        const verifier = randomString(64);
-        const challenge = base64UrlEncode(await sha256(verifier));
-        localStorage.setItem(LS.state, state);
-        localStorage.setItem(LS.verifier, verifier);
-
-        const params = new URLSearchParams({
-            response_type: 'code',
-            client_id: SPOTIFY_CLIENT_ID,
-            scope: SPOTIFY_SCOPES,
-            redirect_uri: REDIRECT_URI,
-            state,
-            code_challenge_method: 'S256',
-            code_challenge: challenge,
-        });
-        window.location.assign(`https://accounts.spotify.com/authorize?${params.toString()}`);
-    }
-
-    async function handleOAuthRedirect() {
-        const params = new URLSearchParams(window.location.search);
-        const code = params.get('code');
-        const state = params.get('state');
-        const error = params.get('error');
-        if (error) {
-            setStatus(`Spotify auth error: ${error}`);
-            return;
-        }
-        if (!code) return;
-
-        const expectedState = localStorage.getItem(LS.state);
-        if (!state || !expectedState || state !== expectedState) {
-            setStatus('Spotify auth state mismatch.');
-            return;
-        }
-
-        try {
-            const tokenResponse = await exchangeCodeForTokens(code);
-            saveTokens(tokenResponse);
-            setStatus('Spotify connected.');
-        } catch (_) {
-            setStatus('Failed to complete Spotify login.');
-        } finally {
-            localStorage.removeItem(LS.state);
-            localStorage.removeItem(LS.verifier);
-            const clean = `${window.location.origin}${window.location.pathname}`;
-            window.history.replaceState({}, document.title, clean);
-        }
-    }
-
-    function disconnectSpotify() {
-        localStorage.removeItem(LS.access);
-        localStorage.removeItem(LS.refresh);
-        localStorage.removeItem(LS.expiresAt);
-        localStorage.removeItem(LS.state);
-        localStorage.removeItem(LS.verifier);
-        setStatus('Disconnected from Spotify.');
-        clearTrack();
-    }
-
     function startAutoRefresh() {
         if (refreshTimer) clearInterval(refreshTimer);
         refreshTimer = setInterval(loadNowPlaying, 20000);
     }
 
-    connectBtn.addEventListener('click', connectSpotify);
-    disconnectBtn.addEventListener('click', disconnectSpotify);
     refreshBtn.addEventListener('click', loadNowPlaying);
-
-    handleOAuthRedirect().then(() => loadNowPlaying());
+    loadNowPlaying();
     startAutoRefresh();
 }
 

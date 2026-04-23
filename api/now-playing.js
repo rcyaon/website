@@ -1,0 +1,86 @@
+function withCors(res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+}
+
+async function getAccessToken() {
+    const clientId = process.env.SPOTIFY_CLIENT_ID;
+    const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+    const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
+    if (!clientId || !clientSecret || !refreshToken) {
+        throw new Error('Missing Spotify environment variables.');
+    }
+
+    const basic = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+    const body = new URLSearchParams({
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+    });
+
+    const response = await fetch('https://accounts.spotify.com/api/token', {
+        method: 'POST',
+        headers: {
+            Authorization: `Basic ${basic}`,
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body,
+    });
+    if (!response.ok) {
+        throw new Error('Failed refreshing Spotify token.');
+    }
+
+    const data = await response.json();
+    return data.access_token;
+}
+
+async function getNowPlaying(accessToken) {
+    const response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+        headers: { Authorization: `Bearer ${accessToken}` },
+    });
+
+    if (response.status === 204) return null;
+    if (!response.ok) throw new Error('Failed fetching Spotify now playing.');
+    return response.json();
+}
+
+export default async function handler(req, res) {
+    withCors(res);
+    if (req.method === 'OPTIONS') return res.status(200).end();
+    if (req.method !== 'GET') {
+        return res.status(405).json({ ok: false, message: 'Method not allowed.' });
+    }
+
+    try {
+        const accessToken = await getAccessToken();
+        const nowPlaying = await getNowPlaying(accessToken);
+
+        if (!nowPlaying || !nowPlaying.item) {
+            return res.status(200).json({
+                ok: true,
+                isPlaying: false,
+                message: 'Nothing playing right now.',
+            });
+        }
+
+        const item = nowPlaying.item;
+        const artist = (item.artists || []).map((a) => a.name).join(', ');
+        const albumImageUrl = item.album?.images?.[1]?.url || item.album?.images?.[0]?.url || '';
+        const songUrl = item.external_urls?.spotify || '';
+
+        return res.status(200).json({
+            ok: true,
+            isPlaying: Boolean(nowPlaying.is_playing),
+            title: item.name || '',
+            artist,
+            albumImageUrl,
+            songUrl,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            ok: false,
+            message: 'Spotify API unavailable.',
+            error: String(error && error.message ? error.message : error),
+        });
+    }
+}
