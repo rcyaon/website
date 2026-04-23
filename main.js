@@ -720,13 +720,12 @@ function wireProjectModal() {
 }
 
 function wireSpotifyNowPlaying() {
-    const refreshBtn = document.getElementById('spotifyRefreshBtn');
     const statusEl = document.getElementById('spotifyStatusText');
     const artworkEl = document.getElementById('spotifyArtwork');
     const trackEl = document.getElementById('spotifyTrackText');
     const artistEl = document.getElementById('spotifyArtistText');
     const linkEl = document.getElementById('spotifyTrackLink');
-    if (!refreshBtn || !statusEl || !artworkEl || !trackEl || !artistEl || !linkEl) return;
+    if (!statusEl || !artworkEl || !trackEl || !artistEl || !linkEl) return;
 
     const NOW_PLAYING_API_URL = '/api/now-playing';
     let refreshTimer = null;
@@ -791,7 +790,6 @@ function wireSpotifyNowPlaying() {
         refreshTimer = setInterval(loadNowPlaying, 20000);
     }
 
-    refreshBtn.addEventListener('click', loadNowPlaying);
     loadNowPlaying();
     startAutoRefresh();
 }
