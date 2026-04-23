@@ -92,6 +92,7 @@
                     </div>
                     
                     <div class="info-section">
+                        <div class="section-title">Welcome to my corner of the internet!</div>
                         <div class="info-line">I’m Lena, an electrical and computer engineering student interested in hardware and chip design, who first got into electronics through hands-on projects experimenting with circuits and signals and has since developed a deeper focus on how systems are designed, built, and optimized, with experience spanning PCB design, embedded systems, and custom silicon from the board level down to implementation in silicon.</div>
                     </div>
                 </div>
@@ -167,7 +168,7 @@
                     <span class="contact-label">LinkedIn:</span> <a href="https://www.linkedin.com/in/lena-conde-araujo/" target="_blank">linkedin.com/in/lena-conde-araujo/</a>
                 </div>
                 <div class="contact-item">
-                    <span class="contact-label">GitHub:</span> <a href="https://github.com/rcyaon" target="_blank">rcyaon</a>
+                    <span class="contact-label">GitHub:</span> <a href="https://github.com/rcyaon" target="_blank">@rcyaon</a>
                 </div>
                 <div class="contact-item">
                     <span class="contact-label">X:</span> <a href="https://x.com/rcyaon" target="_blank">@rcyaon</a>
@@ -180,6 +181,49 @@
   (_,...'(_,.`__)/'.....+
 </pre> -->
             </div> 
+            <div class="resize-layer" aria-hidden="true">
+                <div class="resize-handle resize-n" data-dir="n"></div>
+                <div class="resize-handle resize-ne" data-dir="ne"></div>
+                <div class="resize-handle resize-e" data-dir="e"></div>
+                <div class="resize-handle resize-se" data-dir="se"></div>
+                <div class="resize-handle resize-s" data-dir="s"></div>
+                <div class="resize-handle resize-sw" data-dir="sw"></div>
+                <div class="resize-handle resize-w" data-dir="w"></div>
+                <div class="resize-handle resize-nw" data-dir="nw"></div>
+            </div>
+        </div>
+
+        <!-- Spotify Window -->
+        <div class="window spotify-window active" id="spotify" data-window-label="Spotify" data-default-width="360" data-default-height="280">
+            <div class="title-bar">
+                <span class="title-bar-text">NOTEPAD.EXE — SPOTIFY.TXT</span>
+                <div class="window-controls">
+                    <button type="button" class="window-control" data-action="minimize" title="Minimize" aria-label="Minimize window">_</button>
+                    <button type="button" class="window-control" data-action="maximize" title="Maximize" aria-label="Maximize window">□</button>
+                    <button type="button" class="window-control window-control--close" data-action="close" title="Close" aria-label="Close window">×</button>
+                </div>
+            </div>
+            <div class="window-content spotify-content">
+                <div class="spotify-setup">
+                    <div class="spotify-actions">
+                        <button type="button" class="spotify-btn" id="spotifyConnectBtn">Connect Spotify</button>
+                        <button type="button" class="spotify-btn" id="spotifyDisconnectBtn">Disconnect</button>
+                        <button type="button" class="spotify-btn" id="spotifyRefreshBtn">Refresh</button>
+                    </div>
+                    <p class="spotify-help">
+                        Set <code>SPOTIFY_CLIENT_ID</code> in <code>main.js</code> and register this redirect URI in your Spotify app:
+                        <span id="spotifyRedirectUriText"></span>
+                    </p>
+                </div>
+
+                <div class="spotify-now-playing" id="spotifyNowPlaying">
+                    <p class="spotify-status" id="spotifyStatusText">Waiting for token...</p>
+                    <img id="spotifyArtwork" class="spotify-artwork" alt="Album artwork" hidden>
+                    <p class="spotify-track" id="spotifyTrackText"></p>
+                    <p class="spotify-artist" id="spotifyArtistText"></p>
+                    <a id="spotifyTrackLink" class="spotify-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Open in Spotify</a>
+                </div>
+            </div>
             <div class="resize-layer" aria-hidden="true">
                 <div class="resize-handle resize-n" data-dir="n"></div>
                 <div class="resize-handle resize-ne" data-dir="ne"></div>
@@ -213,6 +257,9 @@
             </button>
             <button type="button" class="launcher-btn" data-launch="contact" aria-controls="contact">
                 <span class="launcher-btn__label">Contact</span>
+            </button>
+            <button type="button" class="launcher-btn" data-launch="spotify" aria-controls="spotify">
+                <span class="launcher-btn__label">Spotify</span>
             </button>
         </nav>
         

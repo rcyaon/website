@@ -764,6 +764,90 @@ body {
     overflow: visible;
 }
 
+/* Spotify Window */
+.spotify-window {
+    top: 180px;
+    left: 160px;
+    width: 360px;
+    height: 280px;
+    z-index: 25;
+}
+
+.spotify-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.spotify-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.spotify-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.spotify-btn {
+    border: 1px solid #6f6f6f;
+    background: #f3f3f3;
+    color: #1a1a1a;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.spotify-btn:hover {
+    background: #bfbfbf;
+}
+
+.spotify-help {
+    margin-top: 8px;
+    font-size: 10px;
+    line-height: 1.45;
+}
+
+.spotify-help code {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid #b0b0b0;
+    padding: 0 3px;
+}
+
+.spotify-status {
+    margin: 0;
+    font-weight: 600;
+}
+
+.spotify-artwork {
+    display: block;
+    width: min(160px, 100%);
+    border: 1px solid #6f6f6f;
+    background: #eaeaea;
+    margin-top: 8px;
+}
+
+.spotify-track {
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+.spotify-artist {
+    margin-top: 2px;
+}
+
+.spotify-link {
+    display: inline-block;
+    margin-top: 8px;
+}
+
 /* Window launcher (restore closed / minimized) */
 .window-launcher {
     position: fixed;
@@ -882,6 +966,13 @@ a:hover {
         width: auto !important;
         height: min(175px, 34vh) !important;
     }
+
+    .spotify-window {
+        left: 12px;
+        right: 12px;
+        width: auto !important;
+        height: min(280px, 34vh) !important;
+    }
 }
 
 @media (max-width: 600px) {
@@ -897,6 +988,10 @@ a:hover {
 
     .contact-window {
         height: min(165px, 30vh) !important;
+    }
+
+    .spotify-window {
+        height: min(240px, 30vh) !important;
     }
 
     .window-launcher {
