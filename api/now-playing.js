@@ -27,7 +27,15 @@ async function getAccessToken() {
         body,
     });
     if (!response.ok) {
-        throw new Error('Failed refreshing Spotify token.');
+        let reason = 'Failed refreshing Spotify token.';
+        try {
+            const err = await response.json();
+            if (err?.error_description) reason = `${reason} ${err.error_description}`;
+            else if (err?.error) reason = `${reason} ${err.error}`;
+        } catch (_) {
+            /* ignore parse failures */
+        }
+        throw new Error(reason);
     }
 
     const data = await response.json();
@@ -40,7 +48,16 @@ async function getNowPlaying(accessToken) {
     });
 
     if (response.status === 204) return null;
-    if (!response.ok) throw new Error('Failed fetching Spotify now playing.');
+    if (!response.ok) {
+        let reason = 'Failed fetching Spotify now playing.';
+        try {
+            const err = await response.json();
+            if (err?.error?.message) reason = `${reason} ${err.error.message}`;
+        } catch (_) {
+            /* ignore parse failures */
+        }
+        throw new Error(reason);
+    }
     return response.json();
 }
 
@@ -77,10 +94,10 @@ export default async function handler(req, res) {
             songUrl,
         });
     } catch (error) {
+        const message = String(error && error.message ? error.message : error);
         return res.status(500).json({
             ok: false,
-            message: 'Spotify API unavailable.',
-            error: String(error && error.message ? error.message : error),
+            message,
         });
     }
 }
