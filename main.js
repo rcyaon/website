@@ -746,13 +746,12 @@ function wireSpotifyNowPlaying() {
         setStatus('Loading now playing...');
         try {
             const res = await fetch(NOW_PLAYING_API_URL);
+            const data = await res.json();
             if (!res.ok) {
-                setStatus('Could not fetch Spotify status.');
+                setStatus(data?.message || 'Could not fetch Spotify status.');
                 clearTrack();
                 return;
             }
-
-            const data = await res.json();
             if (!data?.ok) {
                 setStatus(data?.message || 'Spotify status unavailable.');
                 clearTrack();
