@@ -756,13 +756,7 @@ function wireSpotifyNowPlaying() {
                 clearTrack();
                 return;
             }
-            if (!data?.isPlaying) {
-                setStatus('Nothing playing right now.');
-                clearTrack();
-                return;
-            }
-
-            setStatus('Now playing');
+            setStatus(data?.isPlaying ? 'Now playing' : 'Last played');
             trackEl.textContent = data.title || '';
             artistEl.textContent = data.artist || '';
 
