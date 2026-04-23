@@ -61,6 +61,16 @@ async function getNowPlaying(accessToken) {
     return response.json();
 }
 
+async function getLastPlayed(accessToken) {
+    const response = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=1', {
+        headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    if (!response.ok) return null;
+    const data = await response.json();
+    const first = data?.items?.[0]?.track || null;
+    return first;
+}
+
 export default async function handler(req, res) {
     withCors(res);
     if (req.method === 'OPTIONS') return res.status(200).end();
@@ -72,22 +82,29 @@ export default async function handler(req, res) {
         const accessToken = await getAccessToken();
         const nowPlaying = await getNowPlaying(accessToken);
 
-        if (!nowPlaying || !nowPlaying.item) {
+        let item = nowPlaying?.item || null;
+        let isPlaying = Boolean(nowPlaying?.is_playing);
+        if (!item) {
+            item = await getLastPlayed(accessToken);
+            isPlaying = false;
+        }
+        if (!item) {
             return res.status(200).json({
                 ok: true,
                 isPlaying: false,
+                isLastPlayed: false,
                 message: 'Nothing playing right now.',
             });
         }
 
-        const item = nowPlaying.item;
         const artist = (item.artists || []).map((a) => a.name).join(', ');
         const albumImageUrl = item.album?.images?.[1]?.url || item.album?.images?.[0]?.url || '';
         const songUrl = item.external_urls?.spotify || '';
 
         return res.status(200).json({
             ok: true,
-            isPlaying: Boolean(nowPlaying.is_playing),
+            isPlaying,
+            isLastPlayed: !isPlaying,
             title: item.name || '',
             artist,
             albumImageUrl,
