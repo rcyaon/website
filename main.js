@@ -168,9 +168,16 @@ function enforceSingleOpenWindowOnMobile(preferredWindow = null) {
     windows().forEach((win) => {
         if (win === target) return;
         if (!win.classList.contains('is-closed') && !win.classList.contains('is-minimized')) {
+            win.classList.remove('is-maximized');
             win.classList.add('is-minimized');
         }
     });
+
+    target.classList.add('is-maximized');
+    target.style.top = '0px';
+    target.style.left = '0px';
+    target.style.right = 'auto';
+    target.style.bottom = 'auto';
 }
 
 function clampWindowToViewport(win) {
@@ -234,6 +241,11 @@ function closeWindow(win) {
 }
 
 function minimizeWindow(win) {
+    if (useSingleWindowMobileMode()) {
+        // Mobile keeps one tab active at all times.
+        restoreWindow(win);
+        return;
+    }
     win.classList.remove('is-closed');
     win.classList.remove('is-maximized');
     win.classList.add('is-minimized');
@@ -253,6 +265,11 @@ function restoreWindow(win) {
 }
 
 function toggleMaximize(win) {
+    if (useSingleWindowMobileMode()) {
+        win.classList.add('is-maximized');
+        updateLauncherState();
+        return;
+    }
     if (win.classList.contains('is-maximized')) {
         win.classList.remove('is-maximized');
         restoreBounds(win);
@@ -380,6 +397,7 @@ function wireDrag(win) {
     function dragStart(e) {
         if (e.target.closest('.window-controls')) return;
         if (e.button !== 0) return;
+        if (useSingleWindowMobileMode()) return;
         bringToFront(win);
         if (win.classList.contains('is-maximized')) return;
 
