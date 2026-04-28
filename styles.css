@@ -567,10 +567,10 @@ body {
 
 /* Notepad Window */
 .notepad-window {
-    top: 80px;
+    top: 145px;
     left: 100px;
     width: 700px;
-    height: 600px;
+    height: 550px;
     z-index: 20;
 }
 
@@ -581,6 +581,10 @@ body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #1a1a1a;
     letter-spacing: -0.5px;
+}
+
+.notepad-content {
+    padding-bottom: 0;
 }
 
 .profile-section {
@@ -614,10 +618,11 @@ body {
 
 .info-section {
     min-width: 140px;
-    min-height: var(--profile-photo-size);
+    min-height: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 8px;
 }
 
 .info-section .info-line {
@@ -683,6 +688,52 @@ body {
 
 .section-content > div {
     margin-bottom: 8px;
+}
+
+.notepad-content .section {
+    margin: 14px 0 8px;
+}
+
+.notepad-content .section-content {
+    margin-left: 0;
+}
+
+.notepad-content > a {
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.about-intro {
+    line-height: 1.6;
+}
+
+.about-subtitle {
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 8px;
+}
+
+.about-list {
+    margin: 0 0 12px 0;
+    padding-left: 18px;
+    list-style: disc;
+    font-size: 12px;
+    line-height: 1.62;
+}
+
+.about-list li {
+    margin-bottom: 8px;
+}
+
+.about-list li:last-child {
+    margin-bottom: 0;
+}
+
+.about-cta {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px dashed #b8b8b8;
+    line-height: 1.6;
 }
 
 .section-content--work > .work-entry {

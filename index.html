@@ -46,10 +46,6 @@
                         <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
                         <span class="project-icon__label">Drone development</span>
                     </button>
-                    <button type="button" class="project-icon-btn" data-project-id="processor" title="Drag to move, click to open" aria-label="Single cycle processor project">
-                        <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
-                        <span class="project-icon__label">Single cycle RISC-V processor</span>
-                    </button>
                     <!-- <button type="button" class="project-icon-btn" data-project-id="pcb" title="Drag to move, click to open" aria-label="PCB design project">
                         <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
                         <span class="project-icon__label">PCB design</span>
@@ -69,7 +65,7 @@
         </div>
         
         <!-- Notepad Window -->
-        <div class="window notepad-window active" id="notepad" data-window-label="About" data-default-width="700" data-default-height="600">
+        <div class="window notepad-window active" id="notepad" data-window-label="About" data-default-width="700" data-default-height="550">
             <div class="title-bar">
                 <span class="title-bar-text">NOTEPAD.EXE — ABOUT_ME.TXT</span>
                 <div class="window-controls">
@@ -93,52 +89,27 @@
                     
                     <div class="info-section">
                         <div class="work-entry__title">Welcome to my corner of the internet!</div>
-                        <div class="info-line">I’m Lena, an electrical and computer engineering student interested in hardware and chip design, who first got into electronics through hands-on projects experimenting with circuits and signals and has since developed a deeper focus on how systems are designed, built, and optimized, with experience spanning PCB design, embedded systems, and custom silicon from the board level down to implementation in silicon.</div>
+                        <div class="info-line about-intro">ECE at Olin. Grew up across Germany, Belgium, and Spain. I make hardware. Incoming Device Engineer Intern @ GlobalFoundries. Currently building across mixed-signal systems and open-source chip design.</div>
+                        <div class="info-line about-intro">Outside of that I love: Kiarostami films, rock climbing, and music (recently saw Julie, Geordie Greep, and LCD Soundsystem in concert!).</div>
                     </div>
                 </div>
 
-                <!-- <div class="section">
-                    <div class="section-title">SKILLS:</div>
-                    <div class="section-content">
-                        <div><span class="info-label">SOFTWARE</span></div>
-                        <div class="indent">KiCad, Altium, Intel Quartus, Cadence Virtuoso</div>
-                        <div><span class="info-label">CODING LANGUAGES</span></div>
-                        <div class="indent">Python, Typescript, MATLAB, AWS (Lambda, S3 CloudWatch), Verilog</div>
-                    </div>
-                </div> -->
-                
                 <div class="section">
-                    <div class="section-title">EDUCATION:</div>
                     <div class="section-content">
-                        <div><span class="info-label">TRANSFERRING TO THE OLIN COLLEGE OF ENGINEERING</span></div>
-                        <div><span class="info-label">CORNELL UNIVERSITY</span></div>
-                        <div class="indent">June 2024 — May 2026 · Electrical and Computer Engineering</div>
-                        <div><span class="info-label">RELEVANT COURSEWORK</span></div>
-                        <div class="indent">Microelectronics, Circuits, Digital Logic & Computer Organization, Python, Engineering Applications of Operations Research</div>
+                        <div class="section-title about-subtitle">Some things I've done:</div>
+                        <ul class="about-list">
+                            <li>Taped out a custom 8-bit SAR ADC in TSMC 180nm as part of Cornell's all-undergrad silicon team — one of the only teams in the country doing open-source chip design. It's now detecting bird calls on tiny backpacks strapped to migrating birds for Cornell's ornithology lab</li>
+                            <li>Built a vibrating bracelet to counteract Parkinson's tremors out of 3D-printed plastic and exposed wires — rebuilt it 5 times, learned CAD, then PCBs along the way</li>
+                            <li>Built AWS analytics pipelines @ Amazon that cut anomaly detection from 8 days to under 24 hours and incident resolution from 7 days to 6 hours. Did this as a freshman</li>
+                        </ul>
                     </div>
                 </div>
-                
+
                 <div class="section">
-                    <div class="section-title">WORK EXPERIENCE:</div>
-                    <div class="section-content section-content--work">
-                        <div class="work-entry">
-                            <div class="work-entry__title">Incoming Device Engineer Intern @ Global Foundries</div>
-                            <div class="work-entry__subtitle indent">June 2026 — August 2026 · ULP CMOS eNVM</div>
-                        </div>
-                        <div class="work-entry">
-                            <div class="work-entry__title">Software Developer Intern @ Amazon</div>
-                            <div class="work-entry__subtitle indent">May 2025 — August 2025 · Retail analytics with AWS</div>
-                        </div>
-                        <div class="work-entry">
-                            <div class="work-entry__title">MATLAB Ambassador @ Mathworks</div>
-                            <div class="work-entry__subtitle indent">February 2025 — May 2026 · Growing MATLAB and Simulink at Cornell</div>
-                        </div>
-                    </div>
+                   <div class="info-line about-cta">Got here through robotics competitions, teaching myself to code in a school that didn't offer it, and starting a hardware hacking club in my bedroom that somehow won a national cybersecurity competition. If any of this resonates, or you just want to talk chips / films / climbing — reach out!</div>
                 </div>
 
                 <a href="https://archive.org/?noscript=true"><img width="88" height="31" src="internetarchive.2540748731.png"/></a>
-
-                <a href="https://www.gutenberg.org/"><img width="88" height="31" src="gutenberg_3343731968.png"/></a>
 
                 <a href="https://www.openstreetmap.org/"><img width="88" height="31" src="osm-button.png"/></a>
                 
@@ -169,9 +140,6 @@
             <div class="window-content contact-content">
                 <div class="contact-item">
                     <span class="contact-label">Email:</span> <a href="mailto:lena.conde-araujo@csedge.org">lena.conde-araujo@csedge.org</a>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">LinkedIn:</span> <a href="https://www.linkedin.com/in/lena-conde-araujo/" target="_blank">linkedin.com/in/lena-conde-araujo/</a>
                 </div>
                 <div class="contact-item">
                     <span class="contact-label">GitHub:</span> <a href="https://github.com/rcyaon" target="_blank">@rcyaon</a>

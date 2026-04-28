@@ -22,7 +22,7 @@ const PROJECTS = {
         sections: [
             {
                 heading: '',
-                body: "Worked on Cornell Custom Silicon Systems' (C2S2) Analog subteam toward a full-chip tapeout in TSMC 180 nm of a 4.44 MS/s 8-bit differential SAR ADC."
+                body: "Spent a year on Cornell's all-undergrad analog team working toward a full-chip tapeout in TSMC 180nm - a 4.44 MS/s 8-bit differential SAR ADC. No one was going to hand us the design files, so we figured it out ourselves with Cadence Virtuoso manuals and a lot of shared notes. One of the only undergraduate teams in the country doing this. It works."
             },
             {
                 heading: 'Links',
@@ -36,7 +36,7 @@ const PROJECTS = {
         sections: [
             {
                 heading: '',
-                body: 'Designed a custom quadcopter flight controller on a 4-layer mixed-signal PCB, integrating sensing, motor control, and onboard power systems. Developed embedded firmware for stable 6-DOF flight and autonomous control, while improving IMU accuracy through noise characterization and hardware optimization.',
+                body: 'Designed a 4-layer mixed-signal PCB for a quadcopter flight controller (sensing, motor control, power delivery, the whole thing), then wrote the firmware to actually fly it. Spent an embarrassing amount of time on IMU noise characterization. It now flies stably in 6-DOF, which felt like magic the first time and still kind of does.',
             },
             {
                 heading: 'Links',
@@ -53,33 +53,13 @@ const PROJECTS = {
         sections: [
             {
                 heading: '',
-                body: 'Organized hackathons with Hack Club at Amazon and FUTO and led workshops teaching PCB design and generative art using JavaScript and CNC machines. Separately served as Logistics Team Lead for BigRed//Hacks, Cornell’s annual hackathon and makeathon.',
-            },
-            {
-                heading: 'Awards — I also participate at Hackathons!',
-                body: ' ',
-                bullets: [
-                    '3rd Place in Societal Impact Track @ YHack',
-                    '4th in Hardware Track @ YHack',
-                    'Most Nostalgic Hack @ Hack Club\'s Summit',
-                ],
+                body: "Ran PCB workshops at Amazon HQ and FUTO, taught generative art with JavaScript and CNC machines to people who had never touched hardware before. Also did logistics for BigRed//Hacks, Cornell's annual hackathon.",
             },
             {
                 heading: 'Links',
                 bullets: [
                     'More about Days of Service: https://daysofservice.hackclub.com/',
-                    'Built at YHack: https://devpost.com/software/canary-axf7o2',
                 ],
-            },
-        ],
-    },
-    processor: {
-        title: 'Single_Cycle_Processor.TXT',
-        images: [{ src: 'processor.png', alt: 'Single cycle processor', fit: 'wide' }],
-        sections: [
-            {
-                heading: 'FPGA-Based Single-Cycle RISC-V Processor (TinyRV1)',
-                body: 'Final lab for Digital Logic & Computer Organization: designed a single-cycle microprocessor in Verilog (excluding instruction/data RAM), including the ALU, decoder, register file, program counter, and branch logic. Built in Quartus, tested with ModelSim, and deployed on a Cyclone V FPGA for validation.',
             },
         ],
     },
@@ -747,6 +727,8 @@ function wireSpotifyNowPlaying() {
 
     const NOW_PLAYING_API_URL = '/api/now-playing';
     let refreshTimer = null;
+    let hasLoadedAtLeastOnce = false;
+    let hasTrackData = false;
 
     function setStatus(text) {
         statusEl.textContent = text;
@@ -757,43 +739,81 @@ function wireSpotifyNowPlaying() {
         artistEl.textContent = '';
         artworkEl.hidden = true;
         if (linkEl) linkEl.hidden = true;
+        hasTrackData = false;
+    }
+
+    function setTrack(data) {
+        trackEl.textContent = data.title || '';
+        artistEl.textContent = data.artist || '';
+
+        if (data.albumImageUrl) {
+            artworkEl.src = data.albumImageUrl;
+            artworkEl.hidden = false;
+        } else {
+            artworkEl.hidden = true;
+        }
+
+        if (linkEl && data.songUrl) {
+            linkEl.href = data.songUrl;
+            linkEl.hidden = false;
+        } else if (linkEl) {
+            linkEl.hidden = true;
+        }
+
+        hasTrackData = Boolean(data.title || data.artist || data.albumImageUrl);
     }
 
     async function loadNowPlaying() {
-        setStatus('Loading now playing...');
+        if (!hasLoadedAtLeastOnce && !hasTrackData) {
+            setStatus('Loading now playing...');
+        }
         try {
             const res = await fetch(NOW_PLAYING_API_URL);
             const data = await res.json();
             if (!res.ok) {
-                setStatus(data?.message || 'Could not fetch Spotify status.');
-                clearTrack();
+                const baseMessage = data?.message || 'Could not fetch Spotify status.';
+                const rateLimitHint =
+                    data?.retryAfterSeconds && Number.isFinite(Number(data.retryAfterSeconds))
+                        ? ` Retry in ~${Number(data.retryAfterSeconds)}s.`
+                        : '';
+                if (hasTrackData) {
+                    setStatus(`${baseMessage}${rateLimitHint} Showing last known track.`);
+                } else {
+                    setStatus(`${baseMessage}${rateLimitHint}`.trim());
+                    clearTrack();
+                }
+                hasLoadedAtLeastOnce = true;
                 return;
             }
             if (!data?.ok) {
-                setStatus(data?.message || 'Spotify status unavailable.');
-                clearTrack();
+                const message = data?.message || 'Spotify status unavailable.';
+                if (hasTrackData) setStatus(`${message} Showing last known track.`);
+                else {
+                    setStatus(message);
+                    clearTrack();
+                }
+                hasLoadedAtLeastOnce = true;
                 return;
             }
-            setStatus(data?.isPlaying ? 'Now playing' : 'Last played');
-            trackEl.textContent = data.title || '';
-            artistEl.textContent = data.artist || '';
-
-            if (data.albumImageUrl) {
-                artworkEl.src = data.albumImageUrl;
-                artworkEl.hidden = false;
+            if (data.title || data.artist || data.albumImageUrl) {
+                setStatus(data?.isPlaying ? 'Now playing' : 'Last played');
+                setTrack(data);
             } else {
-                artworkEl.hidden = true;
+                const message = data?.message || 'No recent Spotify activity.';
+                if (hasTrackData) setStatus(`${message} Showing last known track.`);
+                else {
+                    setStatus(message);
+                    clearTrack();
+                }
             }
-
-            if (linkEl && data.songUrl) {
-                linkEl.href = data.songUrl;
-                linkEl.hidden = false;
-            } else if (linkEl) {
-                linkEl.hidden = true;
-            }
+            hasLoadedAtLeastOnce = true;
         } catch (_) {
-            setStatus('Network error while contacting Spotify.');
-            clearTrack();
+            if (hasTrackData) setStatus('Network error while contacting Spotify. Showing last known track.');
+            else {
+                setStatus('Network error while contacting Spotify.');
+                clearTrack();
+            }
+            hasLoadedAtLeastOnce = true;
         }
     }
 
