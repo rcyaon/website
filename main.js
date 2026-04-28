@@ -379,6 +379,7 @@ function wireDrag(win) {
         if (e.button !== 0) return;
         if (useSingleWindowMobileMode()) return;
         bringToFront(win);
+        setActiveLauncher(win);
         if (win.classList.contains('is-maximized')) return;
 
         const rect = win.getBoundingClientRect();
