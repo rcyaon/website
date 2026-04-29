@@ -57,9 +57,7 @@ const PROJECTS = {
             },
             {
                 heading: 'Links',
-                bullets: [
-                    'More about Days of Service: https://daysofservice.hackclub.com/',
-                ],
+                body: 'More about Days of Service: https://daysofservice.hackclub.com/',
             },
         ],
     },
