@@ -75,7 +75,7 @@ const PROJECTS = {
     },
     // Gallery: .MOV in <video> works best in Safari; Chrome/Firefox often need H.264 .mp4. For widest support use
     // { type: 'embed', src: 'https://www.youtube.com/embed/VIDEO_ID', ... } with an unlisted upload, or transcode (e.g. ffmpeg).
-    // YouTube embeds default to minimal chrome (controls=0). Use youtubeShowControls: true for the full player.
+    // YouTube: chromeless IFrame API + themed Play/Pause under the video. Use youtubeShowControls: true for native YouTube UI.
     'concert-archive': {
         title: 'Photo_booth.EXE',
         sections: [
@@ -667,14 +667,50 @@ function applyYouTubeEmbedParams(url, item) {
     return u.toString();
 }
 
+/** @param {string} src */
+function extractYouTubeVideoIdFromSrc(src) {
+    const norm = normalizeYouTubeEmbedSrc(src);
+    const m = norm.match(/\/embed\/([^/?&]+)/);
+    return m ? m[1] : null;
+}
+
+let _ytIframeApiPromise = null;
+
+function loadYouTubeIframeAPI() {
+    if (typeof window === 'undefined') return Promise.resolve();
+    if (window.YT && window.YT.Player) return Promise.resolve();
+    if (_ytIframeApiPromise) return _ytIframeApiPromise;
+    _ytIframeApiPromise = new Promise((resolve) => {
+        const tag = document.createElement('script');
+        tag.async = true;
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        const prior = window.onYouTubeIframeAPIReady;
+        window.onYouTubeIframeAPIReady = function () {
+            try {
+                if (typeof prior === 'function') prior();
+            } catch (_) {}
+            resolve();
+        };
+    });
+    return _ytIframeApiPromise;
+}
+
+/** @param {HTMLElement} modal */
+function destroyGalleryYtPlayer(modal) {
+    if (!modal || !modal._galleryYtPlayer) return;
+    try {
+        modal._galleryYtPlayer.destroy();
+    } catch (_) {}
+    modal._galleryYtPlayer = null;
+}
+
 function renderProjectGalleryBlock() {
     return (
         `<div class="project-modal__media project-modal__media--gallery">` +
-        `<div class="project-modal__gallery-shell">` +
-        `<div class="project-modal__gallery-titlebar">` +
-        `<span class="project-modal__gallery-titlebar-text" id="projectGalleryHeading">MEDIA_PREVIEW.EXE</span>` +
-        `</div>` +
-        `<div class="project-modal__gallery" role="region" aria-labelledby="projectGalleryHeading">` +
+        `<div class="project-modal__gallery" role="region" aria-label="Media gallery">` +
         `<div class="project-modal__gallery-stage">` +
         `<button type="button" class="project-modal__gallery-nav project-modal__gallery-nav--prev" data-gallery-prev aria-label="Previous item">‹</button>` +
         `<div class="project-modal__gallery-frame" data-gallery-frame></div>` +
@@ -682,7 +718,7 @@ function renderProjectGalleryBlock() {
         `</div>` +
         `<p class="project-modal__gallery-counter" data-gallery-counter></p>` +
         `<p class="project-modal__gallery-caption" data-gallery-caption></p>` +
-        `</div></div></div>`
+        `</div></div>`
     );
 }
 
@@ -713,6 +749,7 @@ function wireProjectGallery(modal, root, items) {
     }
 
     function renderSlide() {
+        destroyGalleryYtPlayer(modal);
         const prevVideo = frame.querySelector('video');
         if (prevVideo) {
             prevVideo.pause();
@@ -730,18 +767,100 @@ function wireProjectGallery(modal, root, items) {
             if (item.alt) v.setAttribute('aria-label', item.alt);
             frame.appendChild(v);
         } else if (item.type === 'embed') {
-            const iframe = document.createElement('iframe');
-            iframe.className = 'project-modal__gallery-embed';
-            iframe.src = applyYouTubeEmbedParams(item.src, item);
-            iframe.loading = 'lazy';
-            iframe.title = item.alt || 'YouTube video player';
-            iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-            iframe.setAttribute('allowfullscreen', '');
-            iframe.setAttribute(
-                'allow',
-                'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen'
-            );
-            frame.appendChild(iframe);
+            const videoId = extractYouTubeVideoIdFromSrc(item.src);
+            const useChromelessYt = videoId && item.youtubeShowControls !== true;
+
+            if (useChromelessYt) {
+                frame.classList.add('project-modal__gallery-frame--yt');
+                const hostId = `galleryYtHost_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+                const host = document.createElement('div');
+                host.id = hostId;
+                host.className = 'project-modal__gallery-yt-host';
+                frame.appendChild(host);
+
+                const bar = document.createElement('div');
+                bar.className = 'project-modal__gallery-yt-bar';
+                const playBtn = document.createElement('button');
+                playBtn.type = 'button';
+                playBtn.className = 'project-modal__yt-btn';
+                playBtn.setAttribute('aria-label', 'Play');
+                playBtn.textContent = 'Play';
+                const pauseBtn = document.createElement('button');
+                pauseBtn.type = 'button';
+                pauseBtn.className = 'project-modal__yt-btn';
+                pauseBtn.setAttribute('aria-label', 'Pause');
+                pauseBtn.textContent = 'Pause';
+                bar.append(playBtn, pauseBtn);
+                frame.appendChild(bar);
+
+                const slideIndex = index;
+                const mount = () => {
+                    if (slideIndex !== index) return;
+                    const w = Math.max(200, Math.floor(frame.clientWidth));
+                    const maxH = Math.min(520, Math.floor(window.innerHeight * 0.7));
+                    const h = Math.min(maxH, Math.max(160, Math.round((w * 9) / 16)));
+                    void loadYouTubeIframeAPI().then(() => {
+                        if (slideIndex !== index) return;
+                        const pv = {
+                            playsinline: 1,
+                            rel: 0,
+                            modestbranding: 1,
+                            controls: 0,
+                            fs: 0,
+                            iv_load_policy: 3,
+                            disablekb: 1,
+                            origin: window.location.origin,
+                        };
+                        if (item.youtubeAutoplay === true) {
+                            pv.autoplay = 1;
+                            pv.mute = 1;
+                        }
+                        if (item.youtubeLoop === true) {
+                            pv.loop = 1;
+                            pv.playlist = videoId;
+                        }
+                        modal._galleryYtPlayer = new window.YT.Player(hostId, {
+                            width: w,
+                            height: h,
+                            videoId,
+                            playerVars: pv,
+                            events: {
+                                onReady: (ev) => {
+                                    if (slideIndex !== index) return;
+                                    const p = ev.target;
+                                    if (bar.dataset.ytWired === '1') return;
+                                    bar.dataset.ytWired = '1';
+                                    playBtn.addEventListener('click', () => {
+                                        try {
+                                            p.playVideo();
+                                        } catch (_) {}
+                                    });
+                                    pauseBtn.addEventListener('click', () => {
+                                        try {
+                                            p.pauseVideo();
+                                        } catch (_) {}
+                                    });
+                                },
+                            },
+                        });
+                    });
+                };
+                requestAnimationFrame(() => requestAnimationFrame(mount));
+            } else {
+                frame.classList.remove('project-modal__gallery-frame--yt');
+                const iframe = document.createElement('iframe');
+                iframe.className = 'project-modal__gallery-embed';
+                iframe.src = applyYouTubeEmbedParams(item.src, item);
+                iframe.loading = 'lazy';
+                iframe.title = item.alt || 'YouTube video player';
+                iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+                iframe.setAttribute('allowfullscreen', '');
+                iframe.setAttribute(
+                    'allow',
+                    'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen'
+                );
+                frame.appendChild(iframe);
+            }
         } else {
             const img = document.createElement('img');
             img.className = 'project-modal__gallery-image';
@@ -830,6 +949,7 @@ function renderProjectImageBlock(data) {
 function closeProjectModal() {
     const modal = document.getElementById('projectModal');
     if (!modal) return;
+    destroyGalleryYtPlayer(modal);
     if (modal._galleryKeydown) {
         document.removeEventListener('keydown', modal._galleryKeydown);
         delete modal._galleryKeydown;
