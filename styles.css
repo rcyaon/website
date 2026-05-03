@@ -516,6 +516,18 @@ body {
     box-shadow: none;
     max-height: none;
     overflow: visible;
+    line-height: 0;
+}
+
+/* Shrink-wrap border around intrinsic image/video size (avoids pillarboxing inside the frame). */
+.project-modal__gallery-mat {
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: top;
+    border: 1px solid #6f6f6f;
+    line-height: 0;
+    box-sizing: border-box;
+    background: transparent;
 }
 
 .project-modal__gallery-image {
@@ -525,9 +537,10 @@ body {
     width: auto;
     height: auto;
     object-fit: contain;
-    vertical-align: middle;
+    vertical-align: top;
     border: none;
     background: transparent;
+    box-sizing: border-box;
 }
 
 .project-modal__gallery-video {
@@ -537,9 +550,10 @@ body {
     width: auto;
     height: auto;
     object-fit: contain;
-    vertical-align: middle;
+    vertical-align: top;
     border: none;
     background: transparent;
+    box-sizing: border-box;
 }
 
 .project-modal__gallery-embed {
@@ -548,17 +562,18 @@ body {
     max-width: 100%;
     height: min(70vh, 520px);
     max-height: min(70vh, 520px);
-    border: 0;
+    border: 1px solid #6f6f6f;
     box-shadow: none;
-    background: transparent;
+    background: #1a1a1a;
+    box-sizing: border-box;
 }
 
-/* YouTube IFrame API: no chrome around the player; minimal text controls */
+/* YouTube IFrame API: chromeless player only (no custom transport row) */
 .project-modal__gallery-frame--yt {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 4px;
+    gap: 0;
     justify-content: flex-start;
     padding-bottom: 8px;
 }
@@ -569,10 +584,11 @@ body {
     height: min(70vh, 520px);
     max-height: min(70vh, 520px);
     flex-shrink: 0;
-    border: none;
+    border: 1px solid #6f6f6f;
     box-shadow: none;
-    background: transparent;
+    background: #1a1a1a;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .project-modal__gallery-yt-host iframe {
@@ -580,37 +596,6 @@ body {
     width: 100% !important;
     height: 100% !important;
     border: 0;
-}
-
-.project-modal__gallery-yt-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    padding-bottom: 6px;
-}
-
-.project-modal__yt-btn {
-    padding: 0;
-    border: none;
-    background: transparent;
-    color: #1a1a1a;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    cursor: pointer;
-}
-
-.project-modal__yt-btn:hover {
-    color: #6f6f6f;
-}
-
-.project-modal__yt-btn:active {
-    color: #3d3d3d;
 }
 
 .project-modal__gallery-nav {

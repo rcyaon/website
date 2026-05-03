@@ -75,7 +75,7 @@ const PROJECTS = {
     },
     // Gallery: .MOV in <video> works best in Safari; Chrome/Firefox often need H.264 .mp4. For widest support use
     // { type: 'embed', src: 'https://www.youtube.com/embed/VIDEO_ID', ... } with an unlisted upload, or transcode (e.g. ffmpeg).
-    // YouTube: chromeless IFrame API + themed Play/Pause under the video. Use youtubeShowControls: true for native YouTube UI.
+    // YouTube: chromeless IFrame API (tap video to play). Use youtubeShowControls: true for native YouTube UI.
     'concert-archive': {
         title: 'Photo_booth.EXE',
         sections: [
@@ -756,8 +756,11 @@ function wireProjectGallery(modal, root, items) {
         }
 
         frame.innerHTML = '';
+        frame.classList.remove('project-modal__gallery-frame--yt');
         const item = items[index];
         if (item.type === 'video') {
+            const mat = document.createElement('div');
+            mat.className = 'project-modal__gallery-mat';
             const v = document.createElement('video');
             v.className = 'project-modal__gallery-video';
             v.src = item.src;
@@ -765,7 +768,8 @@ function wireProjectGallery(modal, root, items) {
             v.playsInline = true;
             v.setAttribute('preload', 'metadata');
             if (item.alt) v.setAttribute('aria-label', item.alt);
-            frame.appendChild(v);
+            mat.appendChild(v);
+            frame.appendChild(mat);
         } else if (item.type === 'embed') {
             const videoId = extractYouTubeVideoIdFromSrc(item.src);
             const useChromelessYt = videoId && item.youtubeShowControls !== true;
@@ -777,21 +781,6 @@ function wireProjectGallery(modal, root, items) {
                 host.id = hostId;
                 host.className = 'project-modal__gallery-yt-host';
                 frame.appendChild(host);
-
-                const bar = document.createElement('div');
-                bar.className = 'project-modal__gallery-yt-bar';
-                const playBtn = document.createElement('button');
-                playBtn.type = 'button';
-                playBtn.className = 'project-modal__yt-btn';
-                playBtn.setAttribute('aria-label', 'Play');
-                playBtn.textContent = 'Play';
-                const pauseBtn = document.createElement('button');
-                pauseBtn.type = 'button';
-                pauseBtn.className = 'project-modal__yt-btn';
-                pauseBtn.setAttribute('aria-label', 'Pause');
-                pauseBtn.textContent = 'Pause';
-                bar.append(playBtn, pauseBtn);
-                frame.appendChild(bar);
 
                 const slideIndex = index;
                 const mount = () => {
@@ -824,30 +813,11 @@ function wireProjectGallery(modal, root, items) {
                             height: h,
                             videoId,
                             playerVars: pv,
-                            events: {
-                                onReady: (ev) => {
-                                    if (slideIndex !== index) return;
-                                    const p = ev.target;
-                                    if (bar.dataset.ytWired === '1') return;
-                                    bar.dataset.ytWired = '1';
-                                    playBtn.addEventListener('click', () => {
-                                        try {
-                                            p.playVideo();
-                                        } catch (_) {}
-                                    });
-                                    pauseBtn.addEventListener('click', () => {
-                                        try {
-                                            p.pauseVideo();
-                                        } catch (_) {}
-                                    });
-                                },
-                            },
                         });
                     });
                 };
                 requestAnimationFrame(() => requestAnimationFrame(mount));
             } else {
-                frame.classList.remove('project-modal__gallery-frame--yt');
                 const iframe = document.createElement('iframe');
                 iframe.className = 'project-modal__gallery-embed';
                 iframe.src = applyYouTubeEmbedParams(item.src, item);
@@ -862,12 +832,15 @@ function wireProjectGallery(modal, root, items) {
                 frame.appendChild(iframe);
             }
         } else {
+            const mat = document.createElement('div');
+            mat.className = 'project-modal__gallery-mat';
             const img = document.createElement('img');
             img.className = 'project-modal__gallery-image';
             img.src = item.src;
             img.alt = item.alt || '';
             img.loading = index === 0 ? 'eager' : 'lazy';
-            frame.appendChild(img);
+            mat.appendChild(img);
+            frame.appendChild(mat);
         }
 
         counter.textContent = `${index + 1} / ${items.length}`;
