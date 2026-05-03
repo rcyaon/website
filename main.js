@@ -8,7 +8,7 @@ const MIN_H = 160;
 /**
  * @typedef {{ heading: string; body: string; bullets?: string[] }} ProjectSection
  * @typedef {{ src: string; alt?: string; fit?: 'contain' | 'cover' | 'wide' }} ProjectImage
- * @typedef {{ type: 'image' | 'video' | 'embed'; src: string; alt?: string; caption?: string }} ProjectGalleryItem
+ * @typedef {{ type: 'image' | 'video' | 'embed'; src: string; alt?: string; caption?: string; youtubeShowControls?: boolean; youtubeAutoplay?: boolean; youtubeLoop?: boolean }} ProjectGalleryItem
  * @typedef {{ title: string; sections: ProjectSection[]; imageSrc?: string; imageAlt?: string; images?: ProjectImage[]; gallery?: ProjectGalleryItem[] }} ProjectDetail
  */
 
@@ -75,6 +75,7 @@ const PROJECTS = {
     },
     // Gallery: .MOV in <video> works best in Safari; Chrome/Firefox often need H.264 .mp4. For widest support use
     // { type: 'embed', src: 'https://www.youtube.com/embed/VIDEO_ID', ... } with an unlisted upload, or transcode (e.g. ffmpeg).
+    // YouTube embeds default to minimal chrome (controls=0). Use youtubeShowControls: true for the full player.
     'concert-archive': {
         title: 'Photo_booth.EXE',
         sections: [
@@ -618,11 +619,62 @@ function normalizeYouTubeEmbedSrc(src) {
     return src;
 }
 
+/**
+ * Apply YouTube iframe parameters. By default hides most on-player chrome (controls=0).
+ * Set youtubeShowControls: true on the gallery item for the normal YouTube UI.
+ * Autoplay requires mute=1 in modern browsers.
+ * @param {string} url
+ * @param {ProjectGalleryItem} item
+ * @returns {string}
+ */
+function applyYouTubeEmbedParams(url, item) {
+    const base = normalizeYouTubeEmbedSrc(url);
+    let u;
+    try {
+        u = new URL(base);
+    } catch {
+        return base;
+    }
+    const host = u.hostname.replace(/^www\./, '');
+    if (host !== 'youtube.com' && host !== 'youtube-nocookie.com') {
+        return base;
+    }
+    if (!u.pathname.startsWith('/embed/')) {
+        return base;
+    }
+
+    const showControls = item.youtubeShowControls === true;
+    if (!showControls) {
+        u.searchParams.set('controls', '0');
+        u.searchParams.set('modestbranding', '1');
+        u.searchParams.set('playsinline', '1');
+        u.searchParams.set('rel', '0');
+        u.searchParams.set('iv_load_policy', '3');
+    }
+
+    if (item.youtubeAutoplay === true) {
+        u.searchParams.set('autoplay', '1');
+        u.searchParams.set('mute', '1');
+    }
+
+    const idMatch = u.pathname.match(/^\/embed\/([^/?]+)/);
+    const videoId = idMatch ? idMatch[1] : null;
+    if (item.youtubeLoop === true && videoId) {
+        u.searchParams.set('loop', '1');
+        u.searchParams.set('playlist', videoId);
+    }
+
+    return u.toString();
+}
+
 function renderProjectGalleryBlock() {
     return (
         `<div class="project-modal__media project-modal__media--gallery">` +
-        `<h3 class="project-modal__media-heading">Gallery</h3>` +
-        `<div class="project-modal__gallery" role="region" aria-label="Media gallery">` +
+        `<div class="project-modal__gallery-shell">` +
+        `<div class="project-modal__gallery-titlebar">` +
+        `<span class="project-modal__gallery-titlebar-text" id="projectGalleryHeading">MEDIA_PREVIEW.EXE</span>` +
+        `</div>` +
+        `<div class="project-modal__gallery" role="region" aria-labelledby="projectGalleryHeading">` +
         `<div class="project-modal__gallery-stage">` +
         `<button type="button" class="project-modal__gallery-nav project-modal__gallery-nav--prev" data-gallery-prev aria-label="Previous item">‹</button>` +
         `<div class="project-modal__gallery-frame" data-gallery-frame></div>` +
@@ -630,7 +682,7 @@ function renderProjectGalleryBlock() {
         `</div>` +
         `<p class="project-modal__gallery-counter" data-gallery-counter></p>` +
         `<p class="project-modal__gallery-caption" data-gallery-caption></p>` +
-        `</div></div>`
+        `</div></div></div>`
     );
 }
 
@@ -680,7 +732,7 @@ function wireProjectGallery(modal, root, items) {
         } else if (item.type === 'embed') {
             const iframe = document.createElement('iframe');
             iframe.className = 'project-modal__gallery-embed';
-            iframe.src = normalizeYouTubeEmbedSrc(item.src);
+            iframe.src = applyYouTubeEmbedParams(item.src, item);
             iframe.loading = 'lazy';
             iframe.title = item.alt || 'YouTube video player';
             iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');

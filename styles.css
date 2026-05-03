@@ -484,19 +484,48 @@ body {
 }
 
 .project-modal__media--gallery {
-    border-top: none;
-    padding-top: 8px;
     margin-top: 12px;
+    padding-top: 0;
+    border-top: none;
+    background: transparent;
+}
+
+.project-modal__gallery-shell {
+    border: 1px solid #6f6f6f;
+    background: #f3f3f3;
+    box-shadow: 2px 2px 4px rgba(154, 154, 154, 0.35);
+}
+
+.project-modal__gallery-titlebar {
+    display: flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 4px 8px;
+    border-bottom: 1px solid #6f6f6f;
+    background: #f3f3f3;
+    flex-shrink: 0;
+}
+
+.project-modal__gallery-titlebar-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #1a1a1a;
 }
 
 .project-modal__gallery {
-    margin-top: 4px;
+    margin-top: 0;
+    padding: 10px 10px 12px;
+    background: #e4e4e4;
+    border-top: 1px solid #d0d0d0;
 }
 
 .project-modal__gallery-stage {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    align-items: stretch;
+    gap: 8px;
     min-height: 100px;
     max-height: min(38dvh, 320px);
 }
@@ -508,14 +537,26 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 6px;
-    background: #eaeaea;
+    padding: 6px;
+    background: #d9d9d9;
     border: 1px solid #6f6f6f;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.45), inset -1px -1px 0 rgba(0, 0, 0, 0.06);
     max-height: min(38dvh, 320px);
     overflow: hidden;
 }
 
-.project-modal__gallery-image,
+.project-modal__gallery-image {
+    display: block;
+    max-width: 100%;
+    max-height: min(36dvh, 300px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    vertical-align: middle;
+    border: 1px solid #6f6f6f;
+    background: #eaeaea;
+}
+
 .project-modal__gallery-video {
     display: block;
     max-width: 100%;
@@ -524,9 +565,7 @@ body {
     height: auto;
     object-fit: contain;
     vertical-align: middle;
-}
-
-.project-modal__gallery-video {
+    border: 1px solid #6f6f6f;
     background: #1a1a1a;
 }
 
@@ -536,19 +575,22 @@ body {
     max-width: 100%;
     height: min(36dvh, 300px);
     max-height: min(36dvh, 300px);
-    border: 0;
-    background: #1a1a1a;
+    border: 1px solid #6f6f6f;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
+    background: #2a2a2a;
 }
 
 .project-modal__gallery-nav {
     flex-shrink: 0;
-    width: 28px;
-    height: 72px;
+    align-self: stretch;
+    width: 26px;
+    min-height: 100px;
     border: 1px solid #6f6f6f;
     background: #f3f3f3;
     color: #1a1a1a;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 600;
     line-height: 1;
     cursor: pointer;
     padding: 0;
@@ -571,13 +613,21 @@ body {
 
 .project-modal__gallery-counter {
     margin: 10px 0 0;
-    font-size: 11px;
-    color: #3d3d3d;
+    padding: 4px 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #1a1a1a;
     text-align: center;
+    background: #f3f3f3;
+    border: 1px solid #b0b0b0;
 }
 
 .project-modal__gallery-caption {
-    margin: 6px 0 0;
+    margin: 8px 0 0;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
     line-height: 1.55;
     color: #1a1a1a;
@@ -893,17 +943,17 @@ body {
 
 /* Contact Window */
 .contact-window {
-    top: 120px;
+    top: 100px;
     right: 50px;
     left: auto;
-    width: 300px;
-    height: 170px;
+    width: 360px;
+    height: 265px;
     z-index: 30;
 }
 
 .contact-content {
     font-size: 12px;
-    line-height: 2;
+    line-height: 1.85;
     font-family: 'IBM Plex Mono', monospace;
     color: #1a1a1a;
 }
@@ -911,6 +961,10 @@ body {
 .contact-item {
     margin-bottom: 10px;
     word-break: break-word;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
 }
 
 .contact-label {
@@ -930,9 +984,9 @@ body {
     overflow: visible;
 }
 
-/* Spotify Window */
+/* Spotify Window — default top clears contact window (contact top + height + gap) */
 .spotify-window {
-    top: 320px;
+    top: 390px;
     right: 50px;
     left: auto;
     width: 360px;
@@ -1135,14 +1189,14 @@ a:hover {
         top: auto;
         bottom: calc(var(--desktop-chrome-bottom) + 12px);
         width: auto !important;
-        height: min(175px, 34vh) !important;
+        height: min(255px, 42vh) !important;
     }
 
     .spotify-window {
         left: 12px;
         right: 12px;
         width: auto !important;
-        height: min(280px, 34vh) !important;
+        height: min(280px, 38vh) !important;
     }
 
     .desktop > .window {
@@ -1169,11 +1223,11 @@ a:hover {
     }
 
     .contact-window {
-        height: min(165px, 30vh) !important;
+        height: min(240px, 44vh) !important;
     }
 
     .spotify-window {
-        height: min(240px, 30vh) !important;
+        height: min(240px, 36vh) !important;
     }
 
     .window-launcher {
