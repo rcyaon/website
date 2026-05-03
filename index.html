@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- YouTube embeds need a non-no-referrer policy or the player returns Error 153. -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Lena</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -19,7 +21,7 @@
         <!-- File Explorer Window -->
         <div class="window file-explorer active" id="fileExplorer" data-window-label="Projects" data-default-width="400" data-default-height="320">
             <div class="title-bar">
-                <span class="title-bar-text">FILE_EXPLORER.EXE — PROJECTS</span>
+                <span class="title-bar-text">FILE_EXPLORER.EXE</span>
                 <div class="window-controls">
                     <button type="button" class="window-control" data-action="minimize" title="Minimize" aria-label="Minimize window">_</button>
                     <button type="button" class="window-control" data-action="maximize" title="Maximize" aria-label="Maximize window">□</button>
@@ -46,6 +48,10 @@
                         <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
                         <span class="project-icon__label">Drone development</span>
                     </button>
+                    <button type="button" class="project-icon-btn" data-project-id="concert-archive" title="Drag to move, click to open" aria-label="Concert archive">
+                        <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
+                        <span class="project-icon__label">Concert Archive</span>
+                    </button>
                     <!-- <button type="button" class="project-icon-btn" data-project-id="pcb" title="Drag to move, click to open" aria-label="PCB design project">
                         <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
                         <span class="project-icon__label">PCB design</span>
@@ -65,7 +71,7 @@
         </div>
         
         <!-- Notepad Window -->
-        <div class="window notepad-window active" id="notepad" data-window-label="About" data-default-width="700" data-default-height="550">
+        <div class="window notepad-window active" id="notepad" data-window-label="About" data-default-width="700" data-default-height="480">
             <div class="title-bar">
                 <span class="title-bar-text">NOTEPAD.EXE — ABOUT_ME.TXT</span>
                 <div class="window-controls">
@@ -84,13 +90,13 @@
                 
                 <div class="profile-section">
                     <div class="profile-image">
-                        <img src="profile.jpg" alt="Profile" class="profile-photo">
+                        <img src="images/profile.jpg" alt="Profile" class="profile-photo">
                     </div>
                     
                     <div class="info-section">
                         <div class="work-entry__title">Welcome to my corner of the internet!</div>
-                        <div class="info-line about-intro">ECE at Olin, incoming device engineer intern @ GlobalFoundries. Grew up across Germany, Belgium, and Spain. Also always aiming to learn more about hardware!</div>
-                        <div class="info-line about-intro">Outside of that I love: Kiarostami films, rock climbing, and music (recently saw Julie, Geordie Greep, and LCD Soundsystem in concert!).</div>
+                        <div class="info-line about-intro">ECE at Olin. Grew up across Germany, Belgium, and Spain. Also always aiming to learn more about hardware!</div>
+                        <div class="info-line about-intro">Outside of that I love: Kiarostami films (check out my <a href="https://letterboxd.com/rcyaon/">Letterboxd</a>!), rock climbing, and music (I recently saw Julie, Geordie Greep, and LCD Soundsystem in concert).</div>
                     </div>
                 </div>
 
@@ -100,7 +106,7 @@
                         <ul class="about-list">
                             <li>Taped out a custom 8-bit SAR ADC in TSMC 180nm as part of Cornell's all-undergrad silicon team — one of the only teams in the country doing open-source chip design. It's now detecting bird calls on tiny backpacks strapped to migrating birds for Cornell's ornithology lab</li>
                             <li>Built a vibrating bracelet to counteract Parkinson's tremors out of 3D-printed plastic and exposed wires — rebuilt it 5 times, learned CAD, then PCBs along the way</li>
-                            <li>Built AWS analytics pipelines @ Amazon that cut anomaly detection from 8 days to under 24 hours and incident resolution from 7 days to 6 hours. Did this as a freshman</li>
+                            <li>Built AWS analytics pipelines at Amazon that cut anomaly detection from 8 days to under 24 hours and incident resolution from 7 days to 6 hours. Did this as a freshman</li>
                         </ul>
                     </div>
                 </div>
@@ -109,9 +115,9 @@
                    <div class="info-line about-cta">Got here through robotics competitions, teaching myself to code in a school that didn't offer it, and starting a hardware hacking club in my bedroom that somehow won a national cybersecurity competition. If any of this resonates, or you just want to talk chips / films / climbing — reach out!</div>
                 </div>
 
-                <a href="https://archive.org/?noscript=true"><img width="88" height="31" src="internetarchive.2540748731.png"/></a>
+                <a href="https://archive.org/?noscript=true"><img width="88" height="31" src="images/internetarchive.2540748731.png"/></a>
 
-                <a href="https://www.openstreetmap.org/"><img width="88" height="31" src="osm-button.png"/></a>
+                <a href="https://www.openstreetmap.org/"><img width="88" height="31" src="images/osm-button.png"/></a>
                 
                 <!-- <div class="background-text">ᯓ★</div> -->
             </div>

@@ -8,7 +8,8 @@ const MIN_H = 160;
 /**
  * @typedef {{ heading: string; body: string; bullets?: string[] }} ProjectSection
  * @typedef {{ src: string; alt?: string; fit?: 'contain' | 'cover' | 'wide' }} ProjectImage
- * @typedef {{ title: string; sections: ProjectSection[]; imageSrc?: string; imageAlt?: string; images?: ProjectImage[] }} ProjectDetail
+ * @typedef {{ type: 'image' | 'video' | 'embed'; src: string; alt?: string; caption?: string }} ProjectGalleryItem
+ * @typedef {{ title: string; sections: ProjectSection[]; imageSrc?: string; imageAlt?: string; images?: ProjectImage[]; gallery?: ProjectGalleryItem[] }} ProjectDetail
  */
 
 /** @type {Record<string, ProjectDetail>} */
@@ -16,8 +17,9 @@ const PROJECTS = {
     'chip-design': {
         title: 'Chip_design.TXT',
         images: [
-            { src: 'chip_one.JPG', alt: 'Chip design photo 1' },
-            { src: 'chip_two.JPG', alt: 'Chip design photo 2' },
+            { src: 'images/chip_one.JPG', alt: 'Chip design photo 1' },
+            { src: 'images/chip_two.JPG', alt: 'Chip design photo 2' },
+            { src: 'images/unnamed.png', alt: 'Chip design photo 3' },
         ],
         sections: [
             {
@@ -32,7 +34,7 @@ const PROJECTS = {
     },
     drone: {
         title: 'Drone_development.TXT',
-        images: [{ src: 'DylanV2.jpg', alt: 'Drone project', fit: 'cover' }],
+        images: [{ src: 'images/DylanV2.jpg', alt: 'Drone project', fit: 'cover' }],
         sections: [
             {
                 heading: '',
@@ -47,8 +49,8 @@ const PROJECTS = {
     hackathons: {
         title: 'Hackathons.TXT',
         images: [
-        { src: 'blot.JPG', alt: 'Hackathon organization' },
-        { src: 'P1050057.JPG', alt: 'More hackathon photos', fit: 'wide' },
+        { src: 'images/blot.JPG', alt: 'Hackathon organization' },
+        { src: 'images/P1050057.JPG', alt: 'More hackathon photos', fit: 'wide' },
         ],
         sections: [
             {
@@ -56,9 +58,37 @@ const PROJECTS = {
                 body: "Ran PCB workshops at Amazon HQ and FUTO, taught generative art with JavaScript and CNC machines to people who had never touched hardware before. Also did logistics for BigRed//Hacks, Cornell's annual hackathon.",
             },
             {
+                heading: 'Awards — I also participate at Hackathons!',
+                body: ' ',
+                bullets: [
+                    '3rd Place in Societal Impact Track @ YHack',
+                    '4th in Hardware Track @ YHack',
+                    "Most Nostalgic Hack @ Hack Club's Summit",
+                ],
+            },
+            {
                 heading: 'Links',
                 body: 'More about Days of Service: https://daysofservice.hackclub.com/',
+                bullets: ['Built at YHack: https://devpost.com/software/canary-axf7o2'],
             },
+        ],
+    },
+    // Gallery: .MOV in <video> works best in Safari; Chrome/Firefox often need H.264 .mp4. For widest support use
+    // { type: 'embed', src: 'https://www.youtube.com/embed/VIDEO_ID', ... } with an unlisted upload, or transcode (e.g. ffmpeg).
+    'concert-archive': {
+        title: 'Photo_booth.EXE',
+        sections: [
+            {
+                heading: '',
+                body: 'A running archive capturing the concerts and live music I\'ve gone to!',
+            },
+        ],
+
+        gallery: [
+            { type: 'image', src: 'images/concerts/100_1272.JPG', alt: 'concert' },
+            { type: 'embed', src: 'https://www.youtube.com/embed/wdz0vgUGqgk?si=eOmFrO-dhXmkdotA' },
+            // { type: 'video', src: 'images/concerts/100_1273.MOV', alt: 'Show clip', caption: ' ' },
+            { type: 'image', src: 'images/concerts/100_1304.JPG', alt: 'Concert' },
         ],
     },
     /* embedded: {
@@ -479,11 +509,24 @@ function openProjectModal(projectId) {
     const modal = document.getElementById('projectModal');
     const titleEl = document.getElementById('projectModalTitle');
     const bodyEl = document.getElementById('projectModalBody');
+    const panel = modal?.querySelector('.project-modal__panel');
     if (!data || !modal || !titleEl || !bodyEl) return;
+
+    if (panel) {
+        if (data.gallery && data.gallery.length > 0) panel.classList.add('project-modal__panel--gallery');
+        else panel.classList.remove('project-modal__panel--gallery');
+    }
 
     titleEl.textContent = data.title;
     const sectionsHtml = data.sections.map(renderProjectSection).join('');
-    bodyEl.innerHTML = sectionsHtml + renderProjectImageBlock(data);
+    const mediaHtml =
+        data.gallery && data.gallery.length > 0 ? renderProjectGalleryBlock() : renderProjectImageBlock(data);
+    bodyEl.innerHTML = sectionsHtml + mediaHtml;
+
+    if (data.gallery && data.gallery.length > 0) {
+        const galleryRoot = bodyEl.querySelector('.project-modal__gallery');
+        if (galleryRoot) wireProjectGallery(modal, galleryRoot, data.gallery);
+    }
 
     modal.hidden = false;
     document.body.classList.add('modal-open');
@@ -543,6 +586,153 @@ function escapeAttr(str) {
     return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 }
 
+/**
+ * Normalize watch/short URLs to /embed/ and ensure YouTube can verify the embed (Error 153 fix).
+ * @param {string} src
+ * @returns {string}
+ */
+function normalizeYouTubeEmbedSrc(src) {
+    if (!src || typeof src !== 'string') return src;
+    try {
+        const u = new URL(src.trim(), window.location.href);
+        const host = u.hostname.replace(/^www\./, '');
+        if (host === 'youtu.be' && u.pathname.length > 1) {
+            const id = u.pathname.slice(1).split(/[/?#]/)[0];
+            if (id) return `https://www.youtube.com/embed/${id}`;
+        }
+        if (host === 'youtube.com' || host === 'youtube-nocookie.com') {
+            if (u.pathname.startsWith('/embed/')) {
+                return u.toString();
+            }
+            if (u.pathname === '/watch' && u.searchParams.get('v')) {
+                return `https://www.youtube.com/embed/${u.searchParams.get('v')}`;
+            }
+            if (u.pathname.startsWith('/shorts/')) {
+                const id = u.pathname.replace('/shorts/', '').split(/[/?#]/)[0];
+                if (id) return `https://www.youtube.com/embed/${id}`;
+            }
+        }
+    } catch (_) {
+        /* keep original */
+    }
+    return src;
+}
+
+function renderProjectGalleryBlock() {
+    return (
+        `<div class="project-modal__media project-modal__media--gallery">` +
+        `<h3 class="project-modal__media-heading">Gallery</h3>` +
+        `<div class="project-modal__gallery" role="region" aria-label="Media gallery">` +
+        `<div class="project-modal__gallery-stage">` +
+        `<button type="button" class="project-modal__gallery-nav project-modal__gallery-nav--prev" data-gallery-prev aria-label="Previous item">‹</button>` +
+        `<div class="project-modal__gallery-frame" data-gallery-frame></div>` +
+        `<button type="button" class="project-modal__gallery-nav project-modal__gallery-nav--next" data-gallery-next aria-label="Next item">›</button>` +
+        `</div>` +
+        `<p class="project-modal__gallery-counter" data-gallery-counter></p>` +
+        `<p class="project-modal__gallery-caption" data-gallery-caption></p>` +
+        `</div></div>`
+    );
+}
+
+/**
+ * @param {HTMLElement} modal
+ * @param {HTMLElement} root
+ * @param {ProjectGalleryItem[]} items
+ */
+function wireProjectGallery(modal, root, items) {
+    const frame = root.querySelector('[data-gallery-frame]');
+    const prev = root.querySelector('[data-gallery-prev]');
+    const next = root.querySelector('[data-gallery-next]');
+    const counter = root.querySelector('[data-gallery-counter]');
+    const captionEl = root.querySelector('[data-gallery-caption]');
+    if (!frame || !prev || !next || !counter || !captionEl || items.length === 0) return;
+
+    if (modal._galleryKeydown) {
+        document.removeEventListener('keydown', modal._galleryKeydown);
+        delete modal._galleryKeydown;
+    }
+
+    let index = 0;
+
+    function updateNavState() {
+        const n = items.length;
+        prev.disabled = index <= 0;
+        next.disabled = index >= n - 1;
+    }
+
+    function renderSlide() {
+        const prevVideo = frame.querySelector('video');
+        if (prevVideo) {
+            prevVideo.pause();
+        }
+
+        frame.innerHTML = '';
+        const item = items[index];
+        if (item.type === 'video') {
+            const v = document.createElement('video');
+            v.className = 'project-modal__gallery-video';
+            v.src = item.src;
+            v.controls = true;
+            v.playsInline = true;
+            v.setAttribute('preload', 'metadata');
+            if (item.alt) v.setAttribute('aria-label', item.alt);
+            frame.appendChild(v);
+        } else if (item.type === 'embed') {
+            const iframe = document.createElement('iframe');
+            iframe.className = 'project-modal__gallery-embed';
+            iframe.src = normalizeYouTubeEmbedSrc(item.src);
+            iframe.loading = 'lazy';
+            iframe.title = item.alt || 'YouTube video player';
+            iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.setAttribute(
+                'allow',
+                'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen'
+            );
+            frame.appendChild(iframe);
+        } else {
+            const img = document.createElement('img');
+            img.className = 'project-modal__gallery-image';
+            img.src = item.src;
+            img.alt = item.alt || '';
+            img.loading = index === 0 ? 'eager' : 'lazy';
+            frame.appendChild(img);
+        }
+
+        counter.textContent = `${index + 1} / ${items.length}`;
+        captionEl.textContent = item.caption ? item.caption : '';
+        updateNavState();
+    }
+
+    function step(delta) {
+        const n = items.length;
+        const nextIndex = index + delta;
+        if (nextIndex < 0 || nextIndex >= n) return;
+        index = nextIndex;
+        renderSlide();
+    }
+
+    prev.addEventListener('click', () => step(-1));
+    next.addEventListener('click', () => step(1));
+
+    /** @param {KeyboardEvent} e */
+    function onKeydown(e) {
+        if (modal.hidden) return;
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            step(-1);
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            step(1);
+        }
+    }
+
+    document.addEventListener('keydown', onKeydown);
+    modal._galleryKeydown = onKeydown;
+
+    renderSlide();
+}
+
 function renderProjectImageBlock(data) {
     const figures = [];
 
@@ -588,6 +778,11 @@ function renderProjectImageBlock(data) {
 function closeProjectModal() {
     const modal = document.getElementById('projectModal');
     if (!modal) return;
+    if (modal._galleryKeydown) {
+        document.removeEventListener('keydown', modal._galleryKeydown);
+        delete modal._galleryKeydown;
+    }
+    modal.querySelector('.project-modal__panel')?.classList.remove('project-modal__panel--gallery');
     modal.hidden = true;
     document.body.classList.remove('modal-open');
     const bodyEl = document.getElementById('projectModalBody');
