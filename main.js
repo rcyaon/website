@@ -81,7 +81,7 @@ const PROJECTS = {
         sections: [
             {
                 heading: '',
-                body: 'A running archive capturing the concerts and live music I\'ve gone to!',
+                body: 'A running archive capturing the concerts I\'ve gone to!',
             },
         ],
 
