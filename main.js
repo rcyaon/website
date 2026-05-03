@@ -58,19 +58,8 @@ const PROJECTS = {
                 body: "Ran PCB workshops at Amazon HQ and FUTO, taught generative art with JavaScript and CNC machines to people who had never touched hardware before. Also did logistics for BigRed//Hacks, Cornell's annual hackathon.",
             },
             {
-                heading: 'Awards — I also participate at Hackathons!',
-                body: ' ',
-                bullets: [
-                    '3rd Place in Societal Impact Track @ YHack',
-                    '4th in Hardware Track @ YHack',
-                    "Most Nostalgic Hack @ Hack Club's Summit",
-                ],
-            },
-            {
                 heading: 'Links',
-                body: 'More about Days of Service: https://daysofservice.hackclub.com/',
-                bullets: ['Built at YHack: https://devpost.com/software/canary-axf7o2'],
-            },
+                body: 'More about Days of Service: https://daysofservice.hackclub.com/',            },
         ],
     },
     // Gallery: .MOV in <video> works best in Safari; Chrome/Firefox often need H.264 .mp4. For widest support use
