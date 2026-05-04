@@ -76,7 +76,6 @@ const PROJECTS = {
 
         gallery: [
             { type: 'image', src: 'images/concerts/100_1272.JPG', alt: 'concert' },
-            { type: 'embed', src: 'https://www.youtube.com/embed/wdz0vgUGqgk?si=eOmFrO-dhXmkdotA' },
             // { type: 'video', src: 'images/concerts/100_1273.MOV', alt: 'Show clip', caption: ' ' },
             { type: 'image', src: 'images/concerts/100_1304.JPG', alt: 'Concert' },
         ],
