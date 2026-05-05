@@ -996,9 +996,9 @@ body {
 
 /* Notepad Window — default stack above other chrome windows; JS bringToFront on load reinforces */
 .notepad-window {
-    top: 325px;
+    top: 300px;
     left: 170px;
-    width: 700px;
+    width: 620px;
     height: 480px;
     z-index: 50;
 }
@@ -1231,7 +1231,7 @@ body {
 }
 
 .contact-item {
-    margin-bottom: 8px;
+    margin-bottom: 7px;
     word-break: break-word;
 }
 
@@ -1259,10 +1259,10 @@ body {
 /* Spotify Window — default top clears contact window (contact top + height + gap) */
 .spotify-window {
     top: 370px;
-    right: 50px;
+    right: 40px;
     left: auto;
-    width: 300px!important;
-    height: 280px;
+    width: 270px!important;
+    height: 270px;
     z-index: 25;
 }
 

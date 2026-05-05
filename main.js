@@ -33,8 +33,8 @@ const PROJECTS = {
         sections: [
             {
                 heading: '',
-                body: "On Cornell's all-undergrad analog team working toward a full-chip tapeout in TSMC 180nm - a 4.44 MS/s 8-bit differential SAR ADC. No one was going to hand us the design files, so we figured it out ourselves with Cadence Virtuoso manuals and a lot of shared notes. One of the only undergraduate teams in the country doing this. It works."
-            },
+                body: 'On Cornell\'s all-undergrad analog team, we\'re working toward a full-chip tapeout in TSMC 180nm — a 4.44 MS/s 8-bit differential SAR ADC. No one was going to hand us the design files, so we figured it out ourselves with Cadence Virtuoso manuals and a lot of shared notes. One of the only undergraduate teams in the country doing this. It works. From there we\'ve been exploring two side projects: a novel adiabatic Flash ADC that hits ~80 µW total power (~30× lower than our SAR) using charge-recovery logic, and an asynchronous SAR ADC that self-times between bit decisions instead of waiting on a clock, which meant hunting down pulse-width sensitivity and precharge coupling issues.',
+            },            
             {
                 heading: 'Links',
                 bullets: [
@@ -99,17 +99,6 @@ const PROJECTS = {
     'more-work': {
         title: 'NOTEPAD.EXE\\More_work.TXT',
         sections: [
-            {
-                variant: 'panel',
-                panelHeadingStyle: 'band',
-                heading: 'Internships _',
-                blocks: [
-                    {
-                        body:
-                            "I previously interned at Amazon, where I built cloud analytics pipelines and improved cross-region monitoring infrastructure, gaining experience in building systems at scale. This summer, I'll be joining GlobalFoundries to work on ULP CMOS eNVM and analog design for memory, where I'll be learning more about how chips work at device-level.",
-                    },
-                ],
-            },
             {
                 variant: 'panel',
                 panelHeadingStyle: 'band',
