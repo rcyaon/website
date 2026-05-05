@@ -277,7 +277,7 @@ body {
 
 /* File Explorer Window */
 .file-explorer {
-    top: 5px;
+    top: 15px;
     left: 20px;
     width: 420px;
     height: 300px;
@@ -996,8 +996,8 @@ body {
 
 /* Notepad Window — default stack above other chrome windows; JS bringToFront on load reinforces */
 .notepad-window {
-    top: 200px;
-    left: 160px;
+    top: 325px;
+    left: 50px;
     width: 700px;
     height: 480px;
     z-index: 50;
@@ -1214,7 +1214,7 @@ body {
     right: 50px;
     left: auto;
     width: 360px;
-    height: 225px!important;
+    min-height: 225px;
     z-index: 30;
 }
 
@@ -1258,7 +1258,7 @@ body {
 
 /* Spotify Window — default top clears contact window (contact top + height + gap) */
 .spotify-window {
-    top: 324px;
+    top: 370px;
     right: 50px;
     left: auto;
     width: 360px;
