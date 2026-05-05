@@ -67,14 +67,12 @@ const PROJECTS = {
         sections: [
             {
                 heading: '',
-                body: "Ran PCB workshops at Amazon HQ and FUTO, taught generative art with JavaScript and CNC machines to people who had never touched hardware before. It's some of the most fulfilling work I've gotten to do! Also served as Logistics Lead for BigRed//Hacks, Cornell's annual hackathon.",
+                body: "Ran PCB workshops at FUTO and taught generative art with JavaScript and CNC machines to people who had never touched hardware before at Amazon. It's some of the most fulfilling work I've gotten to do! Also served as Logistics Lead for BigRed//Hacks, Cornell's annual hackathon.",
             },
             {
                 heading: 'Links',
                 bullets: [
-                    'ays of Service (DOS): https://daysofservice.hackclub.com/',
-                    'DOS at Amazon: https://github.com/hackclub/evergreen',
-                    'DOS at FUTO: https://github.com/hackclub/oasis',
+                    'Days of Service: https://daysofservice.hackclub.com/ (I helped organize Evergreen and Oasis!)',
                     'BigRed//Hacks: https://www.bigredhacks.com/',
                 ]
             },
