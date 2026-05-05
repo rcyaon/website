@@ -997,7 +997,7 @@ body {
 /* Notepad Window — default stack above other chrome windows; JS bringToFront on load reinforces */
 .notepad-window {
     top: 325px;
-    left: 50px;
+    left: 170px;
     width: 700px;
     height: 480px;
     z-index: 50;
@@ -1211,7 +1211,7 @@ body {
 /* Contact Window — height tuned so last line (Spotify) sits at bottom without extra dead space */
 .contact-window {
     top: 50px;
-    right: 50px;
+    right: 130px;
     left: auto;
     width: 350px;
     min-height: 225px;
