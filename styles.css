@@ -279,13 +279,12 @@ body {
 .file-explorer {
     top: 5px;
     left: 20px;
-    width: 400px;
-    height: 320px;
+    width: 420px;
+    height: 300px;
     z-index: 10;
 }
 
 .file-explorer .window-content {
-    padding: 8px;
     display: flex;
     flex-direction: column;
 }
@@ -295,6 +294,10 @@ body {
     flex-direction: column;
     flex: 1;
     min-height: 0;
+}
+
+.file-explorer .project-icons-surface {
+    min-height: 200px;
 }
 
 .project-icons-surface {
@@ -327,6 +330,10 @@ body {
 .project-icon-btn:hover {
     background: rgba(232, 232, 232, 0.85);
     border-color: #6f6f6f;
+}
+
+.file-explorer .project-icon-btn {
+    width: 112px;
 }
 
 .project-icon-btn:active {
@@ -396,6 +403,10 @@ body {
     width: min(680px, 100%);
 }
 
+.project-modal__panel--more-work {
+    width: min(720px, 100%);
+}
+
 .project-modal__header {
     display: flex;
     align-items: center;
@@ -459,6 +470,108 @@ body {
     margin-top: 0;
 }
 
+.project-modal__body > .project-modal__section-divider:first-child {
+    margin-top: 0;
+}
+
+.project-modal__body > .project-modal__experience-panel:first-child {
+    margin-top: 0;
+}
+
+.project-modal__experience-panel {
+    padding: 0;
+    margin: 0 0 16px;
+    border: none;
+    background: transparent;
+}
+
+.project-modal__experience-panel:last-child {
+    margin-bottom: 0;
+}
+
+.project-modal__experience-panel--title-only {
+    margin-bottom: 8px;
+}
+
+.project-modal__experience-panel--title-only .project-modal__panel-heading--band {
+    margin-bottom: 0;
+}
+
+.project-modal__experience-panel--title-only + h3 {
+    margin-top: 12px;
+}
+
+.project-modal__experience-panel--title-only:last-child {
+    margin-bottom: 0;
+}
+
+.project-modal__panel-heading {
+    margin: 0 0 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #1a1a1a;
+}
+
+.project-modal__panel-heading--band {
+    margin: 0 0 8px;
+    padding: 6px 12px;
+    background: #d4d4d4;
+    border-bottom: 1px solid #6f6f6f;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.55px;
+    color: #1a1a1a;
+}
+
+.project-modal__experience-panel-body > h3:first-of-type {
+    margin-top: 0;
+}
+
+.project-modal__experience-panel-body p:last-child {
+    margin-bottom: 0;
+}
+
+.project-modal__experience-panel-body .project-modal__bullet-list:last-child {
+    margin-bottom: 0;
+}
+
+.project-modal__section-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 22px 0 14px;
+}
+
+.project-modal__section-divider::before,
+.project-modal__section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #6f6f6f;
+    opacity: 0.55;
+}
+
+.project-modal__section-divider-text {
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #3d3d3d;
+}
+
+.project-modal__section-divider + h3 {
+    margin-top: 4px;
+}
+
+.project-modal__section-divider + p {
+    margin-top: 0;
+}
+
 .project-modal__body p {
     margin: 0 0 8px;
 }
@@ -488,6 +601,126 @@ body {
     padding-top: 0;
     border-top: none;
     background: transparent;
+}
+
+/* Interleaved project image: room above rule (after copy) and below rule (before image), like main media block */
+.project-modal__media--section {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    padding-top: 16px;
+}
+
+/* "More work": flex + gap only (no stacked h3/p margins). */
+.project-modal__body.project-modal__body--more-work {
+    --mw-gap: 10px;
+    --mw-gap-tight: 5px;
+    --mw-line-height: 1.95;
+    --mw-between-project-splits: 16px;
+    line-height: var(--mw-line-height);
+    display: flex;
+    flex-direction: column;
+    gap: var(--mw-gap);
+}
+
+.project-modal__body--more-work h3,
+.project-modal__body--more-work p,
+.project-modal__body--more-work .project-modal__bullet-list {
+    margin: 0;
+    line-height: var(--mw-line-height);
+}
+
+.project-modal__body--more-work .project-modal__bullet-list li {
+    margin-bottom: 0.45em;
+}
+
+.project-modal__body--more-work .project-modal__bullet-list li:last-child {
+    margin-bottom: 0;
+}
+
+.project-modal__body--more-work .project-modal__experience-panel {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--mw-gap);
+}
+
+.project-modal__body--more-work .project-modal__experience-panel-body:empty {
+    display: none;
+}
+
+.project-modal__body--more-work .project-modal__experience-panel-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mw-gap);
+}
+
+.project-modal__body--more-work .project-modal__experience-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mw-gap-tight);
+}
+
+.project-modal__body--more-work .project-modal__panel-heading--band {
+    margin: 0;
+    padding: 6px 12px;
+    background: #d4d4d4;
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+}
+
+.project-modal__body--more-work .project-modal__panel-heading--band::before {
+    content: '›';
+    flex-shrink: 0;
+    color: #5a5a5a;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+/* Canary / TinyRV: half text, half image (stacks on narrow viewports). */
+.project-modal__body--more-work .project-modal__section-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: calc(var(--mw-gap) * 1.5);
+    align-items: start;
+}
+
+.project-modal__body--more-work .project-modal__section-split-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mw-gap);
+    min-width: 0;
+}
+
+.project-modal__body--more-work .project-modal__section-split-media {
+    min-width: 0;
+    align-self: start;
+}
+
+.project-modal__body--more-work .project-modal__section-split .project-modal__media.project-modal__media--section {
+    margin: 0;
+    padding: 0;
+    border-top: none;
+}
+
+/* Extra room below Canary (and any split) before the next split row. */
+.project-modal__body--more-work .project-modal__section-split + .project-modal__section-split {
+    margin-top: var(--mw-between-project-splits);
+}
+
+/* Tighter project title → body inside split rows. */
+.project-modal__body--more-work .project-modal__section-split-copy > h3 + p {
+    margin-top: -5px;
+}
+
+@media (max-width: 560px) {
+    .project-modal__body--more-work .project-modal__section-split {
+        grid-template-columns: 1fr;
+    }
 }
 
 .project-modal__gallery {
@@ -683,8 +916,11 @@ body {
 .project-modal__figure {
     margin: 0;
     border: 1px solid #6f6f6f;
-    background: #eaeaea;
+    background: transparent;
     overflow: hidden;
+    display: block;
+    width: 100%;
+    line-height: 0;
 }
 
 .project-modal__figure + .project-modal__figure {
@@ -694,18 +930,18 @@ body {
 .project-modal__image {
     display: block;
     width: 100%;
-    max-height: 280px;
-    object-fit: contain;
+    height: auto;
 }
 
-/* Wide diagrams: span full frame width, natural height (no side letterboxing). */
+/* Wide diagrams: natural height, same width as other modal images. */
 .project-modal__image--wide {
-    max-height: none;
-    height: auto;
     width: 100%;
+    height: auto;
+    max-height: none;
 }
 
 .project-modal__image--cover {
+    width: 100%;
     height: 280px;
     object-fit: cover;
     object-position: center;
@@ -758,13 +994,13 @@ body {
     border: 1px solid #b0b0b0;
 }
 
-/* Notepad Window */
+/* Notepad Window — default stack above other chrome windows; JS bringToFront on load reinforces */
 .notepad-window {
     top: 200px;
     left: 160px;
     width: 700px;
     height: 480px;
-    z-index: 20;
+    z-index: 50;
 }
 
 .notepad-content h1 {
@@ -974,11 +1210,11 @@ body {
 
 /* Contact Window — height tuned so last line (Spotify) sits at bottom without extra dead space */
 .contact-window {
-    top: 100px;
+    top: 50px;
     right: 50px;
     left: auto;
     width: 360px;
-    height: 150px;
+    height: 225px!important;
     z-index: 30;
 }
 
@@ -1129,18 +1365,18 @@ body {
     font-size: 10px;
     font-family: inherit;
     border: 1px solid #6f6f6f;
-    background: #f3f3f3;
+    background: #d4d4d4;
     color: #1a1a1a;
     cursor: pointer;
     min-height: 26px;
 }
 
 .launcher-btn:hover {
-    background: #bfbfbf;
+    background: #c4c4c4;
 }
 
 .launcher-btn.is-window-hidden {
-    background: #d4d4d4;
+    background: #bdbdbd;
     font-style: italic;
 }
 

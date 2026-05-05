@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- YouTube embeds need a non-no-referrer policy or the player returns Error 153. -->
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>Lena</title>
+    <title>Lena's Desktop</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="favicon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,7 +21,7 @@
     </svg>
     <div class="desktop" id="desktop">
         <!-- File Explorer Window -->
-        <div class="window file-explorer active" id="fileExplorer" data-window-label="Projects" data-default-width="400" data-default-height="320">
+        <div class="window file-explorer active" id="fileExplorer" data-window-label="Projects" data-default-width="420" data-default-height="300">
             <div class="title-bar">
                 <span class="title-bar-text">FILE_EXPLORER.EXE</span>
                 <div class="window-controls">
@@ -36,9 +38,13 @@
             </div>
             <div class="window-content file-explorer-content">
                 <div class="project-icons-surface" id="projectIconsSurface" aria-label="Project folders">
+                    <button type="button" class="project-icon-btn" data-project-id="concert-archive" title="Drag to move, click to open" aria-label="Concert archive">
+                        <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
+                        <span class="project-icon__label">Concert Archive</span>
+                    </button>
                     <button type="button" class="project-icon-btn" data-project-id="chip-design" title="Drag to move, click to open" aria-label="Chip design project">
                         <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
-                        <span class="project-icon__label">Chip design</span>
+                        <span class="project-icon__label">Chip Design</span>
                     </button>
                     <button type="button" class="project-icon-btn" data-project-id="hackathons" title="Drag to move, click to open" aria-label="Hackathon organization project">
                         <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
@@ -46,11 +52,11 @@
                     </button>
                     <button type="button" class="project-icon-btn" data-project-id="drone" title="Drag to move, click to open" aria-label="Drone development project">
                         <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
-                        <span class="project-icon__label">Drone development</span>
+                        <span class="project-icon__label">Drone Development</span>
                     </button>
-                    <button type="button" class="project-icon-btn" data-project-id="concert-archive" title="Drag to move, click to open" aria-label="Concert archive">
+                    <button type="button" class="project-icon-btn" data-project-id="more-work" title="Drag to move, click to open" aria-label="More work">
                         <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
-                        <span class="project-icon__label">Concert Archive</span>
+                        <span class="project-icon__label">More work</span>
                     </button>
                     <!-- <button type="button" class="project-icon-btn" data-project-id="pcb" title="Drag to move, click to open" aria-label="PCB design project">
                         <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
@@ -73,7 +79,7 @@
         <!-- Notepad Window -->
         <div class="window notepad-window active" id="notepad" data-window-label="About" data-default-width="700" data-default-height="480">
             <div class="title-bar">
-                <span class="title-bar-text">NOTEPAD.EXE — ABOUT_ME.TXT</span>
+                <span class="title-bar-text">NOTEPAD.EXE\ABOUT_ME.TXT</span>
                 <div class="window-controls">
                     <button type="button" class="window-control" data-action="minimize" title="Minimize" aria-label="Minimize window">_</button>
                     <button type="button" class="window-control" data-action="maximize" title="Maximize" aria-label="Maximize window">□</button>
@@ -112,7 +118,7 @@
                 </div>
 
                 <div class="section">
-                   <div class="info-line about-cta">Got here through robotics competitions, teaching myself to code in a school that didn't offer it, and starting a hardware hacking club in my bedroom that somehow won a national cybersecurity competition. If any of this resonates, or you just want to talk chips / films / climbing — reach out!</div>
+                   <div class="info-line about-cta">Got here through robotics competitions, teaching myself to code in a school that didn't offer it, and starting a club in my bedroom that somehow won a national cybersecurity competition. If any of this resonates, or you just want to talk chips/films/ham radio/climbing, reach out!</div>
                 </div>
 
                 <a href="https://archive.org/?noscript=true"><img width="88" height="31" src="images/internetarchive.2540748731.png"/></a>
@@ -134,9 +140,9 @@
         </div>
         
         <!-- Contact Window -->
-        <div class="window contact-window active" id="contact" data-window-label="Contact" data-default-width="360" data-default-height="206">
+        <div class="window contact-window active" id="contact" data-window-label="Contact" data-default-width="320" data-default-height="206">
             <div class="title-bar">
-                <span class="title-bar-text">NOTEPAD.EXE — CONTACT.TXT</span>
+                <span class="title-bar-text">NOTEPAD.EXE\CONTACT.TXT</span>
                 <div class="window-controls">
                     <button type="button" class="window-control" data-action="minimize" title="Minimize" aria-label="Minimize window">_</button>
                     <button type="button" class="window-control" data-action="maximize" title="Maximize" aria-label="Maximize window">□</button>
@@ -151,21 +157,21 @@
                     <span class="contact-label">GitHub:</span> <a href="https://github.com/rcyaon" target="_blank">@rcyaon</a>
                 </div>
                 <div class="contact-item">
-                    <span class="contact-label">Portfolio:</span> <a href="https://rcyaon.github.io/" target="_blank">rcyaon.github.io</a>
-                </div>
-                <div class="contact-item">
                     <span class="contact-label">X:</span> <a href="https://x.com/rcyaon" target="_blank">@rcyaon</a>
                 </div> 
                 <div class="contact-item">
-                    <span class="contact-label">Spotify:</span> <a href="https://open.spotify.com/user/31zbkdlkhtsnkgisb4ygjwo2a3fm?si=d528e3b2878b4d00" target="_blank">@lena</a>
+                    <span class="contact-label">LinkedIn:</span> <a href="https://www.linkedin.com/in/lena-conde-araujo/" target="_blank">linkedin.com/in/lena-conde-araujo</a>
                 </div>
-                <!-- <pre class="contact-ascii">   |\---/|
+                <div class="contact-item">
+                    <span class="contact-label">Ham Radio Call Sign:</span> KJ5ITZ
+                </div>
+                <pre class="contact-ascii">   |\---/|
    | ,_, |
     \_`_/-..----.
  ___/ `   ' ,""+ \  
 (__...'   __\    |`.___.';
   (_,...'(_,.`__)/'.....+
-</pre> -->
+</pre>
             </div> 
             <div class="resize-layer" aria-hidden="true">
                 <div class="resize-handle resize-n" data-dir="n"></div>

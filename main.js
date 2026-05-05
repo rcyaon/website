@@ -6,16 +6,25 @@ const MIN_W = 220;
 const MIN_H = 160;
 
 /**
- * @typedef {{ heading: string; body: string; bullets?: string[] }} ProjectSection
  * @typedef {{ src: string; alt?: string; fit?: 'contain' | 'cover' | 'wide' }} ProjectImage
+ * @typedef {{ heading?: string; body?: string; bullets?: string[] }} ProjectPanelBlock
+ * @typedef {{
+ *   heading: string;
+ *   body?: string;
+ *   bullets?: string[];
+ *   image?: ProjectImage;
+ *   variant?: 'divider' | 'panel';
+ *   blocks?: ProjectPanelBlock[];
+ *   panelHeadingStyle?: 'band';
+ * }} ProjectSection
  * @typedef {{ type: 'image' | 'video' | 'embed'; src: string; alt?: string; caption?: string; youtubeShowControls?: boolean; youtubeAutoplay?: boolean; youtubeLoop?: boolean }} ProjectGalleryItem
- * @typedef {{ title: string; sections: ProjectSection[]; imageSrc?: string; imageAlt?: string; images?: ProjectImage[]; gallery?: ProjectGalleryItem[] }} ProjectDetail
+ * @typedef {{ title: string; sections: ProjectSection[]; imageSrc?: string; imageAlt?: string; images?: ProjectImage[]; gallery?: ProjectGalleryItem[]; noMedia?: boolean }} ProjectDetail
  */
 
 /** @type {Record<string, ProjectDetail>} */
 const PROJECTS = {
     'chip-design': {
-        title: 'Chip_design.TXT',
+        title: 'NOTEPAD.EXE\\Chip_design.TXT',
         images: [
             { src: 'images/chip_one.JPG', alt: 'Chip design photo 1' },
             { src: 'images/chip_two.JPG', alt: 'Chip design photo 2' },
@@ -24,16 +33,19 @@ const PROJECTS = {
         sections: [
             {
                 heading: '',
-                body: "Spent a year on Cornell's all-undergrad analog team working toward a full-chip tapeout in TSMC 180nm - a 4.44 MS/s 8-bit differential SAR ADC. No one was going to hand us the design files, so we figured it out ourselves with Cadence Virtuoso manuals and a lot of shared notes. One of the only undergraduate teams in the country doing this. It works."
+                body: "On Cornell's all-undergrad analog team working toward a full-chip tapeout in TSMC 180nm - a 4.44 MS/s 8-bit differential SAR ADC. No one was going to hand us the design files, so we figured it out ourselves with Cadence Virtuoso manuals and a lot of shared notes. One of the only undergraduate teams in the country doing this. It works."
             },
             {
                 heading: 'Links',
-                body: 'More about C2S2: https://c2s2.engineering.cornell.edu/'
+                bullets: [
+                    'GitHub: https://github.com/cornell-c2s2/FA24SP25Analog',
+                    'More about C2S2: https://www.c2s2.dev/',
+                ]
             },
         ],
     },
     drone: {
-        title: 'Drone_development.TXT',
+        title: 'NOTEPAD.EXE\\Drone_development.TXT',
         images: [{ src: 'images/DylanV2.jpg', alt: 'Drone project', fit: 'cover' }],
         sections: [
             {
@@ -47,7 +59,7 @@ const PROJECTS = {
         ],
     },
     hackathons: {
-        title: 'Hackathons.TXT',
+        title: 'NOTEPAD.EXE\\Hackathons.TXT',
         images: [
         { src: 'images/blot.JPG', alt: 'Hackathon organization' },
         { src: 'images/P1050057.JPG', alt: 'More hackathon photos', fit: 'wide' },
@@ -55,11 +67,16 @@ const PROJECTS = {
         sections: [
             {
                 heading: '',
-                body: "Ran PCB workshops at Amazon HQ and FUTO, taught generative art with JavaScript and CNC machines to people who had never touched hardware before. Also did logistics for BigRed//Hacks, Cornell's annual hackathon.",
+                body: "Ran PCB workshops at Amazon HQ and FUTO, taught generative art with JavaScript and CNC machines to people who had never touched hardware before. It's some of the most fulfilling work I've gotten to do! Also served as Logistics Lead for BigRed//Hacks, Cornell's annual hackathon.",
             },
             {
                 heading: 'Links',
-                body: 'More about Days of Service: https://daysofservice.hackclub.com/',            },
+                bullets: [
+                    'Evergreen @ Amazon: https://github.com/hackclub/evergreen',
+                    'Oasis @ FUTO: https://github.com/hackclub/oasis',
+                    'More about BigRed//Hacks: https://www.bigredhacks.com/',
+                ]
+            },
         ],
     },
     // Gallery: .MOV in <video> works best in Safari; Chrome/Firefox often need H.264 .mp4. For widest support use
@@ -78,6 +95,93 @@ const PROJECTS = {
             { type: 'image', src: 'images/concerts/100_1272.JPG', alt: 'concert' },
             // { type: 'video', src: 'images/concerts/100_1273.MOV', alt: 'Show clip', caption: ' ' },
             { type: 'image', src: 'images/concerts/100_1304.JPG', alt: 'Concert' },
+        ],
+    },
+    'more-work': {
+        title: 'NOTEPAD.EXE\\More_work.TXT',
+        sections: [
+            {
+                variant: 'panel',
+                panelHeadingStyle: 'band',
+                heading: 'Internships _',
+                blocks: [
+                    {
+                        body:
+                            "I previously interned at Amazon, where I built cloud analytics pipelines and improved cross-region monitoring infrastructure, gaining experience in building systems at scale. This summer, I'll be joining GlobalFoundries to work on ULP CMOS eNVM and analog design for memory, where I'll be learning more about how chips work at device-level.",
+                    },
+                ],
+            },
+            {
+                variant: 'panel',
+                panelHeadingStyle: 'band',
+                heading: 'Programs _',
+                blocks: [
+                    {
+                        heading: 'Google Code Next',
+                        body:
+                            'Creative coding and digital music: interactive generative work in JavaScript, algorithmic composition, and audio synthesis.',
+                    },
+                    {
+                        heading: 'MATLAB Ambassador',
+                        body: 'Paid MathWorks employee delivering hands-on MATLAB and Simulink workshops while evaluating pre-release features.',
+                    },
+                    {
+                        heading: 'SureStart Virtual AI Learning (VAIL)',
+                        body:
+                            'Deep learning fundamentals: neural networks, CNNs, GANs, optimization, and model evaluation with Python and TensorFlow.',
+                    },
+                ],
+            },
+            {
+                variant: 'panel',
+                panelHeadingStyle: 'band',
+                heading: 'Miscellaneous projects _',
+                blocks: [{}],
+            },
+            {
+                heading: 'Canary',
+                body:
+                    'Built a real-time mine hazard detection system with Raspberry Pi, gas sensors, and depth cameras. Won 3rd in Social Impact and 4th in Hardware at YHack out of 700+ participants.',
+                bullets: [
+                    'Devpost: https://devpost.com/software/canary-axf7o2',
+                    'Github: https://github.com/tastychez/Canary/tree/main',
+                ],
+                image: { src: 'images/rcyaon/gallery.jpg', alt: 'Canary project preview' },
+            },
+            {
+                heading: 'Single-Cycle RISC-V Processor (TinyRV1)',
+                body:
+                    'Designed a single-cycle microprocessor in Verilog for ECE2300, implementing the ALU, decoder, register file, program counter, and branch logic. Built in Quartus, tested in ModelSim, and validated on a Cyclone V FPGA.',
+                image: { src: 'images/rcyaon/processor.png', alt: 'Single-cycle processor preview' },
+            },
+            {
+                variant: 'panel',
+                panelHeadingStyle: 'band',
+                heading: 'awards _',
+                blocks: [
+                    {
+                        heading: 'BEST Robotics',
+                        body:
+                            'Served as president of my high school robotics team. Led the team to two 3rd-place national finishes, earned awards including Best Engineering Notebook, Best Exhibit, 2nd Best Programming, and MATLAB Challenge Finalist.'
+                    },
+                    {
+                        heading: 'LyondellBasell Cybersecurity Challenge National Winner',
+                        body:
+                            'Awarded $1,000. Used Linux, Burp Suite, Wireshark.',
+                    },
+                    {
+                        heading: 'Most Nostalgic Hack at hack club\'s leadership Summit in sf',
+                    },
+                    {
+                        heading: 'NCWIT Aspirations in Computing National Honorable Mention (selected from ~3,300 applicants)',
+                    },
+                    {
+                        heading: 'Samsung Solve for Tomorrow National Winner',
+                        body:
+                            'Built nationally winning hardware solutions. Notably, created Pathfinder, an emergency crowd management system using ESP8266 mesh networks. Mentored teams building accessible technology as an alumna.',
+                    },
+                ],
+            },
         ],
     },
     /* embedded: {
@@ -504,13 +608,38 @@ function openProjectModal(projectId) {
     if (panel) {
         if (data.gallery && data.gallery.length > 0) panel.classList.add('project-modal__panel--gallery');
         else panel.classList.remove('project-modal__panel--gallery');
+        panel.classList.toggle('project-modal__panel--more-work', projectId === 'more-work');
     }
 
     titleEl.textContent = data.title;
-    const sectionsHtml = data.sections.map(renderProjectSection).join('');
-    const mediaHtml =
-        data.gallery && data.gallery.length > 0 ? renderProjectGalleryBlock() : renderProjectImageBlock(data);
-    bodyEl.innerHTML = sectionsHtml + mediaHtml;
+
+    const useSectionImages =
+        data.noMedia !== true &&
+        !(data.gallery && data.gallery.length > 0) &&
+        data.sections.some((s) => s.image);
+
+    if (useSectionImages) {
+        const splitSideImages = projectId === 'more-work';
+        bodyEl.innerHTML = data.sections
+            .map((s) => {
+                if (splitSideImages && s.image) {
+                    return renderSectionWithSideImage(s);
+                }
+                return renderProjectSection(s) + (s.image ? renderSectionImageBlock(s.image) : '');
+            })
+            .join('');
+    } else {
+        const sectionsHtml = data.sections.map(renderProjectSection).join('');
+        const mediaHtml =
+            data.noMedia === true
+                ? ''
+                : data.gallery && data.gallery.length > 0
+                  ? renderProjectGalleryBlock()
+                  : renderProjectImageBlock(data);
+        bodyEl.innerHTML = sectionsHtml + mediaHtml;
+    }
+
+    bodyEl.classList.toggle('project-modal__body--more-work', projectId === 'more-work');
 
     if (data.gallery && data.gallery.length > 0) {
         const galleryRoot = bodyEl.querySelector('.project-modal__gallery');
@@ -524,8 +653,65 @@ function openProjectModal(projectId) {
     closeBtn?.focus();
 }
 
-function renderProjectSection(s) {
+function renderProjectPanelBlock(b) {
     let html = '';
+    if (b.heading && String(b.heading).trim()) {
+        html += `<h3>${escapeHtml(b.heading)}</h3>`;
+    }
+    if (b.body && String(b.body).trim()) {
+        html += b.body
+            .split(/\n+/)
+            .filter((p) => p.trim())
+            .map((p) => `<p>${linkifyText(p)}</p>`)
+            .join('');
+    }
+    if (b.bullets && b.bullets.length > 0) {
+        html +=
+            '<ul class="project-modal__bullet-list">' +
+            b.bullets.map((item) => `<li>${linkifyText(item)}</li>`).join('') +
+            '</ul>';
+    }
+    if (!html.trim()) return '';
+    return `<div class="project-modal__experience-block">${html}</div>`;
+}
+
+function renderProjectPanel(s) {
+    const label = s.heading && String(s.heading).trim() ? s.heading : '';
+    if (!label || !s.blocks || s.blocks.length === 0) return '';
+    const headingClass =
+        s.panelHeadingStyle === 'band'
+            ? 'project-modal__panel-heading project-modal__panel-heading--band'
+            : 'project-modal__panel-heading';
+    const title = `<h3 class="${headingClass}">${escapeHtml(label)}</h3>`;
+    const bodyInner = s.blocks.map(renderProjectPanelBlock).join('');
+    const titleOnly = bodyInner.trim().length === 0;
+    const wrapClass = titleOnly
+        ? 'project-modal__experience-panel project-modal__experience-panel--title-only'
+        : 'project-modal__experience-panel';
+    return (
+        `<div class="${wrapClass}">` +
+        title +
+        `<div class="project-modal__experience-panel-body">${bodyInner}</div>` +
+        `</div>`
+    );
+}
+
+function renderProjectSection(s) {
+    if (s.variant === 'panel') {
+        return renderProjectPanel(s);
+    }
+    if (s.variant === 'divider') {
+        const label = s.heading && String(s.heading).trim() ? s.heading : '';
+        if (!label) return '';
+        return (
+            `<div class="project-modal__section-divider" role="presentation">` +
+            `<span class="project-modal__section-divider-text">${escapeHtml(label)}</span>` +
+            `</div>`
+        );
+    }
+
+    let html = '';
+
     if (s.heading && String(s.heading).trim()) {
         html += `<h3>${escapeHtml(s.heading)}</h3>`;
     }
@@ -542,7 +728,20 @@ function renderProjectSection(s) {
             s.bullets.map((item) => `<li>${linkifyText(item)}</li>`).join('') +
             '</ul>';
     }
+
     return html;
+}
+
+/** Section copy (heading, body, bullets) beside image — More work layout only. */
+function renderSectionWithSideImage(s) {
+    const copyHtml = renderProjectSection(s);
+    const mediaHtml = s.image ? renderSectionImageBlock(s.image) : '';
+    return (
+        `<div class="project-modal__section-split">` +
+        `<div class="project-modal__section-split-copy">${copyHtml}</div>` +
+        `<div class="project-modal__section-split-media">${mediaHtml}</div>` +
+        `</div>`
+    );
 }
 
 function linkifyText(str) {
@@ -865,35 +1064,53 @@ function wireProjectGallery(modal, root, items) {
     renderSlide();
 }
 
-function renderProjectImageBlock(data) {
-    const figures = [];
-
-    if (data.images && data.images.length > 0) {
-        data.images.forEach((img, i) => {
+/**
+ * @param {ProjectImage[]} images
+ * @returns {string}
+ */
+function renderProjectFigureHtmlFromImages(images) {
+    if (!images || images.length === 0) return '';
+    return images
+        .map((img, i) => {
             const alt = img.alt || `Project image ${i + 1}`;
             let fitClass = '';
             if (img.fit === 'cover') fitClass = ' project-modal__image--cover';
             else if (img.fit === 'wide') fitClass = ' project-modal__image--wide';
-            figures.push(
+            return (
                 `<figure class="project-modal__figure">` +
-                    `<img class="project-modal__image${fitClass}" src="${escapeAttr(img.src)}" alt="${escapeHtml(alt)}" loading="lazy">` +
+                `<img class="project-modal__image${fitClass}" src="${escapeAttr(img.src)}" alt="${escapeHtml(alt)}" loading="lazy">` +
                 `</figure>`
             );
-        });
+        })
+        .join('');
+}
+
+/**
+ * @param {ProjectImage} image
+ * @returns {string}
+ */
+function renderSectionImageBlock(image) {
+    const figures = renderProjectFigureHtmlFromImages([image]);
+    if (!figures) return '';
+    return `<div class="project-modal__media project-modal__media--section">${figures}</div>`;
+}
+
+function renderProjectImageBlock(data) {
+    let figuresHtml = '';
+
+    if (data.images && data.images.length > 0) {
+        figuresHtml = renderProjectFigureHtmlFromImages(data.images);
     } else if (data.imageSrc) {
-        const alt = data.imageAlt || 'Project image';
-        figures.push(
-            `<figure class="project-modal__figure">` +
-                `<img class="project-modal__image" src="${escapeAttr(data.imageSrc)}" alt="${escapeHtml(alt)}" loading="lazy">` +
-            `</figure>`
-        );
+        figuresHtml = renderProjectFigureHtmlFromImages([
+            { src: data.imageSrc, alt: data.imageAlt || 'Project image' },
+        ]);
     }
 
-    const headingText = figures.length > 1 ? 'Project images' : 'Project image';
+    const headingText = data.images && data.images.length > 1 ? 'Project images' : 'Project image';
     const heading = `<h3 class="project-modal__media-heading">${headingText}</h3>`;
 
-    if (figures.length > 0) {
-        return `<div class="project-modal__media">${heading}${figures.join('')}</div>`;
+    if (figuresHtml) {
+        return `<div class="project-modal__media">${heading}${figuresHtml}</div>`;
     }
 
     return (
@@ -915,11 +1132,16 @@ function closeProjectModal() {
         document.removeEventListener('keydown', modal._galleryKeydown);
         delete modal._galleryKeydown;
     }
-    modal.querySelector('.project-modal__panel')?.classList.remove('project-modal__panel--gallery');
+    const modalPanel = modal.querySelector('.project-modal__panel');
+    modalPanel?.classList.remove('project-modal__panel--gallery');
+    modalPanel?.classList.remove('project-modal__panel--more-work');
     modal.hidden = true;
     document.body.classList.remove('modal-open');
     const bodyEl = document.getElementById('projectModalBody');
-    if (bodyEl) bodyEl.innerHTML = '';
+    if (bodyEl) {
+        bodyEl.innerHTML = '';
+        bodyEl.classList.remove('project-modal__body--more-work');
+    }
 }
 
 function layoutProjectIconCluster() {
@@ -936,13 +1158,15 @@ function layoutProjectIconCluster() {
     const icons = [...surface.querySelectorAll('.project-icon-btn[data-project-id]')];
     if (icons.length === 0) return;
 
-    const gap = 28;
-    const rowGap = 20;
+    const gap = 22;
+    const rowGap = 22;
     const surfW = surface.clientWidth;
     const surfH = surface.clientHeight;
     if (surfW < 48 || surfH < 48) return;
 
-    const colsPerRow = 2;
+    const cellW = 112;
+    let colsPerRow = 3;
+    if (surfW < cellW * 3 + gap * 2 + 8) colsPerRow = 2;
     const rows = [];
     for (let i = 0; i < icons.length; i += colsPerRow) {
         rows.push(icons.slice(i, i + colsPerRow));
@@ -1189,9 +1413,14 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(layoutProjectIconCluster);
     });
 
-    const topWin = windows().find((w) => !w.classList.contains('is-closed') && !w.classList.contains('is-minimized'));
-    if (topWin) {
-        setActiveLauncher(topWin);
-        enforceSingleOpenWindowOnMobile(defaultMobileWindow || topWin);
+    const notepadWin = document.getElementById('notepad');
+    if (
+        notepadWin &&
+        !notepadWin.classList.contains('is-closed') &&
+        !notepadWin.classList.contains('is-minimized')
+    ) {
+        bringToFront(notepadWin);
+        setActiveLauncher(notepadWin);
     }
+    enforceSingleOpenWindowOnMobile(defaultMobileWindow || notepadWin);
 });
