@@ -39,7 +39,7 @@ const PROJECTS = {
                 heading: 'Links',
                 bullets: [
                     'GitHub: https://github.com/cornell-c2s2/FA24SP25Analog',
-                    'More about C2S2: https://www.c2s2.dev/',
+                    'More about Cornell Custom Silicon Systems: https://www.c2s2.dev/',
                 ]
             },
         ],
@@ -72,9 +72,10 @@ const PROJECTS = {
             {
                 heading: 'Links',
                 bullets: [
-                    'Evergreen @ Amazon: https://github.com/hackclub/evergreen',
-                    'Oasis @ FUTO: https://github.com/hackclub/oasis',
-                    'More about BigRed//Hacks: https://www.bigredhacks.com/',
+                    'ays of Service (DOS): https://daysofservice.hackclub.com/',
+                    'DOS at Amazon: https://github.com/hackclub/evergreen',
+                    'DOS at FUTO: https://github.com/hackclub/oasis',
+                    'BigRed//Hacks: https://www.bigredhacks.com/',
                 ]
             },
         ],
@@ -126,7 +127,7 @@ const PROJECTS = {
                         body: 'Paid MathWorks employee delivering hands-on MATLAB and Simulink workshops while evaluating pre-release features.',
                     },
                     {
-                        heading: 'SureStart Virtual AI Learning (VAIL)',
+                        heading: 'SureStart Virtual AI Learning Program with an Applied Deep Learning Focus',
                         body:
                             'Deep learning fundamentals: neural networks, CNNs, GANs, optimization, and model evaluation with Python and TensorFlow.',
                     },
