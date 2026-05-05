@@ -1213,7 +1213,7 @@ body {
     top: 50px;
     right: 50px;
     left: auto;
-    width: 360px;
+    width: 350px;
     min-height: 225px;
     z-index: 30;
 }
@@ -1261,7 +1261,7 @@ body {
     top: 370px;
     right: 50px;
     left: auto;
-    width: 360px;
+    width: 300px!important;
     height: 280px;
     z-index: 25;
 }
