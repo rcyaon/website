@@ -91,9 +91,15 @@ const PROJECTS = {
         ],
 
         gallery: [
-            { type: 'image', src: 'images/concerts/100_1272.JPG', alt: 'concert' },
+            { type: 'image', src: 'images/concerts/100_1304.JPG' },
+            { type: 'image', src: 'images/concerts/100_1272.JPG' },
+            {type: 'image', src: 'images/concerts/100_1285.JPG' },
+            {type: 'image', src: 'images/concerts/IMG_6861.jpeg' },
+            {type: 'image', src: 'images/concerts/IMG_6898.jpeg' },
+            {type: 'image', src: 'images/concerts/IMG_6922.jpeg' },
+            {type: 'image', src: 'images/concerts/IMG_6972.jpeg' },
+            {type: 'image', src: 'images/concerts/IMG_7063.jpeg' },
             // { type: 'video', src: 'images/concerts/100_1273.MOV', alt: 'Show clip', caption: ' ' },
-            { type: 'image', src: 'images/concerts/100_1304.JPG', alt: 'Concert' },
         ],
     },
     'more-work': {
