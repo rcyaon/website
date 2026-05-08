@@ -103,7 +103,7 @@ const PROJECTS = {
         ],
     },
     'more-work': {
-        title: 'NOTEPAD.EXE\\More_work.TXT',
+        title: 'TERMINAL.EXE',
         sections: [
             {
                 variant: 'panel',
@@ -117,7 +117,7 @@ const PROJECTS = {
                     },
                     {
                         heading: 'MATLAB Ambassador',
-                        body: 'Paid MathWorks employee delivering hands-on MATLAB and Simulink workshops while evaluating pre-release features.',
+                        body: 'Paid work delivering hands-on MATLAB and Simulink workshops while evaluating pre-release features.',
                     },
                     {
                         heading: 'SureStart Virtual AI Learning Program with an Applied Deep Learning Focus',
@@ -151,7 +151,7 @@ const PROJECTS = {
             {
                 variant: 'panel',
                 panelHeadingStyle: 'band',
-                heading: 'awards _',
+                heading: 'Technical Awards _',
                 blocks: [
                     {
                         heading: 'BEST Robotics',

@@ -1210,11 +1210,11 @@ body {
 
 /* Contact Window — height tuned so last line (Spotify) sits at bottom without extra dead space */
 .contact-window {
-    top: 50px;
+    top: 52px;
     right: 130px;
     left: auto;
     width: 350px;
-    min-height: 225px;
+    min-height: 280px!important;
     z-index: 30;
 }
 
