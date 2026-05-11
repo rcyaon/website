@@ -65,7 +65,7 @@ const PROJECTS = {
             {
                 heading: '',
                 body:
-                'Built a bandgap voltage reference on SKY130 for TinyTapeout (a circuit that holding a stable ~1.2V output across temperature, process, and supply variation). The Brokaw topology works by balancing two effects that cancel: a voltage that falls with temperature against a current that rises with it. A summing amplifier mixes them together, leaving a reference stable to under 5 ppm/°C.'
+                'Built a bandgap voltage reference on SKY130 for TinyTapeout (a circuit that holds a stable ~1.2V output across temperature, process, and supply variation). The Brokaw topology works by balancing two effects that cancel: a voltage that falls with temperature against a current that rises with it. A summing amplifier mixes them together, leaving a reference stable to under 5 ppm/°C.'
             },
             {
                 heading: '',
