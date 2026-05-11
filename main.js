@@ -58,6 +58,29 @@ const PROJECTS = {
             },
         ],
     },
+    'brokaw-bandgap-ptat': {
+        title: 'NOTEPAD.EXE\\Tiny_Tapeout.TXT',
+        images: [{ src: 'images/bandgap.png', alt: 'Bandgap design photo 1'} ],
+        sections: [
+            {
+                heading: '',
+                body:
+                'Built a bandgap voltage reference on SKY130 for TinyTapeout (a circuit that holding a stable ~1.2V output across temperature, process, and supply variation). The Brokaw topology works by balancing two effects that cancel: a voltage that falls with temperature against a current that rises with it. A summing amplifier mixes them together, leaving a reference stable to under 5 ppm/°C.'
+            },
+            {
+                heading: '',
+                body:
+                'Getting that to work off a 1.8V supply with limited headroom ruled out the usual circuit tricks, so the feedback amplifier runs self-biased with a startup circuit to keep it from just... staying off. Simulated across −40 to 125°C with Monte Carlo process variation. Designed and laid out in a mix of Cadence, xschem, and Magic VLSI.'
+            },
+            {
+                heading: 'Links',
+                bullets: [
+                    'GitHub: https://github.com/rcyaon/bandgap-ptat',
+                    'GDS Viewer: https://rcyaon.github.io/bandgap-ptat/ ',
+                ],
+            },
+        ],
+    },
     hackathons: {
         title: 'NOTEPAD.EXE\\Hackathons.TXT',
         images: [
