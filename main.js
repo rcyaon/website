@@ -192,10 +192,6 @@ const PROJECTS = {
               "Most Nostalgic Hack at hack club's leadership Summit in sf",
           },
           {
-            heading:
-              "NCWIT Aspirations in Computing National Honorable Mention (selected from ~3,300 applicants)",
-          },
-          {
             heading: "Samsung Solve for Tomorrow National Winner",
             body: "Built nationally winning hardware solutions. Notably, created Pathfinder, an emergency crowd management system using ESP8266 mesh networks. Mentored teams building accessible technology as an alumna.",
           },
