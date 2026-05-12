@@ -1,257 +1,612 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- YouTube embeds need a non-no-referrer policy or the player returns Error 153. -->
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>Lena's Desktop</title>
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="favicon.png">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <svg class="svg-defs" aria-hidden="true" focusable="false" width="0" height="0">
-        <defs>
-            <symbol id="icon-folder" viewBox="0 0 52 46">
-                <path fill="#e8dcc8" stroke="#6f6f6f" stroke-width="1" stroke-linejoin="miter" d="M4 8h14l4 6H4V8z"/>
-                <path fill="#f2ead8" stroke="#6f6f6f" stroke-width="1" stroke-linejoin="miter" d="M4 14h44v28H4V14z"/>
-            </symbol>
-        </defs>
-    </svg>
-    <div class="desktop" id="desktop">
-        <!-- File Explorer Window -->
-        <div class="window file-explorer active" id="fileExplorer" data-window-label="Projects" data-default-width="420" data-default-height="300">
-            <div class="title-bar">
-                <span class="title-bar-text">FILE_EXPLORER.EXE</span>
-                <div class="window-controls">
-                    <button type="button" class="window-control" data-action="minimize" title="Minimize" aria-label="Minimize window">_</button>
-                    <button type="button" class="window-control" data-action="maximize" title="Maximize" aria-label="Maximize window">□</button>
-                    <button type="button" class="window-control window-control--close" data-action="close" title="Close" aria-label="Close window">×</button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- YouTube embeds need a non-no-referrer policy or the player returns Error 153. -->
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+        <title>Lena's Desktop</title>
+        <link rel="icon" href="favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="favicon.png" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <svg
+            class="svg-defs"
+            aria-hidden="true"
+            focusable="false"
+            width="0"
+            height="0"
+        >
+            <defs>
+                <symbol id="icon-folder" viewBox="0 0 52 46">
+                    <path
+                        fill="#e8dcc8"
+                        stroke="#6f6f6f"
+                        stroke-width="1"
+                        stroke-linejoin="miter"
+                        d="M4 8h14l4 6H4V8z"
+                    />
+                    <path
+                        fill="#f2ead8"
+                        stroke="#6f6f6f"
+                        stroke-width="1"
+                        stroke-linejoin="miter"
+                        d="M4 14h44v28H4V14z"
+                    />
+                </symbol>
+            </defs>
+        </svg>
+        <div class="desktop" id="desktop">
+            <!-- File Explorer Window -->
+            <div
+                class="window file-explorer active"
+                id="fileExplorer"
+                data-window-label="Projects"
+                data-default-width="420"
+                data-default-height="300"
+            >
+                <div class="title-bar">
+                    <span class="title-bar-text">FILE_EXPLORER.EXE</span>
+                    <div class="window-controls">
+                        <button
+                            type="button"
+                            class="window-control"
+                            data-action="minimize"
+                            title="Minimize"
+                            aria-label="Minimize window"
+                        >
+                            _
+                        </button>
+                        <button
+                            type="button"
+                            class="window-control"
+                            data-action="maximize"
+                            title="Maximize"
+                            aria-label="Maximize window"
+                        >
+                            □
+                        </button>
+                        <button
+                            type="button"
+                            class="window-control window-control--close"
+                            data-action="close"
+                            title="Close"
+                            aria-label="Close window"
+                        >
+                            ×
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="menu-bar">
-                <span class="menu-item">HOME</span>
-                <span class="menu-item">OPTIONS</span>
-                <span class="menu-item">WINDOW</span>
-                <span class="menu-item">HELP</span>
-            </div>
-            <div class="window-content file-explorer-content">
-                <div class="project-icons-surface" id="projectIconsSurface" aria-label="Project folders">
-                    <button type="button" class="project-icon-btn" data-project-id="concert-archive" title="Drag to move, click to open" aria-label="Concert archive">
-                        <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
-                        <span class="project-icon__label">Concert Archive</span>
-                    </button>
-                    <button type="button" class="project-icon-btn" data-project-id="chip-design" title="Drag to move, click to open" aria-label="Chip design project">
-                        <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
-                        <span class="project-icon__label">Chip Design</span>
-                    </button>
-                    <button type="button" class="project-icon-btn" data-project-id="hackathons" title="Drag to move, click to open" aria-label="Hackathon organization project">
-                        <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
-                        <span class="project-icon__label">Hackathons</span>
-                    </button>
-                    <button type="button" class="project-icon-btn" data-project-id="drone" title="Drag to move, click to open" aria-label="Drone development project">
-                        <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
-                        <span class="project-icon__label">Drone Development</span>
-                    </button>
-                    <button type="button" class="project-icon-btn" data-project-id="brokaw-bandgap-ptat" title="Drag to move, click to open" aria-label="Brokaw bandgap reference with PTAT readout">
-                        <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
-                        <span class="project-icon__label">Tiny Tapeout</span>
-                    </button>
-                    <button type="button" class="project-icon-btn" data-project-id="more-work" title="Drag to move, click to open" aria-label="More work">
-                        <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
-                        <span class="project-icon__label">Misc</span>
-                    </button>
-                    <!-- <button type="button" class="project-icon-btn" data-project-id="pcb" title="Drag to move, click to open" aria-label="PCB design project">
+                <div class="menu-bar">
+                    <span class="menu-item">HOME</span>
+                    <span class="menu-item">OPTIONS</span>
+                    <span class="menu-item">WINDOW</span>
+                    <span class="menu-item">HELP</span>
+                </div>
+                <div class="window-content file-explorer-content">
+                    <div
+                        class="project-icons-surface"
+                        id="projectIconsSurface"
+                        aria-label="Project folders"
+                    >
+                        <button
+                            type="button"
+                            class="project-icon-btn"
+                            data-project-id="concert-archive"
+                            title="Drag to move, click to open"
+                            aria-label="Concert archive"
+                        >
+                            <svg
+                                class="project-folder__icon"
+                                viewBox="0 0 52 46"
+                                width="48"
+                                height="42"
+                                aria-hidden="true"
+                                focusable="false"
+                            >
+                                <use href="#icon-folder" />
+                            </svg>
+                            <span class="project-icon__label"
+                                >Concert Archive</span
+                            >
+                        </button>
+                        <button
+                            type="button"
+                            class="project-icon-btn"
+                            data-project-id="chip-design"
+                            title="Drag to move, click to open"
+                            aria-label="Chip design project"
+                        >
+                            <svg
+                                class="project-folder__icon"
+                                viewBox="0 0 52 46"
+                                width="48"
+                                height="42"
+                                aria-hidden="true"
+                                focusable="false"
+                            >
+                                <use href="#icon-folder" />
+                            </svg>
+                            <span class="project-icon__label">Chip Design</span>
+                        </button>
+                        <button
+                            type="button"
+                            class="project-icon-btn"
+                            data-project-id="hackathons"
+                            title="Drag to move, click to open"
+                            aria-label="Hackathon organization project"
+                        >
+                            <svg
+                                class="project-folder__icon"
+                                viewBox="0 0 52 46"
+                                width="48"
+                                height="42"
+                                aria-hidden="true"
+                                focusable="false"
+                            >
+                                <use href="#icon-folder" />
+                            </svg>
+                            <span class="project-icon__label">Hackathons</span>
+                        </button>
+                        <button
+                            type="button"
+                            class="project-icon-btn"
+                            data-project-id="drone"
+                            title="Drag to move, click to open"
+                            aria-label="Drone development project"
+                        >
+                            <svg
+                                class="project-folder__icon"
+                                viewBox="0 0 52 46"
+                                width="48"
+                                height="42"
+                                aria-hidden="true"
+                                focusable="false"
+                            >
+                                <use href="#icon-folder" />
+                            </svg>
+                            <span class="project-icon__label"
+                                >Drone Development</span
+                            >
+                        </button>
+                        <button
+                            type="button"
+                            class="project-icon-btn"
+                            data-project-id="brokaw-bandgap-ptat"
+                            title="Drag to move, click to open"
+                            aria-label="Brokaw bandgap reference with PTAT readout"
+                        >
+                            <svg
+                                class="project-folder__icon"
+                                viewBox="0 0 52 46"
+                                width="48"
+                                height="42"
+                                aria-hidden="true"
+                                focusable="false"
+                            >
+                                <use href="#icon-folder" />
+                            </svg>
+                            <span class="project-icon__label"
+                                >Tiny Tapeout</span
+                            >
+                        </button>
+                        <button
+                            type="button"
+                            class="project-icon-btn"
+                            data-project-id="more-work"
+                            title="Drag to move, click to open"
+                            aria-label="More work"
+                        >
+                            <svg
+                                class="project-folder__icon"
+                                viewBox="0 0 52 46"
+                                width="48"
+                                height="42"
+                                aria-hidden="true"
+                                focusable="false"
+                            >
+                                <use href="#icon-folder" />
+                            </svg>
+                            <span class="project-icon__label">Misc</span>
+                        </button>
+                        <!-- <button type="button" class="project-icon-btn" data-project-id="pcb" title="Drag to move, click to open" aria-label="PCB design project">
                         <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
                         <span class="project-icon__label">PCB design</span>
                     </button> -->
-                </div>
-            </div>
-            <div class="resize-layer" aria-hidden="true">
-                <div class="resize-handle resize-n" data-dir="n"></div>
-                <div class="resize-handle resize-ne" data-dir="ne"></div>
-                <div class="resize-handle resize-e" data-dir="e"></div>
-                <div class="resize-handle resize-se" data-dir="se"></div>
-                <div class="resize-handle resize-s" data-dir="s"></div>
-                <div class="resize-handle resize-sw" data-dir="sw"></div>
-                <div class="resize-handle resize-w" data-dir="w"></div>
-                <div class="resize-handle resize-nw" data-dir="nw"></div>
-            </div>
-        </div>
-        
-        <!-- Notepad Window -->
-        <div class="window notepad-window active" id="notepad" data-window-label="About" data-default-width="620" data-default-height="480">
-            <div class="title-bar">
-                <span class="title-bar-text">NOTEPAD.EXE\ABOUT_ME.TXT</span>
-                <div class="window-controls">
-                    <button type="button" class="window-control" data-action="minimize" title="Minimize" aria-label="Minimize window">_</button>
-                    <button type="button" class="window-control" data-action="maximize" title="Maximize" aria-label="Maximize window">□</button>
-                    <button type="button" class="window-control window-control--close" data-action="close" title="Close" aria-label="Close window">×</button>
-                </div>
-            </div>
-            <div class="menu-bar">
-                <span class="menu-item">FILE</span>
-                <span class="menu-item">OPTIONS</span>
-                <span class="menu-item">WINDOW</span>
-                <span class="menu-item">HELP</span>
-            </div>
-            <div class="window-content notepad-content">
-                
-                <div class="profile-section">
-                    <div class="profile-image">
-                        <img src="images/profile.jpg" alt="Profile" class="profile-photo">
-                    </div>
-                    
-                    <div class="info-section">
-                        <div class="work-entry__title">Welcome to my corner of the internet!</div>
-                        <div class="info-line about-intro">I'm Lena, a student studying ECE at Olin. Grew up across Germany, Belgium, and Spain. Also always aiming to learn more about hardware!</div>
-                        <div class="info-line about-intro">Outside of that I love: Kiarostami films (check out my <a href="https://letterboxd.com/rcyaon/">Letterboxd</a>!), rock climbing, and music (I recently saw Julie, Geordie Greep, and LCD Soundsystem in concert).</div>
                     </div>
                 </div>
+                <div class="resize-layer" aria-hidden="true">
+                    <div class="resize-handle resize-n" data-dir="n"></div>
+                    <div class="resize-handle resize-ne" data-dir="ne"></div>
+                    <div class="resize-handle resize-e" data-dir="e"></div>
+                    <div class="resize-handle resize-se" data-dir="se"></div>
+                    <div class="resize-handle resize-s" data-dir="s"></div>
+                    <div class="resize-handle resize-sw" data-dir="sw"></div>
+                    <div class="resize-handle resize-w" data-dir="w"></div>
+                    <div class="resize-handle resize-nw" data-dir="nw"></div>
+                </div>
+            </div>
 
-                <div class="section">
-                    <div class="section-content">
-                        <div class="section-title about-subtitle">Currently:</div>
-                        <ul class="about-list">
-                            <li>On Cornell's all-undergrad silicon team. We just confirmed our prototype can detect bird calls on tiny PCBs strapped to migrating birds!</li>
-                            <li>Heading to GlobalFoundries this summer to dig into ULP CMOS eNVM and analog memory design, excited to get closer to the device level.</li>
-                            <li>Tinkering with FPGA design. Building an FIR Filter and Audio Visualizer on the Tang Nano 20k.</li>
-                            <li>Recreating a <a href="https://x.com/ObsoleteSony/status/1780128999781314852">Funbbit</a>, from PCB to firmware.</li>
-                        </ul>
+            <!-- Notepad Window -->
+            <div
+                class="window notepad-window active"
+                id="notepad"
+                data-window-label="About"
+                data-default-width="620"
+                data-default-height="480"
+            >
+                <div class="title-bar">
+                    <span class="title-bar-text">NOTEPAD.EXE\ABOUT_ME.TXT</span>
+                    <div class="window-controls">
+                        <button
+                            type="button"
+                            class="window-control"
+                            data-action="minimize"
+                            title="Minimize"
+                            aria-label="Minimize window"
+                        >
+                            _
+                        </button>
+                        <button
+                            type="button"
+                            class="window-control"
+                            data-action="maximize"
+                            title="Maximize"
+                            aria-label="Maximize window"
+                        >
+                            □
+                        </button>
+                        <button
+                            type="button"
+                            class="window-control window-control--close"
+                            data-action="close"
+                            title="Close"
+                            aria-label="Close window"
+                        >
+                            ×
+                        </button>
                     </div>
                 </div>
+                <div class="menu-bar">
+                    <span class="menu-item">FILE</span>
+                    <span class="menu-item">OPTIONS</span>
+                    <span class="menu-item">WINDOW</span>
+                    <span class="menu-item">HELP</span>
+                </div>
+                <div class="window-content notepad-content">
+                    <div class="profile-section">
+                        <div class="profile-image">
+                            <img
+                                src="images/profile.jpg"
+                                alt="Profile"
+                                class="profile-photo"
+                            />
+                        </div>
 
-                <div class="section">
-                   <div class="info-line about-cta">If any of this resonates, reach out! Always happy to talk chips, films, ham radio, climbing, or really anything else. </div>
-                </div>
+                        <div class="info-section">
+                            <div class="work-entry__title">
+                                Welcome to my corner of the internet!
+                            </div>
+                            <div class="info-line about-intro">
+                                I'm Lena, a student studying ECE at Olin. Grew
+                                up across Germany, Belgium, and Spain. Also
+                                always aiming to learn more about hardware!
+                            </div>
+                            <div class="info-line about-intro">
+                                Outside of that I love: Kiarostami films (check
+                                out my
+                                <a href="https://letterboxd.com/rcyaon/"
+                                    >Letterboxd</a
+                                >!), rock climbing, and music (I recently saw
+                                Julie, Geordie Greep, and LCD Soundsystem in
+                                concert).
+                            </div>
+                        </div>
+                    </div>
 
-                <a><img width="88" height="31" src="images/tumblr_cc96c2796bcf9e71ec12f23e70250b7a_5751f55f_100.webp"/></a>
-                
-            </div>
-            <div class="resize-layer" aria-hidden="true">
-                <div class="resize-handle resize-n" data-dir="n"></div>
-                <div class="resize-handle resize-ne" data-dir="ne"></div>
-                <div class="resize-handle resize-e" data-dir="e"></div>
-                <div class="resize-handle resize-se" data-dir="se"></div>
-                <div class="resize-handle resize-s" data-dir="s"></div>
-                <div class="resize-handle resize-sw" data-dir="sw"></div>
-                <div class="resize-handle resize-w" data-dir="w"></div>
-                <div class="resize-handle resize-nw" data-dir="nw"></div>
-            </div>
-        </div>
-        
-        <!-- Contact Window -->
-        <div class="window contact-window active" id="contact" data-window-label="Contact" data-default-width="320" data-default-height="275">
-            <div class="title-bar">
-                <span class="title-bar-text">NOTEPAD.EXE\CONTACT.TXT</span>
-                <div class="window-controls">
-                    <button type="button" class="window-control" data-action="minimize" title="Minimize" aria-label="Minimize window">_</button>
-                    <button type="button" class="window-control" data-action="maximize" title="Maximize" aria-label="Maximize window">□</button>
-                    <button type="button" class="window-control window-control--close" data-action="close" title="Close" aria-label="Close window">×</button>
+                    <div class="section">
+                        <div class="section-content">
+                            <div class="section-title about-subtitle">
+                                Currently:
+                            </div>
+                            <ul class="about-list">
+                                <li>
+                                    On Cornell's all-undergrad silicon team. We
+                                    just confirmed our prototype can detect bird
+                                    calls on tiny PCBs strapped to migrating
+                                    birds!
+                                </li>
+                                <li>
+                                    Heading to GlobalFoundries this summer to
+                                    dig into ULP CMOS eNVM and analog memory
+                                    design, excited to get closer to the device
+                                    level.
+                                </li>
+                                <li>
+                                    Tinkering with FPGA design. Building an FIR
+                                    Filter and Audio Visualizer on the Tang Nano
+                                    20k.
+                                </li>
+                                <li>
+                                    Recreating a
+                                    <a
+                                        href="https://x.com/ObsoleteSony/status/1780128999781314852"
+                                        >Funbbit</a
+                                    >, from PCB to firmware.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="info-line about-cta">
+                            If any of this resonates, reach out! Always happy to
+                            talk chips, films, ham radio, climbing, or really
+                            anything else.
+                        </div>
+                    </div>
+                </div>
+                <div class="resize-layer" aria-hidden="true">
+                    <div class="resize-handle resize-n" data-dir="n"></div>
+                    <div class="resize-handle resize-ne" data-dir="ne"></div>
+                    <div class="resize-handle resize-e" data-dir="e"></div>
+                    <div class="resize-handle resize-se" data-dir="se"></div>
+                    <div class="resize-handle resize-s" data-dir="s"></div>
+                    <div class="resize-handle resize-sw" data-dir="sw"></div>
+                    <div class="resize-handle resize-w" data-dir="w"></div>
+                    <div class="resize-handle resize-nw" data-dir="nw"></div>
                 </div>
             </div>
-            <div class="window-content contact-content">
-                <div class="contact-item">
-                    <span class="contact-label">Email:</span> <a href="mailto:lena.conde-araujo@csedge.org">lena.conde-araujo@csedge.org</a>
+
+            <!-- Contact Window -->
+            <div
+                class="window contact-window active"
+                id="contact"
+                data-window-label="Contact"
+                data-default-width="320"
+                data-default-height="275"
+            >
+                <div class="title-bar">
+                    <span class="title-bar-text">NOTEPAD.EXE\CONTACT.TXT</span>
+                    <div class="window-controls">
+                        <button
+                            type="button"
+                            class="window-control"
+                            data-action="minimize"
+                            title="Minimize"
+                            aria-label="Minimize window"
+                        >
+                            _
+                        </button>
+                        <button
+                            type="button"
+                            class="window-control"
+                            data-action="maximize"
+                            title="Maximize"
+                            aria-label="Maximize window"
+                        >
+                            □
+                        </button>
+                        <button
+                            type="button"
+                            class="window-control window-control--close"
+                            data-action="close"
+                            title="Close"
+                            aria-label="Close window"
+                        >
+                            ×
+                        </button>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <span class="contact-label">GitHub:</span> <a href="https://github.com/rcyaon" target="_blank">@rcyaon</a>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">LinkedIn:</span> <a href="https://www.linkedin.com/in/lena-conde-araujo/" target="_blank">lena-conde-araujo</a>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">Ham Radio Call Sign:</span> KJ5ITZ
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">Spotify:</span> <a href="https://open.spotify.com/user/31zbkdlkhtsnkgisb4ygjwo2a3fm?si=7bc873e128d342b4">@lena</a>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">X:</span> <a href="https://x.com/rcyaon" target="_blank"> @rcyaon</a>
-                </div> 
-                <pre class="contact-ascii">   |\---/|
+                <div class="window-content contact-content">
+                    <div class="contact-item">
+                        <span class="contact-label">Email:</span>
+                        <a href="mailto:lena.conde-araujo@csedge.org"
+                            >lena.conde-araujo@csedge.org</a
+                        >
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">GitHub:</span>
+                        <a href="https://github.com/rcyaon" target="_blank"
+                            >@rcyaon</a
+                        >
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">LinkedIn:</span>
+                        <a
+                            href="https://www.linkedin.com/in/lena-conde-araujo/"
+                            target="_blank"
+                            >lena-conde-araujo</a
+                        >
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Ham Radio Call Sign:</span>
+                        KJ5ITZ
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Spotify:</span>
+                        <a
+                            href="https://open.spotify.com/user/31zbkdlkhtsnkgisb4ygjwo2a3fm?si=7bc873e128d342b4"
+                            >@lena</a
+                        >
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">X:</span>
+                        <a href="https://x.com/rcyaon" target="_blank">
+                            @rcyaon</a
+                        >
+                    </div>
+                    <pre class="contact-ascii">
+   |\---/|
    | ,_, |
     \_`_/-..----.
- ___/ `   ' ,""+ \  
+ ___/ `   ' ,""+ \
 (__...'   __\    |`.___.';
   (_,...'(_,.`__)/'.....+
-</pre>
-            </div> 
-            <div class="resize-layer" aria-hidden="true">
-                <div class="resize-handle resize-n" data-dir="n"></div>
-                <div class="resize-handle resize-ne" data-dir="ne"></div>
-                <div class="resize-handle resize-e" data-dir="e"></div>
-                <div class="resize-handle resize-se" data-dir="se"></div>
-                <div class="resize-handle resize-s" data-dir="s"></div>
-                <div class="resize-handle resize-sw" data-dir="sw"></div>
-                <div class="resize-handle resize-w" data-dir="w"></div>
-                <div class="resize-handle resize-nw" data-dir="nw"></div>
-            </div>
-        </div>
-
-        <!-- Spotify Window -->
-        <div class="window spotify-window active" id="spotify" data-window-label="Spotify" data-default-width="360" data-default-height="280">
-            <div class="title-bar">
-                <span class="title-bar-text">SPOTIFY.EXE</span>
-                <div class="window-controls">
-                    <button type="button" class="window-control" data-action="minimize" title="Minimize" aria-label="Minimize window">_</button>
-                    <button type="button" class="window-control" data-action="maximize" title="Maximize" aria-label="Maximize window">□</button>
-                    <button type="button" class="window-control window-control--close" data-action="close" title="Close" aria-label="Close window">×</button>
+</pre
+                    >
+                </div>
+                <div class="resize-layer" aria-hidden="true">
+                    <div class="resize-handle resize-n" data-dir="n"></div>
+                    <div class="resize-handle resize-ne" data-dir="ne"></div>
+                    <div class="resize-handle resize-e" data-dir="e"></div>
+                    <div class="resize-handle resize-se" data-dir="se"></div>
+                    <div class="resize-handle resize-s" data-dir="s"></div>
+                    <div class="resize-handle resize-sw" data-dir="sw"></div>
+                    <div class="resize-handle resize-w" data-dir="w"></div>
+                    <div class="resize-handle resize-nw" data-dir="nw"></div>
                 </div>
             </div>
-            <div class="window-content spotify-content">
-                <div class="spotify-now-playing" id="spotifyNowPlaying">
-                    <p class="spotify-status" id="spotifyStatusText">Waiting for token...</p>
-                    <img id="spotifyArtwork" class="spotify-artwork" alt="Album artwork" hidden>
-                    <p class="spotify-track" id="spotifyTrackText"></p>
-                    <p class="spotify-artist" id="spotifyArtistText"></p>                </div>
+
+            <!-- Spotify Window -->
+            <div
+                class="window spotify-window active"
+                id="spotify"
+                data-window-label="Spotify"
+                data-default-width="360"
+                data-default-height="280"
+            >
+                <div class="title-bar">
+                    <span class="title-bar-text">SPOTIFY.EXE</span>
+                    <div class="window-controls">
+                        <button
+                            type="button"
+                            class="window-control"
+                            data-action="minimize"
+                            title="Minimize"
+                            aria-label="Minimize window"
+                        >
+                            _
+                        </button>
+                        <button
+                            type="button"
+                            class="window-control"
+                            data-action="maximize"
+                            title="Maximize"
+                            aria-label="Maximize window"
+                        >
+                            □
+                        </button>
+                        <button
+                            type="button"
+                            class="window-control window-control--close"
+                            data-action="close"
+                            title="Close"
+                            aria-label="Close window"
+                        >
+                            ×
+                        </button>
+                    </div>
+                </div>
+                <div class="window-content spotify-content">
+                    <div class="spotify-now-playing" id="spotifyNowPlaying">
+                        <p class="spotify-status" id="spotifyStatusText">
+                            Waiting for token...
+                        </p>
+                        <img
+                            id="spotifyArtwork"
+                            class="spotify-artwork"
+                            alt="Album artwork"
+                            hidden
+                        />
+                        <p class="spotify-track" id="spotifyTrackText"></p>
+                        <p class="spotify-artist" id="spotifyArtistText"></p>
+                    </div>
+                </div>
+                <div class="resize-layer" aria-hidden="true">
+                    <div class="resize-handle resize-n" data-dir="n"></div>
+                    <div class="resize-handle resize-ne" data-dir="ne"></div>
+                    <div class="resize-handle resize-e" data-dir="e"></div>
+                    <div class="resize-handle resize-se" data-dir="se"></div>
+                    <div class="resize-handle resize-s" data-dir="s"></div>
+                    <div class="resize-handle resize-sw" data-dir="sw"></div>
+                    <div class="resize-handle resize-w" data-dir="w"></div>
+                    <div class="resize-handle resize-nw" data-dir="nw"></div>
+                </div>
             </div>
-            <div class="resize-layer" aria-hidden="true">
-                <div class="resize-handle resize-n" data-dir="n"></div>
-                <div class="resize-handle resize-ne" data-dir="ne"></div>
-                <div class="resize-handle resize-e" data-dir="e"></div>
-                <div class="resize-handle resize-se" data-dir="se"></div>
-                <div class="resize-handle resize-s" data-dir="s"></div>
-                <div class="resize-handle resize-sw" data-dir="sw"></div>
-                <div class="resize-handle resize-w" data-dir="w"></div>
-                <div class="resize-handle resize-nw" data-dir="nw"></div>
+
+            <!-- Project detail modal -->
+            <div
+                id="projectModal"
+                class="project-modal"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="projectModalTitle"
+                hidden
+            >
+                <div
+                    class="project-modal__backdrop"
+                    data-modal-dismiss="true"
+                ></div>
+                <div class="project-modal__panel">
+                    <header class="project-modal__header">
+                        <h2
+                            id="projectModalTitle"
+                            class="project-modal__title"
+                        ></h2>
+                        <button
+                            type="button"
+                            class="window-control project-modal__close"
+                            data-modal-dismiss="true"
+                            title="Close"
+                            aria-label="Close project details"
+                        >
+                            ×
+                        </button>
+                    </header>
+                    <div
+                        class="project-modal__body"
+                        id="projectModalBody"
+                    ></div>
+                </div>
+            </div>
+
+            <nav
+                class="window-launcher"
+                id="windowLauncher"
+                aria-label="Open or restore windows"
+            >
+                <button
+                    type="button"
+                    class="launcher-btn"
+                    data-launch="fileExplorer"
+                    aria-controls="fileExplorer"
+                >
+                    <span class="launcher-btn__label">Projects</span>
+                </button>
+                <button
+                    type="button"
+                    class="launcher-btn"
+                    data-launch="notepad"
+                    aria-controls="notepad"
+                >
+                    <span class="launcher-btn__label">About</span>
+                </button>
+                <button
+                    type="button"
+                    class="launcher-btn"
+                    data-launch="contact"
+                    aria-controls="contact"
+                >
+                    <span class="launcher-btn__label">Contact</span>
+                </button>
+                <button
+                    type="button"
+                    class="launcher-btn"
+                    data-launch="spotify"
+                    aria-controls="spotify"
+                >
+                    <span class="launcher-btn__label">Spotify</span>
+                </button>
+            </nav>
+
+            <!-- Status Bar -->
+            <div class="status-bar">
+                <div class="status-left">C:\portfolio\about_me.txt</div>
             </div>
         </div>
 
-        <!-- Project detail modal -->
-        <div id="projectModal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle" hidden>
-            <div class="project-modal__backdrop" data-modal-dismiss="true"></div>
-            <div class="project-modal__panel">
-                <header class="project-modal__header">
-                    <h2 id="projectModalTitle" class="project-modal__title"></h2>
-                    <button type="button" class="window-control project-modal__close" data-modal-dismiss="true" title="Close" aria-label="Close project details">×</button>
-                </header>
-                <div class="project-modal__body" id="projectModalBody"></div>
-            </div>
-        </div>
-        
-        <nav class="window-launcher" id="windowLauncher" aria-label="Open or restore windows">
-            <button type="button" class="launcher-btn" data-launch="fileExplorer" aria-controls="fileExplorer">
-                <span class="launcher-btn__label">Projects</span>
-            </button>
-            <button type="button" class="launcher-btn" data-launch="notepad" aria-controls="notepad">
-                <span class="launcher-btn__label">About</span>
-            </button>
-            <button type="button" class="launcher-btn" data-launch="contact" aria-controls="contact">
-                <span class="launcher-btn__label">Contact</span>
-            </button>
-            <button type="button" class="launcher-btn" data-launch="spotify" aria-controls="spotify">
-                <span class="launcher-btn__label">Spotify</span>
-            </button>
-        </nav>
-        
-        <!-- Status Bar -->
-        <div class="status-bar">
-            <div class="status-left">C:\portfolio\about_me.txt</div>
-        </div>
-    </div>
-    
-    <script src="main.js"></script>
-</body>
+        <script src="main.js"></script>
+    </body>
 </html>

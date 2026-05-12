@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
 
 .svg-defs {
     position: absolute;
@@ -10,7 +10,9 @@
 :root {
     --status-bar-height: 24px;
     --launcher-height: 36px;
-    --desktop-chrome-bottom: calc(var(--status-bar-height) + var(--launcher-height));
+    --desktop-chrome-bottom: calc(
+        var(--status-bar-height) + var(--launcher-height)
+    );
     --window-min-width: 220px;
     --window-min-height: 160px;
     --resize-hit: 8px;
@@ -23,7 +25,7 @@
 }
 
 body {
-    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-family: "IBM Plex Mono", "Courier New", monospace;
     background: #d9d9d9;
     overflow: hidden;
     height: 100vh;
@@ -95,7 +97,7 @@ body {
 
 .title-bar-text {
     flex: 1;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     padding-left: 4px;
     letter-spacing: 0.5px;
 }
@@ -156,7 +158,7 @@ body {
     display: flex;
     align-items: center;
     color: #1a1a1a;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     transition: background 0.1s;
 }
 
@@ -354,7 +356,7 @@ body {
 .project-icon__label {
     display: block;
     font-size: 11px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-weight: 500;
     line-height: 1.25;
     word-wrap: break-word;
@@ -423,7 +425,7 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     margin: 0;
     padding-left: 4px;
 }
@@ -437,7 +439,7 @@ body {
     overflow-y: auto;
     font-size: 12px;
     line-height: 1.75;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
 }
 
 .project-modal__body::-webkit-scrollbar {
@@ -493,7 +495,8 @@ body {
     margin-bottom: 8px;
 }
 
-.project-modal__experience-panel--title-only .project-modal__panel-heading--band {
+.project-modal__experience-panel--title-only
+    .project-modal__panel-heading--band {
     margin-bottom: 0;
 }
 
@@ -547,7 +550,7 @@ body {
 
 .project-modal__section-divider::before,
 .project-modal__section-divider::after {
-    content: '';
+    content: "";
     flex: 1;
     height: 1px;
     background: #6f6f6f;
@@ -556,7 +559,7 @@ body {
 
 .project-modal__section-divider-text {
     flex-shrink: 0;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
@@ -662,23 +665,73 @@ body {
 
 .project-modal__body--more-work .project-modal__panel-heading--band {
     margin: 0;
-    padding: 6px 12px;
+    padding: 7px 14px;
     background: #d4d4d4;
-    border-bottom: none;
+    border: 1px solid #6f6f6f;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0;
     font-size: 12px;
     letter-spacing: 0.06em;
 }
 
 .project-modal__body--more-work .project-modal__panel-heading--band::before {
-    content: '›';
+    content: "ls -";
     flex-shrink: 0;
     color: #5a5a5a;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0;
     line-height: 1;
+}
+
+/* Tree-style block list (Programs, Technical Awards) */
+.project-modal__experience-panel-body--tree {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    line-height: 1.8;
+}
+
+.project-modal__tree-row {
+    display: flex;
+    align-items: flex-start;
+}
+
+.project-modal__tree-tc {
+    flex-shrink: 0;
+    white-space: pre;
+    color: #9a9a9a;
+    font-weight: 400;
+    line-height: 1.8;
+}
+
+.project-modal__tree-ht {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+}
+
+/* Stretching │ bar — grows to full row height including wrapped lines */
+.project-modal__tree-pipe {
+    flex-shrink: 0;
+    width: 1px;
+    background-color: #9a9a9a;
+    align-self: stretch;
+    margin-left: calc(0.5ch - 0.5px);
+    margin-right: calc(0.5ch - 0.5px);
+}
+
+.project-modal__tree-pipe--last {
+    background-color: transparent;
+}
+
+.project-modal__tree-row p {
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+    line-height: 1.8;
 }
 
 /* Canary / TinyRV: half text, half image (stacks on narrow viewports). */
@@ -701,14 +754,18 @@ body {
     align-self: start;
 }
 
-.project-modal__body--more-work .project-modal__section-split .project-modal__media.project-modal__media--section {
+.project-modal__body--more-work
+    .project-modal__section-split
+    .project-modal__media.project-modal__media--section {
     margin: 0;
     padding: 0;
     border-top: none;
 }
 
 /* Extra room below Canary (and any split) before the next split row. */
-.project-modal__body--more-work .project-modal__section-split + .project-modal__section-split {
+.project-modal__body--more-work
+    .project-modal__section-split
+    + .project-modal__section-split {
     margin-top: var(--mw-between-project-splits);
 }
 
@@ -844,7 +901,7 @@ body {
     border-radius: 0;
     background: #f3f3f3;
     color: #1a1a1a;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
@@ -878,7 +935,7 @@ body {
 .project-modal__gallery-counter {
     margin: 14px 0 0;
     padding: 0;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 10px;
     font-weight: 500;
     letter-spacing: 0.02em;
@@ -891,7 +948,7 @@ body {
 
 .project-modal__gallery-caption {
     margin: 8px 0 0;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 11px;
     line-height: 1.55;
     color: #1a1a1a;
@@ -1007,7 +1064,7 @@ body {
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 24px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #1a1a1a;
     letter-spacing: -0.5px;
 }
@@ -1062,7 +1119,7 @@ body {
     margin-bottom: 10px;
     font-size: 12px;
     line-height: 1.65;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     color: #1a1a1a;
 }
 
@@ -1089,7 +1146,7 @@ body {
     margin: 24px 0;
     font-size: 12px;
     line-height: 1.7;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     color: #1a1a1a;
 }
 
@@ -1102,7 +1159,7 @@ body {
     text-transform: uppercase;
     font-size: 13px;
     margin-bottom: 12px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     color: #1a1a1a;
     letter-spacing: 0.5px;
 }
@@ -1111,7 +1168,7 @@ body {
     font-size: 12px;
     line-height: 1.8;
     margin-left: 20px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     color: #1a1a1a;
 }
 
@@ -1202,7 +1259,7 @@ body {
     font-size: clamp(48px, 18vw, 120px);
     font-weight: bold;
     color: rgba(26, 26, 26, 0.03);
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     pointer-events: none;
     z-index: 0;
     transform: rotate(-5deg);
@@ -1214,7 +1271,7 @@ body {
     right: 130px;
     left: auto;
     width: 350px;
-    min-height: 280px!important;
+    min-height: 280px !important;
     z-index: 30;
 }
 
@@ -1226,7 +1283,7 @@ body {
 .contact-content {
     font-size: 12px;
     line-height: 1.85;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     color: #1a1a1a;
 }
 
@@ -1244,7 +1301,7 @@ body {
 }
 
 .contact-ascii {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 8px;
     line-height: 1;
     white-space: pre;
@@ -1261,7 +1318,7 @@ body {
     top: 370px;
     right: 40px;
     left: auto;
-    width: 270px!important;
+    width: 270px !important;
     height: 270px;
     z-index: 25;
 }
@@ -1292,7 +1349,7 @@ body {
     border: 1px solid #6f6f6f;
     background: #f3f3f3;
     color: #1a1a1a;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 11px;
     padding: 4px 8px;
     cursor: pointer;
@@ -1355,7 +1412,7 @@ body {
     gap: 6px;
     padding: 0 8px;
     z-index: 1500;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
 }
 
 .launcher-btn {
@@ -1405,19 +1462,46 @@ body {
     padding: 0 8px;
     font-size: 11px;
     z-index: 1600;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     color: #1a1a1a;
 }
 
 .status-left {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .status-right {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
+}
+
+/* ── 2000s sparkle trail cursor ── */
+.link-sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    font-family: "IBM Plex Mono", "Courier New", monospace;
+    line-height: 1;
+    user-select: none;
+    white-space: pre;
+    animation: sparkle-fly 650ms ease-out forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes sparkle-fly {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    35% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--sx), var(--sy)) scale(0);
+        opacity: 0;
+    }
 }
 
 a {
@@ -1435,7 +1519,7 @@ a:hover {
 
 /* Responsive layout */
 @media (max-width: 900px) {
-    .window-control[data-action='minimize'] {
+    .window-control[data-action="minimize"] {
         display: none;
     }
 
@@ -1444,7 +1528,10 @@ a:hover {
         right: 12px;
         width: auto !important;
         max-width: none;
-        height: min(500px, calc(100vh - var(--desktop-chrome-bottom) - 24px)) !important;
+        height: min(
+            500px,
+            calc(100vh - var(--desktop-chrome-bottom) - 24px)
+        ) !important;
     }
 
     .file-explorer {
@@ -1491,7 +1578,10 @@ a:hover {
 
     .notepad-window {
         top: min(300px, 44vh);
-        height: min(420px, calc(100vh - var(--desktop-chrome-bottom) - 32px)) !important;
+        height: min(
+            420px,
+            calc(100vh - var(--desktop-chrome-bottom) - 32px)
+        ) !important;
     }
 
     .contact-window {
