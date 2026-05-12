@@ -130,7 +130,7 @@ const PROJECTS = {
         variant: "panel",
         panelHeadingStyle: "band",
         treeBlocks: true,
-        heading: "Programs _",
+        heading: "Programs",
         blocks: [
           {
             heading: "Google Code Next",
@@ -150,7 +150,7 @@ const PROJECTS = {
       {
         variant: "panel",
         panelHeadingStyle: "band",
-        heading: "Miscellaneous projects _",
+        heading: "Miscellaneous projects",
         blocks: [{}],
       },
       {
@@ -177,7 +177,7 @@ const PROJECTS = {
         variant: "panel",
         panelHeadingStyle: "band",
         treeBlocks: true,
-        heading: "Technical Awards _",
+        heading: "Technical Awards",
         blocks: [
           {
             heading: "BEST Robotics",
