@@ -78,7 +78,7 @@ const PROJECTS = {
         heading: "Links",
         bullets: [
           "GitHub: https://github.com/rcyaon/bandgap-ptat",
-          "GDS Viewer: https://rcyaon.github.io/bandgap-ptat/ ",
+          "GDS viewer: https://rcyaon.github.io/bandgap-ptat/ ",
         ],
       },
     ],
@@ -134,7 +134,7 @@ const PROJECTS = {
         variant: "panel",
         panelHeadingStyle: "band",
         treeBlocks: true,
-        heading: "Programs",
+        heading: "‎ Programs",
         blocks: [
           {
             heading: "Google Code Next",
@@ -154,7 +154,7 @@ const PROJECTS = {
       {
         variant: "panel",
         panelHeadingStyle: "band",
-        heading: "Miscellaneous projects",
+        heading: "‎ Miscellaneous projects",
         blocks: [{}],
       },
       {
@@ -181,7 +181,7 @@ const PROJECTS = {
         variant: "panel",
         panelHeadingStyle: "band",
         treeBlocks: true,
-        heading: "Technical Awards",
+        heading: `‎ Awards`,
         blocks: [
           {
             heading: "BEST Robotics",
