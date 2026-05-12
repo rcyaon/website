@@ -1524,7 +1524,7 @@ a:hover {
     }
 
     .notepad-window {
-        left: 12px;
+        left: 50px;
         right: 12px;
         width: auto !important;
         max-width: none;

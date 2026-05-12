@@ -1573,6 +1573,13 @@ document.addEventListener("DOMContentLoaded", () => {
   wireLinkSparkles();
   updateLauncherState();
 
+  const spotifyWin = document
+    .getElementById("spotifyStatusText")
+    ?.closest(".window");
+  if (spotifyWin && !useSingleWindowMobileMode()) {
+    minimizeWindow(spotifyWin);
+  }
+
   requestAnimationFrame(() => {
     requestAnimationFrame(layoutProjectIconCluster);
   });
