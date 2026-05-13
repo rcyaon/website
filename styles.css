@@ -1053,17 +1053,17 @@ body {
 
 /* Notepad Window — default stack above other chrome windows; JS bringToFront on load reinforces */
 .notepad-window {
-    top: 300px;
+    top: 350px;
     left: 170px;
     width: 620px;
-    height: 480px;
+    height: 440px!important;
     z-index: 50;
 }
 
 .notepad-content h1 {
     font-size: 32px;
     font-weight: 600;
-    margin-bottom: 24px;
+    margin-bottom: 30px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #1a1a1a;
     letter-spacing: -0.5px;
@@ -1080,7 +1080,7 @@ body {
     grid-template-columns: var(--profile-photo-size) 1fr;
     gap: 20px;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     align-items: stretch;
 }
 

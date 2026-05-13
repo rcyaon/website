@@ -46,11 +46,6 @@ const PROJECTS = {
           "More about Cornell Custom Silicon Systems: https://www.c2s2.dev/",
         ],
       },
-      {
-        heading: "",
-        body: "<img src='images/asic.gif' width='88' height='31'>",
-        isHtml: true,
-      },
     ],
   },
   drone: {
@@ -69,7 +64,7 @@ const PROJECTS = {
   },
   "brokaw-bandgap-ptat": {
     title: "NOTEPAD.EXE\\Tiny_Tapeout.TXT",
-    images: [{ src: "images/bandgap.png", alt: "Bandgap design photo 1" }],
+    images: [{ src: "images/chip.png", alt: "Bandgap design photo 1" }],
     sections: [
       {
         heading: "",
@@ -85,11 +80,6 @@ const PROJECTS = {
           "GitHub: https://github.com/rcyaon/bandgap-ptat",
           "GDS viewer: https://rcyaon.github.io/bandgap-ptat/ ",
         ],
-      },
-      {
-        heading:"",
-        body: "<img src='images/tt.gif' width='88' height='31'>",
-        isHtml: true,
       },
     ],
   },
