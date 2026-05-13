@@ -46,6 +46,11 @@ const PROJECTS = {
           "More about Cornell Custom Silicon Systems: https://www.c2s2.dev/",
         ],
       },
+      {
+        heading: "",
+        body: "<img src='images/asic.gif' width='88' height='31'>",
+        isHtml: true,
+      },
     ],
   },
   drone: {
@@ -80,6 +85,11 @@ const PROJECTS = {
           "GitHub: https://github.com/rcyaon/bandgap-ptat",
           "GDS viewer: https://rcyaon.github.io/bandgap-ptat/ ",
         ],
+      },
+      {
+        heading:"",
+        body: "<img src='images/tt.gif' width='88' height='31'>",
+        isHtml: true,
       },
     ],
   },
@@ -808,11 +818,15 @@ function renderProjectSection(s) {
     html += `<h3>${escapeHtml(s.heading)}</h3>`;
   }
   if (s.body && String(s.body).trim()) {
-    html += s.body
-      .split(/\n+/)
-      .filter((p) => p.trim())
-      .map((p) => `<p>${linkifyText(p)}</p>`)
-      .join("");
+    if (s.isHtml) {
+      html += s.body;
+    } else {
+      html += s.body
+        .split(/\n+/)
+        .filter((p) => p.trim())
+        .map((p) => `<p>${linkifyText(p)}</p>`)
+        .join("");
+    }
   }
   if (s.bullets && s.bullets.length > 0) {
     html +=
