@@ -37,7 +37,7 @@ const PROJECTS = {
       },
       {
         heading: "",
-        body: "From there we've been exploring two side projects: a novel adiabatic Flash ADC that hits ~80 µW total power (~30× lower than our SAR) using charge-recovery logic, and an asynchronous SAR ADC that self-times between bit decisions instead of waiting on a clock, which meant hunting down pulse-width sensitivity and precharge coupling issues.",
+        body: "From there we've been exploring two side projects: a novel adiabatic Flash ADC that hits ~80 µW total power (~30× lower than our SAR) using charge-recovery logic, and an asynchronous SAR ADC that self-times between bit decisions instead of waiting on a clock.",
       },
       {
         heading: "Links",
