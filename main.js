@@ -189,7 +189,7 @@ const PROJECTS = {
           },
           {
             heading: "LyondellBasell Cybersecurity Challenge National Winner",
-            body: "Awarded $1,000. Used Linux, Burp Suite, Wireshark.",
+            body: "Awarded $1,000. Used Burp Suite, Wireshark, Nmap, Metasploit, and SQLmap.",
           },
           {
             heading:
