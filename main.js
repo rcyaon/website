@@ -170,11 +170,11 @@ const PROJECTS = {
         },
       },
       {
-        heading: "Single-Cycle RISC-V Processor (TinyRV1)",
-        body: "Designed a single-cycle microprocessor in Verilog for ECE2300, implementing the ALU, decoder, register file, program counter, and branch logic. Built in Quartus, tested in ModelSim, and validated on a Cyclone V FPGA.",
+        heading: "5-Stage Pipelined RISC-V Processor (TinyRV1)",
+        body: "Architected a 5-stage pipelined RISC-V processor in Verilog, implementing full forwarding, hazard detection, and branch prediction with a branch target buffer; validated timing and control flow end-to-end in ModelSim and on a Cyclone V FPGA.",
         image: {
-          src: "images/rcyaon/processor.png",
-          alt: "Single-cycle processor preview",
+          src: "images/rv1.png",
+          alt: "Processor preview",
         },
       },
       {
