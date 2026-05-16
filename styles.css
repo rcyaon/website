@@ -1271,13 +1271,13 @@ body {
     right: 130px;
     left: auto;
     width: 350px;
-    height: 220px !important;
+    height: 240px !important;
     z-index: 30;
 }
 
 .contact-window .window-content {
     padding-top: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 0px;
 }
 
 .contact-content {
