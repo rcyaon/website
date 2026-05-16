@@ -92,7 +92,7 @@ const PROJECTS = {
     sections: [
       {
         heading: "",
-        body: "Ran PCB workshops at FUTO and taught generative art with JavaScript and CNC machines to people who had never touched hardware before at Amazon. It's some of the most fulfilling work I've gotten to do! Also served as Logistics Lead for BigRed//Hacks, Cornell's annual hackathon.",
+        body: "Ran PCB workshops at FUTO in Austin and taught generative art with JavaScript and CNC machines to K-12 students at Amazon in Seattle who had never touched hardware before. It's some of the most fulfilling work I've gotten to do! Also served as Logistics Lead for BigRed//Hacks, Cornell's annual hackathon.",
       },
       {
         heading: "Links",
@@ -143,6 +143,10 @@ const PROJECTS = {
           {
             heading: "MATLAB Ambassador",
             body: "Paid work delivering hands-on MATLAB and Simulink workshops while evaluating pre-release features.",
+          },
+          {
+            heading: "MIT Introduction to Technology, Engineering, and Science (MITES)",
+            body: "Built autonomous robots and explored the intersection of biomimicry and train physics. Now an ambassador helping grow my favorite network! "
           },
           {
             heading:
