@@ -33,7 +33,7 @@ const PROJECTS = {
     sections: [
       {
         heading: "",
-        body: "On Cornell's all-undergrad analog team, we're working toward a full-chip tapeout in TSMC 180nm — a 4.44 MS/s 8-bit differential SAR ADC. No one was going to hand us the design files, so we figured it out ourselves with Cadence Virtuoso manuals and a lot of shared notes. One of the only undergraduate teams in the country doing this. It works. ",
+        body: "On Cornell's all-undergrad analog team, we taped out a 4.44 MS/s 8-bit differential SAR ADC in TSMC 180nm. No one was going to hand us the design files, so we figured it out ourselves working through Cadence Virtuoso and a lot of shared notes. One of the only undergraduate teams in the country doing this, it works!",
       },
       {
         heading: "",
@@ -68,11 +68,11 @@ const PROJECTS = {
     sections: [
       {
         heading: "",
-        body: "Built a bandgap voltage reference on SKY130 for TinyTapeout (a circuit that holds a stable ~1.2V output across temperature, process, and supply variation). The Brokaw topology works by balancing two effects that cancel: a voltage that falls with temperature against a current that rises with it. Then, a summing amplifier mixes them together.",
+        body: "Built a bandgap voltage reference (a circuit that holds a stable ~1.2V output across temperature, process, and supply variation) on the SKY130 PDK for TinyTapeout. The Brokaw topology works by balancing two effects that cancel: a voltage that falls with temperature against a current that rises with it. Then, a summing amplifier mixes them together.",
       },
       {
         heading: "",
-        body: "Getting that to work off a 1.8V supply with limited headroom ruled out the usual circuit tricks, so the feedback amplifier runs self-biased with a startup circuit to keep it from just... staying off. Simulated across −40 to 125°C with Monte Carlo process variation. Designed and laid out in a mix of Cadence, xschem, and Magic VLSI.",
+        body: "Getting that to work off a 1.8V supply with limited headroom ruled out the usual circuit tricks, so the feedback amplifier runs self-biased with a startup circuit to keep it from just... staying off. Designed, simulated, and laid out in a mix of Cadence, xschem, and Magic VLSI.",
       },
       {
         heading: "Links",
@@ -123,7 +123,6 @@ const PROJECTS = {
       { type: "image", src: "images/concerts/IMG_6898.jpeg" },
       { type: "image", src: "images/concerts/IMG_6922.jpeg" },
       { type: "image", src: "images/concerts/IMG_6972.jpeg" },
-      { type: "image", src: "images/concerts/IMG_7063.jpeg" },
       // { type: 'video', src: 'images/concerts/100_1273.MOV', alt: 'Show clip', caption: ' ' },
     ],
   },
@@ -138,7 +137,7 @@ const PROJECTS = {
         blocks: [
           {
             heading: "Google Code Next",
-            body: "Creative coding and digital music: interactive generative work in JavaScript, algorithmic composition, and audio synthesis.",
+            body: "Exploring creative coding and digital music through algorithmic composition and audio synthesis in JavaScript.",
           },
           {
             heading: "MATLAB Ambassador",
