@@ -101,6 +101,11 @@ const PROJECTS = {
           "BigRed//Hacks: https://www.bigredhacks.com/",
         ],
       },
+      {
+        heading: "",
+        body: "<a href='https://hackclub.com/'><img src='images/hackclub.png' width='88' height='31'></a>",
+        isHtml: true,
+      },
     ],
   },
   // Gallery: .MOV in <video> works best in Safari; Chrome/Firefox often need H.264 .mp4. For widest support use
@@ -206,19 +211,6 @@ const PROJECTS = {
       },
     ],
   },
-  /* embedded: {
-        title: 'Embedded_systems.TXT',
-        sections: [
-            {
-                heading: '',
-                body: 'Project placeholder. Add your embedded systems project details here.',
-            },
-            {
-                heading: 'Links',
-                body: 'Repository: https://github.com/',
-            },
-        ],
-    }, */
 };
 
 const windows = () =>
