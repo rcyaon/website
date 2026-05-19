@@ -153,7 +153,7 @@ const PROJECTS = {
         },
       },
       {
-        heading: "Hackathons",
+        heading: "Organizing Hackathons",
         body: "Taught PCB design and introduced K-12 students to generative art, JavaScript, and CNC machines. It's some of the most fulfilling work I've gotten to do! Previously Logistics Lead for BigRed//Hacks. Proud alumna of: <a href='https://hackclub.com/'><img src='images/hackclub.png' width='88' height='31'></a>",
         image: {
           src: "images/blot.JPG",
