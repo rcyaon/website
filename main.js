@@ -83,31 +83,6 @@ const PROJECTS = {
       },
     ],
   },
-  hackathons: {
-    title: "NOTEPAD.EXE\\Hackathons.TXT",
-    images: [
-      { src: "images/blot.JPG", alt: "Hackathon organization" },
-      { src: "images/P1050057.JPG", alt: "More hackathon photos", fit: "wide" },
-    ],
-    sections: [
-      {
-        heading: "",
-        body: "Ran PCB workshops at FUTO in Austin and taught generative art with JavaScript and CNC machines to K-12 students at Amazon in Seattle who had never touched hardware before. It's some of the most fulfilling work I've gotten to do! Also served as Logistics Lead for BigRed//Hacks, Cornell's annual hackathon.",
-      },
-      {
-        heading: "Links",
-        bullets: [
-          "Days of Service: https://daysofservice.hackclub.com/ (I helped organize Evergreen and Oasis!)",
-          "BigRed//Hacks: https://www.bigredhacks.com/",
-        ],
-      },
-      {
-        heading: "",
-        body: "<a href='https://hackclub.com/'><img src='images/hackclub.png' width='88' height='31'></a>",
-        isHtml: true,
-      },
-    ],
-  },
   // Gallery: .MOV in <video> works best in Safari; Chrome/Firefox often need H.264 .mp4. For widest support use
   // { type: 'embed', src: 'https://www.youtube.com/embed/VIDEO_ID', ... } with an unlisted upload, or transcode (e.g. ffmpeg).
   // YouTube: chromeless IFrame API (tap video to play). Use youtubeShowControls: true for native YouTube UI.
@@ -162,7 +137,7 @@ const PROJECTS = {
       {
         variant: "panel",
         panelHeadingStyle: "band",
-        heading: "‎ Miscellaneous projects",
+        heading: "‎ MISCELLANEOUS",
         blocks: [{}],
       },
       {
@@ -176,6 +151,15 @@ const PROJECTS = {
           src: "images/rcyaon/gallery.jpg",
           alt: "Canary project preview",
         },
+      },
+      {
+        heading: "Hackathons",
+        body: "Taught PCB design and introduced K-12 students to generative art, JavaScript, and CNC machines. It's some of the most fulfilling work I've gotten to do! Previously Logistics Lead for BigRed//Hacks. Proud alumna of: <a href='https://hackclub.com/'><img src='images/hackclub.png' width='88' height='31'></a>",
+        image: {
+          src: "images/blot.JPG",
+          alt: "blot",
+        },
+        isHtml: true,
       },
       {
         heading: "5-Stage Pipelined RISC-V Processor (TinyRV1)",
