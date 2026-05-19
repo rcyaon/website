@@ -154,12 +154,14 @@ const PROJECTS = {
       },
       {
         heading: "Organizing Hackathons",
-        body: "Taught PCB design and introduced K-12 students to generative art, JavaScript, and CNC machines. It's some of the most fulfilling work I've gotten to do! Previously Logistics Lead for BigRed//Hacks. Proud alumna of: <a href='https://hackclub.com/'><img src='images/hackclub.png' width='88' height='31'></a>",
+        body: "Taught K-12 students  who had never touched hardware before PCB design and drawing with JavaScript and CNC machines. Previously also Logistics Lead for BigRed//Hacks. ",
+        bullets: [
+          "Hack Club: https://hackclub.com/",
+          "BigRed//Hacks: https://bigredhacks.com/",
+        ],
         image: {
           src: "images/blot.JPG",
-          alt: "blot",
-        },
-        isHtml: true,
+        }
       },
       {
         heading: "5-Stage Pipelined RISC-V Processor (TinyRV1)",
