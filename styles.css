@@ -1277,7 +1277,7 @@ body {
     transform: rotate(-5deg);
 }
 
-/* Contact Window — height tuned so last line (Spotify) sits at bottom without extra dead space */
+/* Contact Window */
 .contact-window {
     top: 52px;
     right: 130px;
@@ -1326,13 +1326,13 @@ body {
     overflow: visible;
 }
 
-/* Spotify Window — default top clears contact window (contact top + height + gap) */
+/* Spotify Window */
 .spotify-window {
     top: 370px;
     right: 40px;
     left: auto;
-    width: 250px !important;
-    height: 250px!important;
+    width: 280px !important;
+    height: 300px !important;
     z-index: 25;
 }
 
