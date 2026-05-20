@@ -147,10 +147,9 @@ const PROJECTS = {
       },
       {
         heading: "Organizing Hackathons",
-        body: "Taught K-12 students  who had never touched hardware before PCB design and drawing with JavaScript and CNC machines. Previously also Logistics Lead for BigRed//Hacks. ",
+        body: "Introduced K-12 students to the world of hardware through beginner-friendly workshops covering PCB design, JavaScript-based drawing, and CNC machines, hosted at FUTO in Austin and Amazon in Seattle.",
         bullets: [
-          "Hack Club: https://hackclub.com/",
-          "BigRed//Hacks: https://bigredhacks.com/",
+          "More at: https://daysofservice.hackclub.com/",
         ],
         image: {
           src: "images/blot.JPG",
