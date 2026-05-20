@@ -42,8 +42,8 @@ const PROJECTS = {
       {
         heading: "Links",
         bullets: [
-          "GitHub: https://github.com/cornell-c2s2/FA24SP25Analog",
-          "More about Cornell Custom Silicon Systems: https://www.c2s2.dev/",
+          "GitHub: https://github.com/cornell-c2s2",
+          "More about Cornell Custom Silicon Systems: https://www.c2s2.dev",
         ],
       },
     ],
@@ -68,7 +68,7 @@ const PROJECTS = {
     sections: [
       {
         heading: "",
-        body: "Built a bandgap voltage reference (a circuit that holds a stable ~1.2V output across temperature, process, and supply variation) on the SKY130 PDK for TinyTapeout. The Brokaw topology works by balancing two effects that cancel: a voltage that falls with temperature against a current that rises with it. Then, a summing amplifier mixes them together.",
+        body: "Built a bandgap voltage reference (a circuit that holds a stable ~1.2V output across temperature, process, and supply variation) on the SKY130 PDK for Tiny Tapeout. The Brokaw topology works by balancing two effects that cancel: a voltage that falls with temperature against a current that rises with it. Then, a summing amplifier mixes them together.",
       },
       {
         heading: "",
@@ -83,9 +83,7 @@ const PROJECTS = {
       },
     ],
   },
-  // Gallery: .MOV in <video> works best in Safari; Chrome/Firefox often need H.264 .mp4. For widest support use
-  // { type: 'embed', src: 'https://www.youtube.com/embed/VIDEO_ID', ... } with an unlisted upload, or transcode (e.g. ffmpeg).
-  // YouTube: chromeless IFrame API (tap video to play). Use youtubeShowControls: true for native YouTube UI.
+
   "concert-archive": {
     title: "Photo_booth.EXE",
     sections: [
@@ -103,7 +101,6 @@ const PROJECTS = {
       { type: "image", src: "images/concerts/IMG_6898.jpeg" },
       { type: "image", src: "images/concerts/IMG_6922.jpeg" },
       { type: "image", src: "images/concerts/IMG_6972.jpeg" },
-      // { type: 'video', src: 'images/concerts/100_1273.MOV', alt: 'Show clip', caption: ' ' },
     ],
   },
   "more-work": {
@@ -141,15 +138,11 @@ const PROJECTS = {
         blocks: [{}],
       },
       {
-        heading: "Canary",
-        body: "Built a real-time mine hazard detection system with Raspberry Pi, gas sensors, and depth cameras. Won 3rd in Social Impact and 4th in Hardware at YHack out of 700+ participants.",
-        bullets: [
-          "Devpost: https://devpost.com/software/canary-axf7o2",
-          "Github: https://github.com/tastychez/Canary/tree/main",
-        ],
+        heading: "5-Stage Pipelined RISC-V Processor (TinyRV1)",
+        body: "Architected a 5-stage pipelined RISC-V processor in Verilog, implementing full forwarding, hazard detection, and branch prediction with a branch target buffer; validated timing and control flow end-to-end in ModelSim and on a Cyclone V FPGA.",
         image: {
-          src: "images/rcyaon/gallery.jpg",
-          alt: "Canary project preview",
+          src: "images/rv1.png",
+          alt: "Processor preview",
         },
       },
       {
@@ -164,34 +157,25 @@ const PROJECTS = {
         }
       },
       {
-        heading: "5-Stage Pipelined RISC-V Processor (TinyRV1)",
-        body: "Architected a 5-stage pipelined RISC-V processor in Verilog, implementing full forwarding, hazard detection, and branch prediction with a branch target buffer; validated timing and control flow end-to-end in ModelSim and on a Cyclone V FPGA.",
-        image: {
-          src: "images/rv1.png",
-          alt: "Processor preview",
-        },
-      },
-      {
         variant: "panel",
         panelHeadingStyle: "band",
         treeBlocks: true,
         heading: `‎ Awards`,
         blocks: [
           {
-            heading: "BEST Robotics",
-            body: "Served as president of my high school robotics team. Led the team to two 3rd-place national finishes, earned awards including Best Engineering Notebook, Best Exhibit, 2nd Best Programming, and MATLAB Challenge Finalist.",
-          },
-          {
             heading: "LyondellBasell Cybersecurity Challenge National Winner",
-            body: "Awarded $1,000. Used Burp Suite, Wireshark, Nmap, Metasploit, and SQLmap.",
+            body: "Awarded $1,000. Solved CTF-style problems with Burp Suite, Wireshark, Nmap, Metasploit, and SQLmap.",
           },
           {
             heading:
               "Most Nostalgic Hack at hack club's leadership Summit in sf",
           },
           {
-            heading: "...",
-            body: "More on https://www.linkedin.com/in/lena-conde-araujo/details/honors/",
+            heading: "Societal Impact and Hardware Winner at YHack",
+            bullets: [
+              "Built Canary, a real-time mine hazard detection system with Raspberry Pi, gas sensors, and depth cameras. 3rd in Societal Impact and 4th in Hardware out of 700+ participants.",
+              "Devpost: https://devpost.com/software/canary-axf7o2"
+            ],
           },
         ],
       },
@@ -721,23 +705,33 @@ function renderProjectPanelTreeBlocks(blocks) {
     .map((b, i) => {
       const isLast = i === filtered.length - 1;
       const branchChar = isLast ? "\u2514\u2500\u2500 " : "\u251c\u2500\u2500 ";
-      const hasBody = b.body && String(b.body).trim();
+      const lines = [];
+      if (b.body && String(b.body).trim()) lines.push(String(b.body).trim());
+      if (b.bullets && b.bullets.length > 0) {
+        b.bullets.forEach((item) => {
+          if (item && String(item).trim()) lines.push(String(item).trim());
+        });
+      }
       let html =
         `<div class="project-modal__tree-row">` +
         `<span class="project-modal__tree-tc">${branchChar}</span>` +
         `<span class="project-modal__tree-ht">${escapeHtml(b.heading)}</span>` +
         `</div>`;
-      if (hasBody) {
-        const pipeClass = isLast
+      lines.forEach((line, lineIndex) => {
+        const isLastLine = lineIndex === lines.length - 1;
+        const hidePipe = lineIndex === 0 && lines.length > 1;
+        const pipeClass = hidePipe
           ? "project-modal__tree-pipe project-modal__tree-pipe--last"
-          : "project-modal__tree-pipe";
+          : isLast && isLastLine
+            ? "project-modal__tree-pipe project-modal__tree-pipe--last"
+            : "project-modal__tree-pipe";
         html +=
           `<div class="project-modal__tree-row">` +
           `<span class="${pipeClass}"></span>` +
           `<span class="project-modal__tree-tc">  \u2514\u2500\u2500 </span>` +
-          `<p>${linkifyText(b.body)}</p>` +
+          `<p>${linkifyText(line)}</p>` +
           `</div>`;
-      }
+      });
       return html;
     })
     .join("");
@@ -854,116 +848,6 @@ function escapeAttr(str) {
     .replace(/</g, "&lt;");
 }
 
-/**
- * Normalize watch/short URLs to /embed/ and ensure YouTube can verify the embed (Error 153 fix).
- * @param {string} src
- * @returns {string}
- */
-function normalizeYouTubeEmbedSrc(src) {
-  if (!src || typeof src !== "string") return src;
-  try {
-    const u = new URL(src.trim(), window.location.href);
-    const host = u.hostname.replace(/^www\./, "");
-    if (host === "youtu.be" && u.pathname.length > 1) {
-      const id = u.pathname.slice(1).split(/[/?#]/)[0];
-      if (id) return `https://www.youtube.com/embed/${id}`;
-    }
-    if (host === "youtube.com" || host === "youtube-nocookie.com") {
-      if (u.pathname.startsWith("/embed/")) {
-        return u.toString();
-      }
-      if (u.pathname === "/watch" && u.searchParams.get("v")) {
-        return `https://www.youtube.com/embed/${u.searchParams.get("v")}`;
-      }
-      if (u.pathname.startsWith("/shorts/")) {
-        const id = u.pathname.replace("/shorts/", "").split(/[/?#]/)[0];
-        if (id) return `https://www.youtube.com/embed/${id}`;
-      }
-    }
-  } catch (_) {
-    /* keep original */
-  }
-  return src;
-}
-
-/**
- * Apply YouTube iframe parameters. By default hides most on-player chrome (controls=0).
- * Set youtubeShowControls: true on the gallery item for the normal YouTube UI.
- * Autoplay requires mute=1 in modern browsers.
- * @param {string} url
- * @param {ProjectGalleryItem} item
- * @returns {string}
- */
-function applyYouTubeEmbedParams(url, item) {
-  const base = normalizeYouTubeEmbedSrc(url);
-  let u;
-  try {
-    u = new URL(base);
-  } catch {
-    return base;
-  }
-  const host = u.hostname.replace(/^www\./, "");
-  if (host !== "youtube.com" && host !== "youtube-nocookie.com") {
-    return base;
-  }
-  if (!u.pathname.startsWith("/embed/")) {
-    return base;
-  }
-
-  const showControls = item.youtubeShowControls === true;
-  if (!showControls) {
-    u.searchParams.set("controls", "0");
-    u.searchParams.set("modestbranding", "1");
-    u.searchParams.set("playsinline", "1");
-    u.searchParams.set("rel", "0");
-    u.searchParams.set("iv_load_policy", "3");
-  }
-
-  if (item.youtubeAutoplay === true) {
-    u.searchParams.set("autoplay", "1");
-    u.searchParams.set("mute", "1");
-  }
-
-  const idMatch = u.pathname.match(/^\/embed\/([^/?]+)/);
-  const videoId = idMatch ? idMatch[1] : null;
-  if (item.youtubeLoop === true && videoId) {
-    u.searchParams.set("loop", "1");
-    u.searchParams.set("playlist", videoId);
-  }
-
-  return u.toString();
-}
-
-/** @param {string} src */
-function extractYouTubeVideoIdFromSrc(src) {
-  const norm = normalizeYouTubeEmbedSrc(src);
-  const m = norm.match(/\/embed\/([^/?&]+)/);
-  return m ? m[1] : null;
-}
-
-let _ytIframeApiPromise = null;
-
-function loadYouTubeIframeAPI() {
-  if (typeof window === "undefined") return Promise.resolve();
-  if (window.YT && window.YT.Player) return Promise.resolve();
-  if (_ytIframeApiPromise) return _ytIframeApiPromise;
-  _ytIframeApiPromise = new Promise((resolve) => {
-    const tag = document.createElement("script");
-    tag.async = true;
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName("script")[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    const prior = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = function () {
-      try {
-        if (typeof prior === "function") prior();
-      } catch (_) {}
-      resolve();
-    };
-  });
-  return _ytIframeApiPromise;
-}
 
 /** @param {HTMLElement} modal */
 function destroyGalleryYtPlayer(modal) {

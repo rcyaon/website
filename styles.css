@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
-
 .svg-defs {
     position: absolute;
     width: 0;
@@ -16,6 +14,7 @@
     --window-min-width: 220px;
     --window-min-height: 160px;
     --resize-hit: 8px;
+    --font-mono: "IBM Plex Mono", "Courier New", monospace;
 }
 
 * {
@@ -25,12 +24,25 @@
 }
 
 body {
-    font-family: "IBM Plex Mono", "Courier New", monospace;
+    font-family: var(--font-mono);
     background: #d9d9d9;
     overflow: hidden;
     height: 100vh;
     position: relative;
     color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-rendering: geometricPrecision;
+}
+
+.desktop,
+.window-content,
+.project-modal__body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-rendering: geometricPrecision;
 }
 
 .desktop {
@@ -1056,7 +1068,7 @@ body {
     top: 350px;
     left: 170px;
     width: 620px;
-    height: 440px!important;
+    height: 460px!important;
     z-index: 50;
 }
 
@@ -1064,7 +1076,6 @@ body {
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 30px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #1a1a1a;
     letter-spacing: -0.5px;
 }
@@ -1075,7 +1086,7 @@ body {
 
 .profile-section {
     /* Slightly larger than 120px so text column can align top/bottom with the photo */
-    --profile-photo-size: min(144px, 40vw);
+    --profile-photo-size: min(135px, 40vw);
     display: grid;
     grid-template-columns: var(--profile-photo-size) 1fr;
     gap: 20px;
@@ -1234,6 +1245,7 @@ body {
 }
 
 .work-entry__title {
+    font-family: "IBM Plex Mono", monospace;
     font-weight: 600;
     margin-bottom: 4px;
     font-size: 12px;
@@ -1283,11 +1295,12 @@ body {
 .contact-content {
     font-size: 12px;
     line-height: 1.85;
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "IBM Plex Mono", monospace; 
     color: #1a1a1a;
 }
 
 .contact-item {
+    font-family: "IBM Plex Mono", monospace;
     margin-bottom: 7px;
     word-break: break-word;
 }
@@ -1318,12 +1331,13 @@ body {
     top: 370px;
     right: 40px;
     left: auto;
-    width: 270px !important;
-    height: 270px;
+    width: 250px !important;
+    height: 250px!important;
     z-index: 25;
 }
 
 .spotify-content {
+    font-family: "IBM Plex Mono", monospace;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -1332,6 +1346,7 @@ body {
 }
 
 .spotify-label {
+    font-family: "IBM Plex Mono", monospace;
     display: block;
     font-weight: 600;
     margin-bottom: 4px;
@@ -1340,6 +1355,7 @@ body {
 }
 
 .spotify-actions {
+    font-family: "IBM Plex Mono", monospace;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -1385,15 +1401,18 @@ body {
 }
 
 .spotify-track {
+    font-family: "IBM Plex Mono", monospace;
     margin-top: 8px;
     font-weight: 600;
 }
 
 .spotify-artist {
+    font-family: "IBM Plex Mono", monospace;
     margin-top: 2px;
 }
 
 .spotify-link {
+    font-family: "IBM Plex Mono", monospace;
     display: inline-block;
     margin-top: 8px;
 }
