@@ -114,7 +114,7 @@ const PROJECTS = {
         blocks: [
           {
             heading: "Google Code Next",
-            body: "Exploring creative coding and digital music through algorithmic composition and audio synthesis in JavaScript.",
+            body: "Paid to learn to code! Exploring creative coding and digital music through algorithmic composition and audio synthesis in JavaScript taught by Google engineers.",
           },
           {
             heading: "MATLAB Ambassador",
