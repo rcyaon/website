@@ -85,22 +85,26 @@ const PROJECTS = {
   },
 
   "concert-archive": {
-    title: "Photo_booth.EXE",
+    title: "Photo_Viewer.EXE",
     sections: [
       {
         heading: "",
-        body: "A photo dump of some of the concerts I've gone to!",
+        body: "Welcome to my \"setlist,\" a photo dump of some of the concerts I've gone to!",
       },
     ],
 
     gallery: [
-      { type: "image", src: "images/concerts/100_1304.JPG" },
-      { type: "image", src: "images/concerts/100_1272.JPG" },
-      { type: "image", src: "images/concerts/100_1285.JPG" },
-      { type: "image", src: "images/concerts/IMG_6861.jpeg" },
-      { type: "image", src: "images/concerts/IMG_6898.jpeg" },
-      { type: "image", src: "images/concerts/IMG_6922.jpeg" },
-      { type: "image", src: "images/concerts/IMG_6972.jpeg" },
+      { type: "image", src: "images/concerts/100_1304.JPG", caption: "Julie in Buffalo", },
+      { type: "image", src: "images/concerts/100_1272.JPG", caption: "Midrift in Buffalo", },
+      { type: "image", src: "images/concerts/100_1285.JPG", caption: "Julie in Buffalo", },
+      { type: "image", src: "images/concerts/IMG_6861.jpeg", caption: "Julie in Seattle", },
+      { type: "image", src: "images/concerts/IMG_6898.jpeg", caption: "The Marías in Seattle", },
+      { type: "image", src: "images/concerts/IMG_6922.jpeg", caption: "The Marías in Seattle", },
+      { type: "image", src: "images/concerts/IMG_6972.jpeg", caption: "The Marías in Seattle", },
+      { type: "image", src: "images/concerts/IMG_0469.jpeg", caption: "Zzzahara in Houston", },
+      { type: "image", src: "images/concerts/100_0569_Original.jpeg", caption: "Panchiko in Seattle", },
+      { type: "image", src: "images/concerts/IMG_6365.jpeg", caption: "Panchiko in Seattle", },
+      { type: "image", src: "images/concerts/IMG_7449.jpeg", caption: "Fleshwater in Buffalo", },
     ],
   },
   "more-work": {
@@ -234,15 +238,57 @@ function getWindowBox(win) {
   };
 }
 
+function getLayoutMobileMaxPx() {
+  const raw = getComputedStyle(document.documentElement)
+    .getPropertyValue("--layout-mobile-max")
+    .trim();
+  const n = parseInt(raw, 10);
+  return Number.isFinite(n) ? n : 768;
+}
+
+function layoutMobileMediaQuery() {
+  return window.matchMedia(`(max-width: ${getLayoutMobileMaxPx()}px)`);
+}
+
 function useCssFluidWidth() {
-  return window.matchMedia("(max-width: 900px)").matches;
+  return layoutMobileMediaQuery().matches;
 }
 
 function useSingleWindowMobileMode() {
-  return (
-    window.matchMedia("(max-width: 900px)").matches ||
-    window.matchMedia("(hover: none) and (pointer: coarse)").matches
-  );
+  return layoutMobileMediaQuery().matches;
+}
+
+function exitDesktopWindowLayout() {
+  windows().forEach((win) => {
+    if (
+      win.classList.contains("is-closed") ||
+      win.classList.contains("is-minimized")
+    ) {
+      return;
+    }
+    if (win.classList.contains("is-maximized")) {
+      win.classList.remove("is-maximized");
+      restoreBounds(win);
+    }
+    if (!win.style.width) {
+      applyDefaultDimensions(win);
+    }
+    clampWindowToViewport(win);
+  });
+}
+
+/** Toggle mobile tab layout vs free-floating resizable windows. */
+function syncDesktopLayoutMode(preferredWindow = null) {
+  const desktop = document.getElementById("desktop");
+  const mobile = useSingleWindowMobileMode();
+  if (desktop) {
+    desktop.classList.toggle("desktop--mobile", mobile);
+  }
+  if (mobile) {
+    enforceSingleOpenWindowOnMobile(preferredWindow);
+  } else {
+    exitDesktopWindowLayout();
+  }
 }
 
 function enforceSingleOpenWindowOnMobile(preferredWindow = null) {
@@ -359,7 +405,7 @@ function minimizeWindow(win) {
 
 function restoreWindow(win) {
   win.classList.remove("is-closed", "is-minimized");
-  enforceSingleOpenWindowOnMobile(win);
+  syncDesktopLayoutMode(win);
   if (win.classList.contains("is-maximized")) {
     /* keep maximized */
   } else {
@@ -595,7 +641,7 @@ function wireWindowFocus() {
         win.classList.contains("is-minimized")
       )
         return;
-      enforceSingleOpenWindowOnMobile(win);
+      syncDesktopLayoutMode(win);
       bringToFront(win);
       setActiveLauncher(win);
     });
@@ -863,11 +909,13 @@ function renderProjectGalleryBlock() {
     `<div class="project-modal__gallery" role="region" aria-label="Media gallery">` +
     `<div class="project-modal__gallery-stage">` +
     `<button type="button" class="project-modal__gallery-nav project-modal__gallery-nav--prev" data-gallery-prev aria-label="Previous item">‹</button>` +
+    `<div class="project-modal__gallery-center">` +
     `<div class="project-modal__gallery-frame" data-gallery-frame></div>` +
-    `<button type="button" class="project-modal__gallery-nav project-modal__gallery-nav--next" data-gallery-next aria-label="Next item">›</button>` +
-    `</div>` +
     `<p class="project-modal__gallery-counter" data-gallery-counter></p>` +
     `<p class="project-modal__gallery-caption" data-gallery-caption></p>` +
+    `</div>` +
+    `<button type="button" class="project-modal__gallery-nav project-modal__gallery-nav--next" data-gallery-next aria-label="Next item">›</button>` +
+    `</div>` +
     `</div></div>`
   );
 }
@@ -1422,7 +1470,7 @@ function initWindows() {
 }
 
 window.addEventListener("resize", () => {
-  enforceSingleOpenWindowOnMobile();
+  syncDesktopLayoutMode();
   windows().forEach((win) => {
     if (!useCssFluidWidth() && !win.style.width) {
       applyDefaultDimensions(win);
@@ -1435,7 +1483,6 @@ window.addEventListener("resize", () => {
 document.addEventListener("DOMContentLoaded", () => {
   windows().forEach(applyDefaultDimensions);
   const defaultMobileWindow = document.getElementById("notepad");
-  enforceSingleOpenWindowOnMobile(defaultMobileWindow);
   initWindows();
   wireLauncher();
   wireWindowFocus();
@@ -1465,5 +1512,5 @@ document.addEventListener("DOMContentLoaded", () => {
     bringToFront(notepadWin);
     setActiveLauncher(notepadWin);
   }
-  enforceSingleOpenWindowOnMobile(defaultMobileWindow || notepadWin);
+  syncDesktopLayoutMode(defaultMobileWindow || notepadWin);
 });
