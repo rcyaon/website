@@ -1033,9 +1033,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     min-height: 140px;
-    padding: 16px;
+    padding: 10px;
     border: 1px dashed #6f6f6f;
     background: repeating-linear-gradient(
         -45deg,
@@ -1077,10 +1076,10 @@ body {
 
 /* Notepad Window — default stack above other chrome windows; JS bringToFront on load reinforces */
 .notepad-window {
-    top: 350px;
+    top: 340px;
     left: 170px;
     width: 620px;
-    height: 440px!important;
+    height: 445px!important;
     z-index: 50;
 }
 
