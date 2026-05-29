@@ -124,7 +124,7 @@ const PROJECTS = {
   <div class="project-modal__tree-row">
     <span class="project-modal__tree-pipe"></span>
     <span class="project-modal__tree-tc">  &#9492;&#9472;&#9472; </span>
-    <p><a href="https://letterboxd.com/film/mr-klein/" target="_blank" rel="noopener">Mr. Klein</a>, where existentialist dread meets film noir cool (HM: <a href="https://letterboxd.com/film/blackberry/" target="_blank" rel="noopener">Blackberry</a>, <a href="https://letterboxd.com/film/taste-of-cherry/" target="_blank" rel="noopener">Taste of Cherry</a>)
+    <p><a href="https://letterboxd.com/film/mr-klein/" target="_blank" rel="noopener">Mr. Klein</a>, where existentialist dread meets film noir cool. HM: <a href="https://letterboxd.com/film/blackberry/" target="_blank" rel="noopener">Blackberry</a>, <a href="https://letterboxd.com/film/taste-of-cherry/" target="_blank" rel="noopener">Taste of Cherry</a>.
 </p>
   </div>
   <div class="project-modal__tree-row">
@@ -144,7 +144,7 @@ const PROJECTS = {
   <div class="project-modal__tree-row">
     <span class="project-modal__tree-pipe project-modal__tree-pipe--last"></span>
     <span class="project-modal__tree-tc">  &#9492;&#9472;&#9472; </span>
-    <p><a href="https://caroline.bandcamp.com/album/caroline-2" target="_blank" rel="noopener">caroline 2</a> by caroline rewired how I hear music and cracked open a whole world of indie music</p>
+    <p><a href="https://caroline.bandcamp.com/album/caroline-2" target="_blank" rel="noopener">caroline 2</a> by caroline rewired how I hear music and cracked open a whole world of indie music!</p>
   </div>
 </div>`,
       },
