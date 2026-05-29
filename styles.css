@@ -918,7 +918,6 @@ body {
 }
 
 .project-modal__gallery-yt-host iframe {
-    display: block !important;
     width: 100% !important;
     height: 100% !important;
     border: 0;
@@ -930,31 +929,27 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 30px;
-    min-height: 32px;
+    min-width: 10px;
+    min-height: 23px;
     padding: 0 6px;
-    border: 1px solid #6f6f6f;
-    border-radius: 0;
-    background: #f3f3f3;
+    background: transparent;
+    border: none;
     color: #1a1a1a;
     font-family: "IBM Plex Mono", monospace;
     font-size: 14px;
-    font-weight: 600;
     line-height: 1;
     cursor: pointer;
-    box-shadow: none;
-    text-decoration: none;
+    text-decoration: underline;
     user-select: none;
+    transition: color 0.1s;
 }
 
 .project-modal__gallery-nav:hover:not(:disabled) {
-    background: #bfbfbf;
-    color: #1a1a1a;
+    color: #6f6f6f;
 }
 
 .project-modal__gallery-nav:active:not(:disabled) {
-    background: #9a9a9a;
-    color: #1a1a1a;
+    color: #9a9a9a;
 }
 
 .project-modal__gallery-nav:focus-visible {
@@ -965,7 +960,7 @@ body {
 .project-modal__gallery-nav:disabled {
     opacity: 0.35;
     cursor: default;
-    background: #f3f3f3;
+    background: transparent;
 }
 
 /* .project-modal__body p zeros top margin — override for gallery meta rows */
