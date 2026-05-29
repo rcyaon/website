@@ -94,14 +94,14 @@ const PROJECTS = {
       {
         isHtml: true,
         body: `<ul class="project-modal__bullet-list">
-  <li><a href="#" onclick="openProjectModal('favorites'); return false;">My list of favorites</a></li>
+  <li><a href="#" onclick="openProjectModal('favorites'); return false;">List of favorites</a></li>
   <li>Substack
     <ul class="project-modal__sub-bullet-list">
       <li><a href="https://substack.com/@lenaphobia/p-189677998" target="_blank" rel="noopener">The epitome of coolness</a></li>
       <li><a href="https://substack.com/home/post/p-191226474" target="_blank" rel="noopener">Against clarity</a></li>
     </ul>
   </li>
-  <li><a href="#" onclick="openProjectModal('concert-archive'); return false;">Live music</a></li>
+  <li><a href="#" onclick="openProjectModal('concert-archive'); return false;">Photos of live music</a></li>
 </ul>`,
       },
     ],
@@ -112,7 +112,7 @@ const PROJECTS = {
     noMedia: true,
     sections: [
       {
-        body: "A few of my favorites!",
+        body: "echo \"A few of my favorites!\"",
       },
       {
         isHtml: true,
