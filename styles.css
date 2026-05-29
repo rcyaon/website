@@ -605,6 +605,21 @@ body {
     margin-bottom: 0;
 }
 
+/* Hollow-circle sub-bullets (Writing sub-items in setlist) */
+.project-modal__sub-bullet-list {
+    list-style: circle;
+    padding-left: 1.25em;
+    margin: 4px 0 0;
+}
+
+.project-modal__sub-bullet-list li {
+    margin-bottom: 4px;
+}
+
+.project-modal__sub-bullet-list li:last-child {
+    margin-bottom: 0;
+}
+
 .project-modal__media {
     margin-top: 20px;
     padding-top: 16px;
@@ -612,7 +627,7 @@ body {
 }
 
 .project-modal__media--gallery {
-    margin-top: 12px;
+    margin-top: 6px;
     padding-top: 0;
     border-top: none;
     background: transparent;
@@ -812,7 +827,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 6px;
 }
 
 .project-modal__gallery-frame {
@@ -1074,12 +1089,49 @@ body {
     border: 1px solid #b0b0b0;
 }
 
+/* Setlist / Favorites navigation links */
+.favorites-return {
+    margin: 8px 0 0;
+    text-align: left;
+}
+
+.favorites-return a {
+    font-size: 11px;
+    text-decoration: underline;
+    letter-spacing: 0.04em;
+}
+
+/* Allow anchor tags inside tree headings to inherit the heading style */
+.project-modal__tree-ht a {
+    font-weight: inherit;
+    text-transform: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    color: #1a1a1a;
+    text-decoration: underline;
+}
+
+.project-modal__tree-ht a:visited {
+    color: #1a1a1a;
+}
+
+.project-modal__tree-ht a:hover {
+    color: #6f6f6f;
+}
+
+/* Plain (non-uppercase, normal-weight) variant for top-level setlist tree entries */
+.project-modal__tree-ht--plain {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
 /* Notepad Window — default stack above other chrome windows; JS bringToFront on load reinforces */
 .notepad-window {
     top: 340px;
     left: 170px;
     width: 620px;
-    height: 445px!important;
+    height: 445px !important;
     z-index: 50;
 }
 
@@ -1306,7 +1358,7 @@ body {
 .contact-content {
     font-size: 12px;
     line-height: 1.85;
-    font-family: "IBM Plex Mono", monospace; 
+    font-family: "IBM Plex Mono", monospace;
     color: #1a1a1a;
 }
 

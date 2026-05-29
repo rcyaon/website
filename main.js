@@ -24,7 +24,7 @@ const MIN_H = 160;
 /** @type {Record<string, ProjectDetail>} */
 const PROJECTS = {
   "chip-design": {
-    title: "NOTEPAD.EXE\\Chip_design.TXT",
+    title: "Chip_design.TXT — NOTEPAD.EXE",
     images: [
       { src: "images/chip_one.JPG", alt: "Chip design photo 1" },
       { src: "images/chip_two.JPG", alt: "Chip design photo 2" },
@@ -49,7 +49,7 @@ const PROJECTS = {
     ],
   },
   drone: {
-    title: "NOTEPAD.EXE\\Drone_development.TXT",
+    title: "Drone_development.TXT — NOTEPAD.EXE",
     images: [{ src: "images/DylanV2.jpg", alt: "Drone project", fit: "cover" }],
     sections: [
       {
@@ -63,7 +63,7 @@ const PROJECTS = {
     ],
   },
   "brokaw-bandgap-ptat": {
-    title: "NOTEPAD.EXE\\Tiny_Tapeout.TXT",
+    title: "Tiny_Tapeout.TXT — NOTEPAD.EXE",
     images: [{ src: "images/chip.png", alt: "Bandgap design photo 1" }],
     sections: [
       {
@@ -84,28 +84,141 @@ const PROJECTS = {
     ],
   },
 
+  setlist: {
+    title: "SETLIST.TXT — NOTEPAD.EXE",
+    noMedia: true,
+    sections: [
+      {
+        body: 'Here\'s my "setlist," including some things I find awesome, catching live music, and writing about whatever piques my interest.',
+      },
+      {
+        isHtml: true,
+        body: `<ul class="project-modal__bullet-list">
+  <li><a href="#" onclick="openProjectModal('favorites'); return false;">Favorites</a></li>
+  <li>Past writing
+    <ul class="project-modal__sub-bullet-list">
+      <li><a href="https://substack.com/@lenaphobia/p-189677998" target="_blank" rel="noopener">The epitome of coolness</a></li>
+      <li><a href="https://substack.com/home/post/p-191226474" target="_blank" rel="noopener">Against clarity</a></li>
+    </ul>
+  </li>
+  <li><a href="#" onclick="openProjectModal('concert-archive'); return false;">Live music</a></li>
+</ul>`,
+      },
+    ],
+  },
+
+  favorites: {
+    title: "Terminal.EXE",
+    noMedia: true,
+    sections: [
+      {
+        body: "A few of my favorites!",
+      },
+      {
+        isHtml: true,
+        body: `<div class="project-modal__experience-panel-body project-modal__experience-panel-body--tree">
+  <div class="project-modal__tree-row">
+    <span class="project-modal__tree-tc">&#9500;&#9472;&#9472; </span>
+    <span class="project-modal__tree-ht">film</span>
+  </div>
+  <div class="project-modal__tree-row">
+    <span class="project-modal__tree-pipe"></span>
+    <span class="project-modal__tree-tc">  &#9492;&#9472;&#9472; </span>
+    <p><a href="https://letterboxd.com/film/mr-klein/" target="_blank" rel="noopener">Mr. Klein</a>, where existentialist dread meets film noir cool (HM: <a href="https://letterboxd.com/film/blackberry/" target="_blank" rel="noopener">Blackberry</a>, <a href="https://letterboxd.com/film/taste-of-cherry/" target="_blank" rel="noopener">Taste of Cherry</a>)
+</p>
+  </div>
+  <div class="project-modal__tree-row">
+    <span class="project-modal__tree-tc">&#9500;&#9472;&#9472; </span>
+    <span class="project-modal__tree-ht">book</span>
+  </div>
+  <div class="project-modal__tree-row">
+    <span class="project-modal__tree-pipe"></span>
+    <span class="project-modal__tree-tc">  &#9492;&#9472;&#9472; </span>
+    <p>I could never shut up about <a href="https://archive.org/details/heartschoolboysj00deam" target="_blank" rel="noopener">Heart</a> by Edmundo de Amicis, though <a href="https://archive.org/stream/american-psycho-BEE/American%20Psycho%20(Bret%20Easton%20Ellis)%20(z-lib.org)_djvu.txt" target="_blank" rel="noopener">American Psycho</a> by Bret Easton Ellis is a close second. Honestly I'm more of an essays, Greek drama, and short stories (recently finished <a href="https://pmpress.org/index.php?l=product_detail&p=427" target="_blank" rel="noopener">We, the Children of Cats</a>!) person, with some philosophy like Kierkegaard thrown in.
+</p>
+  </div>
+  <div class="project-modal__tree-row">
+    <span class="project-modal__tree-tc">&#9492;&#9472;&#9472; </span>
+    <span class="project-modal__tree-ht">album of 2025</span>
+  </div>
+  <div class="project-modal__tree-row">
+    <span class="project-modal__tree-pipe project-modal__tree-pipe--last"></span>
+    <span class="project-modal__tree-tc">  &#9492;&#9472;&#9472; </span>
+    <p><a href="https://caroline.bandcamp.com/album/caroline-2" target="_blank" rel="noopener">caroline 2</a> by caroline rewired how I hear music and cracked open a whole world of indie music</p>
+  </div>
+</div>`,
+      },
+    ],
+    afterMedia: `<br><p class="favorites-return"><a href="#" onclick="openProjectModal('setlist'); return false;">&#x21B5; Return</a></p>`,
+  },
+
   "concert-archive": {
     title: "Photo_Viewer.EXE",
     sections: [
       {
         heading: "",
-        body: "Welcome to my \"setlist,\" a photo dump of some of the concerts I've gone to!",
+        body: "A photo dump of some of the concerts I've gone to!",
       },
     ],
 
     gallery: [
-      { type: "image", src: "images/concerts/100_1304.JPG", caption: "Julie in Buffalo", },
-      { type: "image", src: "images/concerts/100_1272.JPG", caption: "Midrift in Buffalo", },
-      { type: "image", src: "images/concerts/100_1285.JPG", caption: "Julie in Buffalo", },
-      { type: "image", src: "images/concerts/IMG_6861.jpeg", caption: "Julie in Seattle", },
-      { type: "image", src: "images/concerts/IMG_6898.jpeg", caption: "The Marías in Seattle", },
-      { type: "image", src: "images/concerts/IMG_6922.jpeg", caption: "The Marías in Seattle", },
-      { type: "image", src: "images/concerts/IMG_6972.jpeg", caption: "The Marías in Seattle", },
-      { type: "image", src: "images/concerts/IMG_0469.jpeg", caption: "Zzzahara in Houston", },
-      { type: "image", src: "images/concerts/100_0569_Original.jpeg", caption: "Panchiko in Seattle", },
-      { type: "image", src: "images/concerts/IMG_6365.jpeg", caption: "Panchiko in Seattle", },
-      { type: "image", src: "images/concerts/IMG_7449.jpeg", caption: "Fleshwater in Buffalo", },
+      {
+        type: "image",
+        src: "images/concerts/100_1304.JPG",
+        caption: "Julie in Buffalo",
+      },
+      {
+        type: "image",
+        src: "images/concerts/100_1272.JPG",
+        caption: "Midrift in Buffalo",
+      },
+      {
+        type: "image",
+        src: "images/concerts/100_1285.JPG",
+        caption: "Julie in Buffalo",
+      },
+      {
+        type: "image",
+        src: "images/concerts/IMG_6861.jpeg",
+        caption: "Julie in Seattle",
+      },
+      {
+        type: "image",
+        src: "images/concerts/IMG_6898.jpeg",
+        caption: "The Marías in Seattle",
+      },
+      {
+        type: "image",
+        src: "images/concerts/IMG_6922.jpeg",
+        caption: "The Marías in Seattle",
+      },
+      {
+        type: "image",
+        src: "images/concerts/IMG_6972.jpeg",
+        caption: "The Marías in Seattle",
+      },
+      {
+        type: "image",
+        src: "images/concerts/IMG_0469.jpeg",
+        caption: "Zzzahara in Houston",
+      },
+      {
+        type: "image",
+        src: "images/concerts/100_0569_Original.jpeg",
+        caption: "Panchiko in Seattle",
+      },
+      {
+        type: "image",
+        src: "images/concerts/IMG_6365.jpeg",
+        caption: "Panchiko in Seattle",
+      },
+      {
+        type: "image",
+        src: "images/concerts/IMG_7449.jpeg",
+        caption: "Fleshwater in Buffalo",
+      },
     ],
+    afterMedia: `<p class="favorites-return"><a href="#" onclick="openProjectModal('setlist'); return false;">&#x21B5; Return</a></p>`,
   },
   "more-work": {
     title: "TERMINAL.EXE",
@@ -125,8 +238,9 @@ const PROJECTS = {
             body: "Paid work delivering hands-on MATLAB and Simulink workshops while evaluating pre-release features.",
           },
           {
-            heading: "MIT Introduction to Technology, Engineering, and Science (MITES)",
-            body: "Built autonomous robots and explored the intersection of biomimicry and train physics. Now an ambassador helping grow my favorite network! "
+            heading:
+              "MIT Introduction to Technology, Engineering, and Science (MITES)",
+            body: "Built autonomous robots and explored the intersection of biomimicry and train physics. Now an ambassador helping grow my favorite network! ",
           },
           {
             heading:
@@ -152,12 +266,10 @@ const PROJECTS = {
       {
         heading: "Organizing Hackathons",
         body: "Introduced K-12 students to the world of hardware through beginner-friendly workshops covering PCB design, JavaScript-based drawing, and CNC machines, hosted at FUTO in Austin and Amazon in Seattle.",
-        bullets: [
-          "More at: https://daysofservice.hackclub.com/",
-        ],
+        bullets: ["More at: https://daysofservice.hackclub.com/"],
         image: {
           src: "images/blot.JPG",
-        }
+        },
       },
       {
         variant: "panel",
@@ -177,7 +289,7 @@ const PROJECTS = {
             heading: "Societal Impact and Hardware Winner at YHack",
             bullets: [
               "Built Canary, a real-time mine hazard detection system with Raspberry Pi, gas sensors, and depth cameras. 3rd in Societal Impact and 4th in Hardware out of 700+ participants.",
-              "Devpost: https://devpost.com/software/canary-axf7o2"
+              "Devpost: https://devpost.com/software/canary-axf7o2",
             ],
           },
         ],
@@ -663,6 +775,13 @@ function openProjectModal(projectId) {
   const panel = modal?.querySelector(".project-modal__panel");
   if (!data || !modal || !titleEl || !bodyEl) return;
 
+  // Clean up any previous gallery state before replacing content.
+  destroyGalleryYtPlayer(modal);
+  if (modal._galleryKeydown) {
+    document.removeEventListener("keydown", modal._galleryKeydown);
+    delete modal._galleryKeydown;
+  }
+
   if (panel) {
     if (data.gallery && data.gallery.length > 0)
       panel.classList.add("project-modal__panel--gallery");
@@ -701,7 +820,8 @@ function openProjectModal(projectId) {
         : data.gallery && data.gallery.length > 0
           ? renderProjectGalleryBlock()
           : renderProjectImageBlock(data);
-    bodyEl.innerHTML = sectionsHtml + mediaHtml;
+    const afterMediaHtml = data.afterMedia ? data.afterMedia : "";
+    bodyEl.innerHTML = sectionsHtml + mediaHtml + afterMediaHtml;
   }
 
   bodyEl.classList.toggle(
@@ -714,6 +834,7 @@ function openProjectModal(projectId) {
     if (galleryRoot) wireProjectGallery(modal, galleryRoot, data.gallery);
   }
 
+  bodyEl.scrollTop = 0;
   modal.hidden = false;
   document.body.classList.add("modal-open");
 
@@ -892,7 +1013,6 @@ function escapeAttr(str) {
     .replace(/"/g, "&quot;")
     .replace(/</g, "&lt;");
 }
-
 
 /** @param {HTMLElement} modal */
 function destroyGalleryYtPlayer(modal) {
