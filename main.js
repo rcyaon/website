@@ -93,16 +93,20 @@ const PROJECTS = {
       },
       {
         isHtml: true,
-        body: `<ul class="project-modal__bullet-list">
-  <li><a href="#" onclick="openProjectModal('favorites'); return false;">List of favorites</a></li>
-  <li>Substack
-    <ul class="project-modal__sub-bullet-list">
-      <li><a href="https://substack.com/@lenaphobia/p-189677998" target="_blank" rel="noopener">The epitome of coolness</a></li>
-      <li><a href="https://substack.com/home/post/p-191226474" target="_blank" rel="noopener">Against clarity</a></li>
-    </ul>
-  </li>
-  <li><a href="#" onclick="openProjectModal('concert-archive'); return false;">Photos of live music</a></li>
-</ul>`,
+        body: `
+  <ul class="project-modal__bullet-list">
+    <li><a href="#" onclick="openProjectModal('favorites'); return false;">A few favorites</a></li>
+    <li><a href="#" onclick="openProjectModal('concert-archive'); return false;">Photos from concerts</a></li>
+    <li>Substack
+      <ul class="project-modal__sub-bullet-list">
+        <li><a href="https://substack.com/@lenaphobia/p-189677998" target="_blank" rel="noopener">The epitome of coolness &#x2197;</a></li>
+        <li><a href="https://substack.com/@lenaphobia/p-191226474" target="_blank" rel="noopener">Against clarity &#x2197;</a></li>
+      </ul>
+    </li>
+    <li>What I've been listening to recently</li>
+  </ul>
+  <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0FKQQUd2QccZ1HWQtIQ62j?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+`,
       },
     ],
   },
@@ -124,27 +128,27 @@ const PROJECTS = {
   <div class="project-modal__tree-row">
     <span class="project-modal__tree-pipe"></span>
     <span class="project-modal__tree-tc">  &#9492;&#9472;&#9472; </span>
-    <p><a href="https://letterboxd.com/film/mr-klein/" target="_blank" rel="noopener">Mr. Klein</a>, where existentialist dread meets film noir cool. HM: <a href="https://letterboxd.com/film/blackberry/" target="_blank" rel="noopener">Blackberry</a>, <a href="https://letterboxd.com/film/taste-of-cherry/" target="_blank" rel="noopener">Taste of Cherry</a>.
+    <p><a href="https://letterboxd.com/film/mr-klein/" target="_blank" rel="noopener">Mr. Klein</a> is a blend of existentialist dread and film noir cool. Simply the most astonishing themes and sights in cinema. HM: <a href="https://letterboxd.com/film/blackberry/" target="_blank" rel="noopener">Blackberry</a>, <a href="https://letterboxd.com/film/taste-of-cherry/" target="_blank" rel="noopener">Taste of Cherry</a>.
 </p>
   </div>
   <div class="project-modal__tree-row">
     <span class="project-modal__tree-tc">&#9500;&#9472;&#9472; </span>
-    <span class="project-modal__tree-ht">book</span>
+    <span class="project-modal__tree-ht">books</span>
   </div>
   <div class="project-modal__tree-row">
     <span class="project-modal__tree-pipe"></span>
     <span class="project-modal__tree-tc">  &#9492;&#9472;&#9472; </span>
-    <p>I could never shut up about <a href="https://archive.org/details/heartschoolboysj00deam" target="_blank" rel="noopener">Heart</a> by Edmundo de Amicis, though <a href="https://archive.org/stream/american-psycho-BEE/American%20Psycho%20(Bret%20Easton%20Ellis)%20(z-lib.org)_djvu.txt" target="_blank" rel="noopener">American Psycho</a> by Bret Easton Ellis is a close second. Honestly I'm more of an essays, Greek drama, and short stories (recently finished <a href="https://pmpress.org/index.php?l=product_detail&p=427" target="_blank" rel="noopener">We, the Children of Cats</a>!) person, with some philosophy like Kierkegaard thrown in.
+    <p>I could never shut up about <a href="https://archive.org/details/heartschoolboysj00deam" target="_blank" rel="noopener">Heart</a> by Edmundo de Amicis, though <a href="https://archive.org/stream/american-psycho-BEE/American%20Psycho%20(Bret%20Easton%20Ellis)%20(z-lib.org)_djvu.txt" target="_blank" rel="noopener">American Psycho</a> by Bret Easton Ellis is a close second. Honestly, I lean more toward essays, Greek drama, and short stories — I recently finished <a href="https://pmpress.org/index.php?l=product_detail&p=427" target="_blank" rel="noopener">We, the Children of Cats</a> — with some philosophy like Kierkegaard sprinkled in.
 </p>
   </div>
   <div class="project-modal__tree-row">
     <span class="project-modal__tree-tc">&#9492;&#9472;&#9472; </span>
-    <span class="project-modal__tree-ht">album of 2025</span>
+    <span class="project-modal__tree-ht">music album of 2025</span>
   </div>
   <div class="project-modal__tree-row">
     <span class="project-modal__tree-pipe project-modal__tree-pipe--last"></span>
     <span class="project-modal__tree-tc">  &#9492;&#9472;&#9472; </span>
-    <p><a href="https://caroline.bandcamp.com/album/caroline-2" target="_blank" rel="noopener">caroline 2</a> by caroline rewired how I hear music and cracked open a whole world of indie music!</p>
+    <p><a href="https://caroline.bandcamp.com/album/caroline-2" target="_blank" rel="noopener">caroline 2</a> by caroline rewired how I approach listening to music!</p>
   </div>
 </div>`,
       },
