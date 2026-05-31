@@ -132,6 +132,12 @@ const PROJECTS = {
 </p>
   </div>
   <div class="project-modal__tree-row">
+    <span class="project-modal__tree-pipe"></span>
+    <span class="project-modal__tree-tc">  &#9492;&#9472;&#9472; </span>
+    <p>My favorite director is Kiarostami!
+</p>
+  </div>
+  <div class="project-modal__tree-row">
     <span class="project-modal__tree-tc">&#9500;&#9472;&#9472; </span>
     <span class="project-modal__tree-ht">books</span>
   </div>
