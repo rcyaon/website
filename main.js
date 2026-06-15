@@ -239,7 +239,7 @@ const PROJECTS = {
         blocks: [
           {
             heading: "Girls Into VC externship",
-            body: "Externed with the CEO of Upskill, did market research and helped move real client hiring work forward.",
+            body: "Externed with the CEO of upskill (\"the horizontal people-search layer for agents\"), did market research and helped move real client hiring work forward.",
           },
           {
             heading: "Google Code Next",
