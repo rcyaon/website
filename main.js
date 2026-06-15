@@ -99,13 +99,11 @@ const PROJECTS = {
     <li><a href="#" onclick="openProjectModal('concert-archive'); return false;">Photos from concerts</a></li>
     <li>Substack
       <ul class="project-modal__sub-bullet-list">
-        <li><a href="https://substack.com/@lenaphobia/p-189677998" target="_blank" rel="noopener">The epitome of coolness &#x2197;</a></li>
-        <li><a href="https://substack.com/@lenaphobia/p-191226474" target="_blank" rel="noopener">Against clarity &#x2197;</a></li>
+        <li><a href="https://substack.com/@lenaphobia/p-189677998" target="_blank" rel="noopener">\"The epitome of coolness\"</a></li>
+        <li><a href="https://substack.com/@lenaphobia/p-191226474" target="_blank" rel="noopener">\"Against clarity\"</a></li>
       </ul>
     </li>
-    <li>What I've been listening to recently</li>
   </ul>
-  <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0FKQQUd2QccZ1HWQtIQ62j?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 `,
       },
     ],
@@ -239,6 +237,10 @@ const PROJECTS = {
         treeBlocks: true,
         heading: "‎ Programs",
         blocks: [
+          {
+            heading: "Girls Into VC externship",
+            body: "Externed with the CEO of Upskill, did market research and helped move real client hiring work forward.",
+          },
           {
             heading: "Google Code Next",
             body: "Paid to learn to code! Exploring creative coding and digital music through algorithmic composition and audio synthesis in JavaScript taught by Google engineers.",
