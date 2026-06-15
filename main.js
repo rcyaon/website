@@ -77,8 +77,8 @@ const PROJECTS = {
       {
         heading: "Links",
         bullets: [
-          "GitHub: https://github.com/rcyaon/bandgap-ptat",
-          "GDS viewer: https://rcyaon.github.io/bandgap-ptat/ ",
+          "GitHub: github.com/rcyaon/brokaw-bandgap",
+          "GDS viewer: rcyaon.github.io/brokaw-bandgap/ ",
         ],
       },
     ],
