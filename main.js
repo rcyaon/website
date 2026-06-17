@@ -131,7 +131,6 @@ const PROJECTS = {
 <p>Matt Johnson, Blackberry</p>
 <img src="https://i.insider.com/6413370d5f4f54001919e790?width=700" width="200">
 <br>
-<br>
 
 <h3>Music</h3>
 
