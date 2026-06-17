@@ -152,7 +152,7 @@ const PROJECTS = {
 <img src ="https://cdn.sonemic.net/i/600/w/a21a436204b531f720db6eccb32379a4/10901440/what-is-your-name-the-now-now-and-never-Cover-Art.jpg" width="200" height="200"> 
 <br>
 
-<p>The Orchestra (For Now), Plan 76 (Not on label)</p>
+<p>The Orchestra (For Now), Plan 76</p>
 <img src="https://cdn.sonemic.net/i/600/w/365797ae36be85200652e048f56c1c5d/13719532/the-orchestra-for-now-plan-76-Cover-Art.jpg" width="200" height="200"> 
 <br>
 
