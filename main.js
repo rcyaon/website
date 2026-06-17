@@ -97,12 +97,7 @@ const PROJECTS = {
   <ul class="project-modal__bullet-list">
     <li><a href="#" onclick="openProjectModal('favorites'); return false;">A few favorites</a></li>
     <li><a href="#" onclick="openProjectModal('concert-archive'); return false;">Photos from concerts</a></li>
-    <li>Substack posts
-      <ul class="project-modal__sub-bullet-list">
-        <li><a href="https://substack.com/@lenaphobia/p-189677998" target="_blank" rel="noopener">\"The epitome of coolness\"</a></li>
-        <li><a href="https://substack.com/@lenaphobia/p-191226474" target="_blank" rel="noopener">\"Against clarity\"</a></li>
-      </ul>
-    </li>
+    <li><a href="https://substack.com/@lenaphobia/p-189677998" target="_blank" rel="noopener">Substack</a></li>
   </ul>
 `,
       },
