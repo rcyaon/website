@@ -118,43 +118,62 @@ const PROJECTS = {
       },
       {
         isHtml: true,
-        body: `<div class="project-modal__experience-panel-body project-modal__experience-panel-body--tree">
-  <div class="project-modal__tree-row">
-    <span class="project-modal__tree-tc">&#9500;&#9472;&#9472; </span>
-    <span class="project-modal__tree-ht">film</span>
-  </div>
-  <div class="project-modal__tree-row">
-    <span class="project-modal__tree-pipe"></span>
-    <span class="project-modal__tree-tc">  &#9492;&#9472;&#9472; </span>
-    <p><a href="https://letterboxd.com/film/mr-klein/" target="_blank" rel="noopener">Mr. Klein</a> is a blend of existentialist dread and film noir cool. Simply the most astonishing themes and sights in cinema. HM: <a href="https://letterboxd.com/film/blackberry/" target="_blank" rel="noopener">Blackberry</a>, <a href="https://letterboxd.com/film/taste-of-cherry/" target="_blank" rel="noopener">Taste of Cherry</a>.
-</p>
-  </div>
-  <div class="project-modal__tree-row">
-    <span class="project-modal__tree-pipe"></span>
-    <span class="project-modal__tree-tc">  &#9492;&#9472;&#9472; </span>
-    <p>My favorite director is Kiarostami!
-</p>
-  </div>
-  <div class="project-modal__tree-row">
-    <span class="project-modal__tree-tc">&#9500;&#9472;&#9472; </span>
-    <span class="project-modal__tree-ht">books</span>
-  </div>
-  <div class="project-modal__tree-row">
-    <span class="project-modal__tree-pipe"></span>
-    <span class="project-modal__tree-tc">  &#9492;&#9472;&#9472; </span>
-    <p>I could never shut up about <a href="https://archive.org/details/heartschoolboysj00deam" target="_blank" rel="noopener">Heart</a> by Edmundo de Amicis, though <a href="https://archive.org/stream/american-psycho-BEE/American%20Psycho%20(Bret%20Easton%20Ellis)%20(z-lib.org)_djvu.txt" target="_blank" rel="noopener">American Psycho</a> by Bret Easton Ellis is a close second. Honestly, I lean more toward essays, Greek drama, and short stories — I recently finished <a href="https://pmpress.org/index.php?l=product_detail&p=427" target="_blank" rel="noopener">We, the Children of Cats</a> — with some philosophy like Kierkegaard sprinkled in.
-</p>
-  </div>
-  <div class="project-modal__tree-row">
-    <span class="project-modal__tree-tc">&#9492;&#9472;&#9472; </span>
-    <span class="project-modal__tree-ht">music album of 2025</span>
-  </div>
-  <div class="project-modal__tree-row">
-    <span class="project-modal__tree-pipe project-modal__tree-pipe--last"></span>
-    <span class="project-modal__tree-tc">  &#9492;&#9472;&#9472; </span>
-    <p><a href="https://caroline.bandcamp.com/album/caroline-2" target="_blank" rel="noopener">caroline 2</a> by caroline rewired how I approach listening to music!</p>
-  </div>
-</div>`,
+        body: `<h3>Film</h3>
+<break><p>(in no order)</p>
+<break>
+
+<p>Matt Johnson, Blackberry</p>
+<img src=”https://i.insider.com/6413370d5f4f54001919e790?width=700”>
+<break>
+
+<p>Joseph Losey, Mr. Klein</p>
+<img src=”https://criterion-production.s3.amazonaws.com/carousel-files/9PKdE5EHSiVAZekr3z4As2CdNlV7Enu5SWDZgoPm.jpeg” height=”150”> 
+<break>
+
+<p>Abbas Kiarostami, Taste of Cherry</p>
+<img src=”https://d1nslcd7m2225b.cloudfront.net/Pictures/1024x536/4/7/1/1231471_taste-of-cherry-still.jpg” height=”150”>
+<break>
+
+<p>Ken Loach, Kes</p>
+<img src=”https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS53CcnHsUQzDJWp05O7_KhDtGPdBU5v9xFNQ4iN3SsUd-RJ65AsHXu_4l&s=10” height=”150”>
+<break>
+
+<p>Víctor Erice, Close Your Eyes</p>
+<img src =”https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfJcrvyp52Nvo0MTFA9J4uwa7N2LwkIt8OegQsB7_WQfqF4N5GvB6WubU&s=10” height=”150”>
+<break>
+<break>
+
+<h3>Music</h3>
+<break><p>(in no order)</p>
+<break>
+
+<p>caroline, caroline 2 (Rough Trade)</p>
+<img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200"> 
+<break>
+
+<p>the now now and never, what is your name? (Reasonable)</p>
+<img src =”https://cdn.sonemic.net/i/600/w/a21a436204b531f720db6eccb32379a4/10901440/what-is-your-name-the-now-now-and-never-Cover-Art.jpg" width="200" height="200"> 
+<break>
+
+<p>The Orchestra (For Now), Plan 76 (Not on label)</p>
+<img src="https://cdn.sonemic.net/i/600/w/365797ae36be85200652e048f56c1c5d/13719532/the-orchestra-for-now-plan-76-Cover-Art.jpg" width="200" height="200"> 
+<break>
+
+<p>Soundtracks for the blind, Swans (Young God)</p>
+<img src="https://cdn.sonemic.net/i/600/w/a52a0ae9fd7bd2bee6439908d8a27610/14420516/swans-soundtracks-for-the-blind-Cover-Art.jpg" width="200" height="200"> 
+<break>
+
+<p>Schlagenheim, Black Midi (Rough Trade)</p>
+<img src="https://cdn.sonemic.net/i/600/w/73aed220219cef1ff8dfb8afecef5288/8249847/black-midi-schlagenheim-Cover-Art.jpg" width="200" height="200">  
+<break>
+
+<p>DJ Set, Mouseatouille (Remote Control)</p>
+<img src="https://cdn.sonemic.net/i/600/w/18387d776a3a2fdb1f2a1024a4aafb69/13559109/mouseatouille-dj-set-Cover-Art.jpg" width="200" height="200">  
+<break>
+
+<p>Inferno, Boards of Canada (Warp)</p>
+<img src="https://cdn.sonemic.net/i/600/w/64b6056c5b5cec179f128b508a372529/14532480/boards-of-canada-inferno-Cover-Art.jpg" width="200" height="200">  
+        `,
       },
     ],
     afterMedia: `<br><p class="favorites-return"><a href="#" onclick="openProjectModal('setlist'); return false;">&#x21B5; Return</a></p>`,
