@@ -110,11 +110,8 @@ const PROJECTS = {
     sections: [
       {
         isHtml: true,
-        body: `
+        body: `<p>In no order:</p>
         <h3>Film</h3>
-<p>(in no order)</p>
-
-
 <p>Víctor Erice, Close Your Eyes</p>
 <img src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfJcrvyp52Nvo0MTFA9J4uwa7N2LwkIt8OegQsB7_WQfqF4N5GvB6WubU&s=10" width="200">
 <br>
@@ -136,8 +133,7 @@ const PROJECTS = {
 <br>
 <br>
 
-<h3>Music</h3><p>(in no order)</p>
-<br>
+<h3>Music</h3>
 
 <p>caroline, caroline 2 (Rough Trade)</p>
 <img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200"> 
@@ -159,7 +155,7 @@ const PROJECTS = {
 <img src="https://cdn.sonemic.net/i/600/w/18387d776a3a2fdb1f2a1024a4aafb69/13559109/mouseatouille-dj-set-Cover-Art.jpg" width="200" height="200">  
 <br>
 
-<p>The Orchestra (For Now), Plan 76 (Not on label)</p>
+<p>The Orchestra (For Now), Plan 76</p>
 <img src="https://cdn.sonemic.net/i/600/w/365797ae36be85200652e048f56c1c5d/13719532/the-orchestra-for-now-plan-76-Cover-Art.jpg" width="200" height="200"> 
 <br>
 
