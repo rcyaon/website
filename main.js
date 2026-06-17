@@ -110,7 +110,7 @@ const PROJECTS = {
     sections: [
       {
         isHtml: true,
-        body: `<p>In no order:</p>
+        body: `<p><i>(In no order)</i></p>
         <h3>Film</h3>
 <p>Víctor Erice, Close Your Eyes</p>
 <img src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfJcrvyp52Nvo0MTFA9J4uwa7N2LwkIt8OegQsB7_WQfqF4N5GvB6WubU&s=10" width="200">
@@ -139,19 +139,19 @@ const PROJECTS = {
 <img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200"> 
 <br>
 
-<p>the now now and never, what is your name? (Reasonable)</p>
+<p>what is your name?, the now now and never (Reasonable)</p>
 <img src ="https://cdn.sonemic.net/i/600/w/a21a436204b531f720db6eccb32379a4/10901440/what-is-your-name-the-now-now-and-never-Cover-Art.jpg" width="200" height="200"> 
 <br>
 
-<p>Soundtracks for the blind, Swans (Young God)</p>
+<p>Swans, Soundtracks for the blind (Young God)</p>
 <img src="https://cdn.sonemic.net/i/600/w/a52a0ae9fd7bd2bee6439908d8a27610/14420516/swans-soundtracks-for-the-blind-Cover-Art.jpg" width="200" height="200"> 
 <br>
 
-<p>Schlagenheim, Black Midi (Rough Trade)</p>
+<p>Black Midi, Schlagenheim (Rough Trade)</p>
 <img src="https://cdn.sonemic.net/i/600/w/73aed220219cef1ff8dfb8afecef5288/8249847/black-midi-schlagenheim-Cover-Art.jpg" width="200" height="200">  
 <br>
 
-<p>DJ Set, Mouseatouille (Remote Control)</p>
+<p>Mouseatouille, DJ Set (Remote Control)</p>
 <img src="https://cdn.sonemic.net/i/600/w/18387d776a3a2fdb1f2a1024a4aafb69/13559109/mouseatouille-dj-set-Cover-Art.jpg" width="200" height="200">  
 <br>
 
@@ -159,7 +159,7 @@ const PROJECTS = {
 <img src="https://cdn.sonemic.net/i/600/w/365797ae36be85200652e048f56c1c5d/13719532/the-orchestra-for-now-plan-76-Cover-Art.jpg" width="200" height="200"> 
 <br>
 
-<p>Inferno, Boards of Canada (Warp)</p>
+<p>Boards of Canada, Inferno (Warp)</p>
 <img src="https://cdn.sonemic.net/i/600/w/64b6056c5b5cec179f128b508a372529/14532480/boards-of-canada-inferno-Cover-Art.jpg" width="200" height="200">  
 <br>
 `,
