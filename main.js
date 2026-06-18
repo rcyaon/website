@@ -142,7 +142,7 @@ const PROJECTS = {
 <img src ="https://cdn.sonemic.net/i/600/w/a21a436204b531f720db6eccb32379a4/10901440/what-is-your-name-the-now-now-and-never-Cover-Art.jpg" width="200" height="200"> 
 <br>
 
-<p>Swans, Soundtracks for the blind (Young God)</p>
+<p>Swans, Soundtracks For The Blind (Young God)</p>
 <img src="https://cdn.sonemic.net/i/600/w/a52a0ae9fd7bd2bee6439908d8a27610/14420516/swans-soundtracks-for-the-blind-Cover-Art.jpg" width="200" height="200"> 
 <br>
 
