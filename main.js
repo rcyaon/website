@@ -146,7 +146,7 @@ const PROJECTS = {
 <img src="https://cdn.sonemic.net/i/600/w/a52a0ae9fd7bd2bee6439908d8a27610/14420516/swans-soundtracks-for-the-blind-Cover-Art.jpg" width="200" height="200"> 
 <br>
 
-<p>Black Midi, Schlagenheim (Rough Trade)</p>
+<p>black midi, Schlagenheim (Rough Trade)</p>
 <img src="https://cdn.sonemic.net/i/600/w/73aed220219cef1ff8dfb8afecef5288/8249847/black-midi-schlagenheim-Cover-Art.jpg" width="200" height="200">  
 <br>
 
