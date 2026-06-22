@@ -113,45 +113,45 @@ const PROJECTS = {
         body: `<p><i>(In no order)</i></p>
         <h3>Film</h3>
 <p>Víctor Erice, Close Your Eyes</p>
-<img src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfJcrvyp52Nvo0MTFA9J4uwa7N2LwkIt8OegQsB7_WQfqF4N5GvB6WubU&s=10" width="200">
+<img src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfJcrvyp52Nvo0MTFA9J4uwa7N2LwkIt8OegQsB7_WQfqF4N5GvB6WubU&s=10" width="200" style="border: 1px solid #6f6f6f;">
 <br>
 
 <p>Abbas Kiarostami, Taste of Cherry</p>
-<img src="https://d1nslcd7m2225b.cloudfront.net/Pictures/1024x536/4/7/1/1231471_taste-of-cherry-still.jpg" width="200">
+<img src="https://d1nslcd7m2225b.cloudfront.net/Pictures/1024x536/4/7/1/1231471_taste-of-cherry-still.jpg" width="200" style="border: 1px solid #6f6f6f;">
 <br>
 
 <p>Ken Loach, Kes</p>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS53CcnHsUQzDJWp05O7_KhDtGPdBU5v9xFNQ4iN3SsUd-RJ65AsHXu_4l&s=10" width="200">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS53CcnHsUQzDJWp05O7_KhDtGPdBU5v9xFNQ4iN3SsUd-RJ65AsHXu_4l&s=10" width="200" style="border: 1px solid #6f6f6f;">
 <br>
 
 <p>Joseph Losey, Mr. Klein</p>
-<img src="https://criterion-production.s3.amazonaws.com/carousel-files/9PKdE5EHSiVAZekr3z4As2CdNlV7Enu5SWDZgoPm.jpeg" width="200"> 
+<img src="https://criterion-production.s3.amazonaws.com/carousel-files/9PKdE5EHSiVAZekr3z4As2CdNlV7Enu5SWDZgoPm.jpeg" width="200" style="border: 1px solid #6f6f6f;"> 
 <br>
 
 <p>Matt Johnson, Blackberry</p>
-<img src="https://i.insider.com/6413370d5f4f54001919e790?width=700" width="200">
+<img src="https://i.insider.com/6413370d5f4f54001919e790?width=700" width="200" style="border: 1px solid #6f6f6f;">
 <br>
 
 <h3>Music</h3>
 
 <p>caroline, caroline 2 (Rough Trade)</p>
-<img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200"> 
+<img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
 <br>
 
 <p>what is your name?, the now now and never (Reasonable)</p>
-<img src ="https://cdn.sonemic.net/i/600/w/a21a436204b531f720db6eccb32379a4/10901440/what-is-your-name-the-now-now-and-never-Cover-Art.jpg" width="200" height="200"> 
+<img src ="https://cdn.sonemic.net/i/600/w/a21a436204b531f720db6eccb32379a4/10901440/what-is-your-name-the-now-now-and-never-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
 <br>
 
 <p>Whirr / Nothing, SELF-TITLED (Run for Cover)</p>
-<img src="https://cdn.sonemic.net/i/600/w/52ae67d3f290ce49c1e538e5e8bd2889/5443413/whirr-nothing-whirr-nothing-Cover-Art.jpg" width="200" height="200">  
+<img src="https://cdn.sonemic.net/i/600/w/52ae67d3f290ce49c1e538e5e8bd2889/5443413/whirr-nothing-whirr-nothing-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
 
 <p>black midi, Hellfire (Rough Trade)</p>
-<img src="https://cdn.sonemic.net/i/600/w/8810e0cdb30d7bf8b69b23d9462b5c53/9932087/black-midi-hellfire-Cover-Art.jpg" width="200" height="200">  
+<img src="https://cdn.sonemic.net/i/600/w/8810e0cdb30d7bf8b69b23d9462b5c53/9932087/black-midi-hellfire-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
 
 <p>my bloody valentine, loveless (Creation)</p>
-<img src="https://cdn.sonemic.net/i/600/w/47da1d4284997ca321af967068f34d7b/11569981/my-bloody-valentine-loveless-Cover-Art.jpg" width="200" height="200">  
+<img src="https://cdn.sonemic.net/i/600/w/47da1d4284997ca321af967068f34d7b/11569981/my-bloody-valentine-loveless-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
 `,
       },
