@@ -142,24 +142,16 @@ const PROJECTS = {
 <img src ="https://cdn.sonemic.net/i/600/w/a21a436204b531f720db6eccb32379a4/10901440/what-is-your-name-the-now-now-and-never-Cover-Art.jpg" width="200" height="200"> 
 <br>
 
-<p>Swans, Soundtracks For The Blind (Young God)</p>
-<img src="https://cdn.sonemic.net/i/600/w/a52a0ae9fd7bd2bee6439908d8a27610/14420516/swans-soundtracks-for-the-blind-Cover-Art.jpg" width="200" height="200"> 
+<p>Whirr / Nothing, SELF-TITLED (Run for Cover)</p>
+<img src="https://cdn.sonemic.net/i/600/w/52ae67d3f290ce49c1e538e5e8bd2889/5443413/whirr-nothing-whirr-nothing-Cover-Art.jpg" width="200" height="200">  
 <br>
 
 <p>black midi, Schlagenheim (Rough Trade)</p>
 <img src="https://cdn.sonemic.net/i/600/w/73aed220219cef1ff8dfb8afecef5288/8249847/black-midi-schlagenheim-Cover-Art.jpg" width="200" height="200">  
 <br>
 
-<p>Mouseatouille, DJ Set (Remote Control)</p>
-<img src="https://cdn.sonemic.net/i/600/w/18387d776a3a2fdb1f2a1024a4aafb69/13559109/mouseatouille-dj-set-Cover-Art.jpg" width="200" height="200">  
-<br>
-
-<p>The Orchestra (For Now), Plan 76</p>
-<img src="https://cdn.sonemic.net/i/600/w/365797ae36be85200652e048f56c1c5d/13719532/the-orchestra-for-now-plan-76-Cover-Art.jpg" width="200" height="200"> 
-<br>
-
-<p>Boards of Canada, Inferno (Warp)</p>
-<img src="https://cdn.sonemic.net/i/600/w/64b6056c5b5cec179f128b508a372529/14532480/boards-of-canada-inferno-Cover-Art.jpg" width="200" height="200">  
+<p>my bloody valentine, loveless (Creation)</p>
+<img src="https://cdn.sonemic.net/i/600/w/47da1d4284997ca321af967068f34d7b/11569981/my-bloody-valentine-loveless-Cover-Art.jpg" width="200" height="200">  
 <br>
 `,
       },
