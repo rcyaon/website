@@ -142,8 +142,8 @@ const PROJECTS = {
 <img src ="https://cdn.sonemic.net/i/600/w/a21a436204b531f720db6eccb32379a4/10901440/what-is-your-name-the-now-now-and-never-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
 <br>
 
-<p>Whirr / Nothing, SELF-TITLED (Run for Cover)</p>
-<img src="https://cdn.sonemic.net/i/600/w/52ae67d3f290ce49c1e538e5e8bd2889/5443413/whirr-nothing-whirr-nothing-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
+<p>she's green, wisteria (Photo Finish)</p>
+<img src="https://cdn.sonemic.net/i/600/w/1406882e68da33a72be76b2b2fdd96e1/13277208/shes-green-wisteria-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
 
 <p>black midi, Hellfire (Rough Trade)</p>
