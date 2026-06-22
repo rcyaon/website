@@ -146,8 +146,8 @@ const PROJECTS = {
 <img src="https://cdn.sonemic.net/i/600/w/52ae67d3f290ce49c1e538e5e8bd2889/5443413/whirr-nothing-whirr-nothing-Cover-Art.jpg" width="200" height="200">  
 <br>
 
-<p>black midi, Schlagenheim (Rough Trade)</p>
-<img src="https://cdn.sonemic.net/i/600/w/73aed220219cef1ff8dfb8afecef5288/8249847/black-midi-schlagenheim-Cover-Art.jpg" width="200" height="200">  
+<p>black midi, Hellfire (Rough Trade)</p>
+<img src="https://cdn.sonemic.net/i/600/w/8810e0cdb30d7bf8b69b23d9462b5c53/9932087/black-midi-hellfire-Cover-Art.jpg" width="200" height="200">  
 <br>
 
 <p>my bloody valentine, loveless (Creation)</p>
