@@ -117,21 +117,24 @@ const PROJECTS = {
 <img src="https://d1nslcd7m2225b.cloudfront.net/Pictures/1024x536/4/7/1/1231471_taste-of-cherry-still.jpg" width="200" style="border: 1px solid #6f6f6f;">
 <br>
 
-<p>Ken Loach, Kes</p>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS53CcnHsUQzDJWp05O7_KhDtGPdBU5v9xFNQ4iN3SsUd-RJ65AsHXu_4l&s=10" width="200" style="border: 1px solid #6f6f6f;">
+<p>Alice Rohrwacher, La Chimera</p>
+<img src="https://live-production.wcms.abc-cdn.net.au/958e48b10996283cef81d6fc724c8628?impolicy=wcms_crop_resize&cropH=1841&cropW=2762&xPos=656&yPos=319&width=862&height=575" width="200" style="border: 1px solid #6f6f6f;">
 <br>
 
-<p>Joseph Losey, Mr. Klein</p>
-<img src="https://criterion-production.s3.amazonaws.com/carousel-files/9PKdE5EHSiVAZekr3z4As2CdNlV7Enu5SWDZgoPm.jpeg" width="200" style="border: 1px solid #6f6f6f;"> 
+<p>Ken Loach, Kes</p>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS53CcnHsUQzDJWp05O7_KhDtGPdBU5v9xFNQ4iN3SsUd-RJ65AsHXu_4l&s=10" width="200" style="border: 1px solid #6f6f6f;"> 
 <br>
 
 <p>Robert Bresson, Le Diable probablement</p>
-<img src ="https://www.screenslate.com/sites/default/files/2024-01/the_devil_probably_6-1600x900-c-default-1-1600x900-c-default.jpg" width="200" style="border: 1px solid #6f6f6f;">
+<img src ="https://cinemapublic.ca/wp-content/uploads/2025/06/le_diable_probablement_10.jpeg" width="200" style="border: 1px solid #6f6f6f;">
 <br>
 
-<p>Matt Johnson, BlackBerry</p>
-<img src="https://i.insider.com/6413370d5f4f54001919e790?width=700" width="200" style="border: 1px solid #6f6f6f;">
+<p>Joseph Losey, Mr. Klein</p>
+<img src="https://criterion-production.s3.amazonaws.com/carousel-files/9PKdE5EHSiVAZekr3z4As2CdNlV7Enu5SWDZgoPm.jpeg" width="200" style="border: 1px solid #6f6f6f;">
 <br>
+
+<p>(HM) Matt Johnson, BlackBerry</p>
+<img src="https://www.hollywoodreporter.com/wp-content/uploads/2023/01/202310362_1-H-2023.jpg?w=1296&h=730&crop=1" width="200" style="border: 1px solid #6f6f6f;">
 
 <h3>Music</h3>
 
