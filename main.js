@@ -28,7 +28,7 @@ const PROJECTS = {
     images: [
       { src: "images/chip_one.JPG", alt: "Chip design photo 1" },
       { src: "images/chip_two.JPG", alt: "Chip design photo 2" },
-      { src: "images/unnamed.png", alt: "Chip design photo 3" },
+      { src: "images/firstRender.png", alt: "Chip design photo 3" },
     ],
     sections: [
       {
