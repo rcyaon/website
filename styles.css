@@ -1386,11 +1386,11 @@ body {
 
 /* Spotify Window */
 .spotify-window {
-    top: 370px;
+    top: 400px;
     right: 40px;
     left: auto;
-    width: 250px !important;
-    height: 250px !important;
+    width: 300px !important;
+    height: 300px !important;
     z-index: 25;
 }
 
