@@ -953,8 +953,8 @@ body {
 }
 
 .project-modal__gallery-nav:focus-visible {
-    outline: 2px solid #1a1a1a;
-    outline-offset: 2px;
+    outline: 1px solid #1a1a1a;
+    outline-offset: 1px;
 }
 
 .project-modal__gallery-nav:disabled {
