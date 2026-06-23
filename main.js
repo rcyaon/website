@@ -112,11 +112,8 @@ const PROJECTS = {
         isHtml: true,
         body: `<p><i>(In no order)</i></p>
         <h3>Film</h3>
-<p>Víctor Erice, Close Your Eyes</p>
-<img src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfJcrvyp52Nvo0MTFA9J4uwa7N2LwkIt8OegQsB7_WQfqF4N5GvB6WubU&s=10" width="200" style="border: 1px solid #6f6f6f;">
-<br>
 
-<p>Abbas Kiarostami, Taste of Cherry</p>
+<p>Abbas Kiarostami, طعم گيلاس</p>
 <img src="https://d1nslcd7m2225b.cloudfront.net/Pictures/1024x536/4/7/1/1231471_taste-of-cherry-still.jpg" width="200" style="border: 1px solid #6f6f6f;">
 <br>
 
@@ -128,29 +125,33 @@ const PROJECTS = {
 <img src="https://criterion-production.s3.amazonaws.com/carousel-files/9PKdE5EHSiVAZekr3z4As2CdNlV7Enu5SWDZgoPm.jpeg" width="200" style="border: 1px solid #6f6f6f;"> 
 <br>
 
-<p>Matt Johnson, Blackberry</p>
+<p>Robert Bresson, Le Diable probablement</p>
+<img src ="https://www.screenslate.com/sites/default/files/2024-01/the_devil_probably_6-1600x900-c-default-1-1600x900-c-default.jpg" width="200" style="border: 1px solid #6f6f6f;">
+<br>
+
+<p>Matt Johnson, BlackBerry</p>
 <img src="https://i.insider.com/6413370d5f4f54001919e790?width=700" width="200" style="border: 1px solid #6f6f6f;">
 <br>
 
 <h3>Music</h3>
 
-<p>caroline, caroline 2 (Rough Trade)</p>
+<p>caroline, caroline 2</p>
 <img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
 <br>
 
-<p>what is your name?, the now now and never (Reasonable)</p>
+<p>what is your name?, the now now and never</p>
 <img src ="https://cdn.sonemic.net/i/600/w/a21a436204b531f720db6eccb32379a4/10901440/what-is-your-name-the-now-now-and-never-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
 <br>
 
-<p>she's green, wisteria (Photo Finish)</p>
+<p>she's green, wisteria</p>
 <img src="https://cdn.sonemic.net/i/600/w/1406882e68da33a72be76b2b2fdd96e1/13277208/shes-green-wisteria-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
 
-<p>black midi, Hellfire (Rough Trade)</p>
+<p>black midi, Hellfire</p>
 <img src="https://cdn.sonemic.net/i/600/w/8810e0cdb30d7bf8b69b23d9462b5c53/9932087/black-midi-hellfire-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
 
-<p>my bloody valentine, loveless (Creation)</p>
+<p>my bloody valentine, loveless</p>
 <img src="https://cdn.sonemic.net/i/600/w/47da1d4284997ca321af967068f34d7b/11569981/my-bloody-valentine-loveless-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
 `,
