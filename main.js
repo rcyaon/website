@@ -151,8 +151,8 @@ const PROJECTS = {
 <img src="https://cdn.sonemic.net/i/600/w/1406882e68da33a72be76b2b2fdd96e1/13277208/shes-green-wisteria-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
 
-<p>Black Country, New Road, Ants From Up There</p>
-<img src="https://cdn.sonemic.net/i/600/w/d41fd89a34689afe2a3c392958a5d40e/9391518/black-country-new-road-ants-from-up-there-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
+<p>Black Country, New Road, For the First Time</p>
+<img src="https://cdn.sonemic.net/i/600/s/6bd10c3d453bd5516e1472dca97d7fee/8538705/black-country-new-road-for-the-first-time-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
 
 <p>black midi, Hellfire</p>
 <img src="https://cdn.sonemic.net/i/600/w/8810e0cdb30d7bf8b69b23d9462b5c53/9932087/black-midi-hellfire-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
