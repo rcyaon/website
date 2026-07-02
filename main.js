@@ -143,7 +143,7 @@ const PROJECTS = {
 <img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
 <br>
 
-<p>what is your name?, wbeyond old names; everyone's song.</p>
+<p>what is your name?, beyond old names; everyone's song.</p>
 <img src ="https://cdn.sonemic.net/i/600/s/cf12a7608b264c4a66ae3ca42d768c7e/12080760/what-is-your-name-beyond-old-names-everyones-song-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
 <br>
 
@@ -151,7 +151,7 @@ const PROJECTS = {
 <img src="https://cdn.sonemic.net/i/600/w/1406882e68da33a72be76b2b2fdd96e1/13277208/shes-green-wisteria-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
 
-<p> Black Country, New Road, For the First Time/p>
+<p> Black Country, New Road, For the First Time</p>
 <img src="https://cdn.sonemic.net/i/600/w/8810e0cdb30d7bf8b69b23d9462b5c53/9932087/black-midi-hellfire-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
 
