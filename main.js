@@ -143,23 +143,23 @@ const PROJECTS = {
 <img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
 <br>
 
-<p>what is your name?, the now now and never</p>
-<img src ="https://cdn.sonemic.net/i/600/w/a21a436204b531f720db6eccb32379a4/10901440/what-is-your-name-the-now-now-and-never-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
+<p>what is your name?, wbeyond old names; everyone's song.</p>
+<img src ="https://cdn.sonemic.net/i/600/s/cf12a7608b264c4a66ae3ca42d768c7e/12080760/what-is-your-name-beyond-old-names-everyones-song-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
 <br>
 
 <p>she's green, wisteria</p>
 <img src="https://cdn.sonemic.net/i/600/w/1406882e68da33a72be76b2b2fdd96e1/13277208/shes-green-wisteria-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
 
-<p>Her New Knife, chrome is lullaby</p>
-<img src="https://cdn.sonemic.net/i/600/s/83cc8c6c2efa8df79bb40be2172a3d66/12587676/her-new-knife-chrome-is-lullaby-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
-
-<p>black midi, Hellfire</p>
+<p> Black Country, New Road, For the First Time/p>
 <img src="https://cdn.sonemic.net/i/600/w/8810e0cdb30d7bf8b69b23d9462b5c53/9932087/black-midi-hellfire-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
 
-<p>my bloody valentine, loveless</p>
-<img src="https://cdn.sonemic.net/i/600/w/47da1d4284997ca321af967068f34d7b/11569981/my-bloody-valentine-loveless-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
+<p>Her New Knife, chrome is lullaby</p>
+<img src="https://cdn.sonemic.net/i/600/s/83cc8c6c2efa8df79bb40be2172a3d66/12587676/her-new-knife-chrome-is-lullaby-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
+
+<p>Cocteau Twins and Harold Budd, The Moon and the Melodies</p>
+<img src="https://cdn.sonemic.net/i/600/s/11933c15df434e27c222809d2f782d76/14433302/harold-budd-elizabeth-fraser-robin-guthrie-and-simon-raymonde-the-moon-and-the-melodies-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
 
 `,
