@@ -929,19 +929,32 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 10px;
+    width: 20px;
     min-height: 23px;
-    padding: 0 6px;
+    padding: 0;
     background: transparent;
     border: none;
     color: #1a1a1a;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 14px;
-    line-height: 1;
+    font-size: 0;
+    line-height: 0;
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
     user-select: none;
     transition: color 0.1s;
+}
+
+.project-modal__gallery-nav::before {
+    content: "";
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-left: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: rotate(45deg);
+}
+
+.project-modal__gallery-nav--next::before {
+    transform: rotate(-135deg);
 }
 
 .project-modal__gallery-nav:hover:not(:disabled) {

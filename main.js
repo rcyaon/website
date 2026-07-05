@@ -165,7 +165,7 @@ const PROJECTS = {
 `,
       },
     ],
-    afterMedia: `<br><p class="favorites-return"><a href="#" onclick="openProjectModal('setlist'); return false;">⤶ Return</a></p>`,
+    afterMedia: `<br><p class="favorites-return"><a href="#" onclick="openProjectModal('setlist'); return false;">Return</a></p>`,
   },
 
   "concert-archive": {
@@ -234,7 +234,7 @@ const PROJECTS = {
         caption: "Fleshwater in Buffalo",
       },
     ],
-    afterMedia: `<p class="favorites-return"><a href="#" onclick="openProjectModal('setlist'); return false;">⤶ Return</a></p>`,
+    afterMedia: `<p class="favorites-return"><a href="#" onclick="openProjectModal('setlist'); return false;">Return</a></p>`,
   },
   "more-work": {
     title: "TERMINAL.EXE",
@@ -1048,13 +1048,13 @@ function renderProjectGalleryBlock() {
     `<div class="project-modal__media project-modal__media--gallery">` +
     `<div class="project-modal__gallery" role="region" aria-label="Media gallery">` +
     `<div class="project-modal__gallery-stage">` +
-    `<button type="button" class="project-modal__gallery-nav project-modal__gallery-nav--prev" data-gallery-prev aria-label="Previous item">←</button>` +
+    `<button type="button" class="project-modal__gallery-nav project-modal__gallery-nav--prev" data-gallery-prev aria-label="Previous item"></button>` +
     `<div class="project-modal__gallery-center">` +
     `<div class="project-modal__gallery-frame" data-gallery-frame></div>` +
     `<p class="project-modal__gallery-counter" data-gallery-counter></p>` +
     `<p class="project-modal__gallery-caption" data-gallery-caption></p>` +
     `</div>` +
-    `<button type="button" class="project-modal__gallery-nav project-modal__gallery-nav--next" data-gallery-next aria-label="Next item">→</button>` +
+    `<button type="button" class="project-modal__gallery-nav project-modal__gallery-nav--next" data-gallery-next aria-label="Next item"></button>` +
     `</div>` +
     `</div></div>`
   );
