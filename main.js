@@ -298,6 +298,10 @@ const PROJECTS = {
         heading: `‎ Awards`,
         blocks: [
           {
+            heading: "Samsung Solve for Tomorrow National Winner",
+            body: "Built Pathfinder, a public safety system that uses a mesh network of light and sound-sensing devices to guide crowds during emergencies. Won $100k, featured on CNET. Returned as an alumna to mentor teams building accessibility tech.",
+          },
+          {
             heading: "LyondellBasell Cybersecurity Challenge National Winner",
             body: "Awarded $1,000. Solved CTF-style problems with Burp Suite, Wireshark, Nmap, Metasploit, and SQLmap.",
           },
