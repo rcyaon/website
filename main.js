@@ -277,7 +277,7 @@ const PROJECTS = {
       },
       {
         heading: "5-Stage Pipelined RISC-V Processor (TinyRV1)",
-        body: "Designed a 5-stage pipelined RISC-V processor in Verilog with forwarding, hazard detection, and branch prediction (BTB); validated on ModelSim and a Cyclone V FPGA. Added a custom accumulate accelerator, reducing execution time by 4x (126 to 31 cycles).",
+        body: "Architected a 5-stage pipelined RISC-V processor in Verilog, implementing full forwarding, hazard detection, and branch prediction (BTB). Validated in ModelSim and on a Cyclone V FPGA. Extended baseline with custom accumulate accelerator, achieving 4x cycle reduction (31 vs. 126 cycles).",
         image: {
           src: "images/rv1.png",
           alt: "Processor preview",
