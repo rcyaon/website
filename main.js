@@ -89,7 +89,7 @@ const PROJECTS = {
     noMedia: true,
     sections: [
       {
-        body: 'A personal mixtape of my favorite media, live music, and occasional writing..',
+        body: 'A personal mixtape of my favorite media, live music, and occasional writing.',
       },
       {
         isHtml: true,
