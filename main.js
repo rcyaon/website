@@ -85,11 +85,11 @@ const PROJECTS = {
   },
 
   setlist: {
-    title: "SETLIST.TXT — NOTEPAD.EXE",
+    title: "mixtape.TXT — NOTEPAD.EXE",
     noMedia: true,
     sections: [
       {
-        body: 'Here\'s my "setlist," including some things I find awesome, catching live music, and writing about whatever piques my interest.',
+        body: 'A personal mixtape of my favorite media, live music, and occasional writing..',
       },
       {
         isHtml: true,
