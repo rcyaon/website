@@ -246,6 +246,10 @@ const PROJECTS = {
         heading: "‎ Programs",
         blocks: [
           {
+            heading: "Dorm Room Fund Blueprint Investor Track",
+            body: "Learned to evaluate early-stage startups from an investor's lens through sessions with VCs including CRV (DoorDash, Twitter, HubSpot) and First Round Capital (Uber, Square, Notion).",
+          },
+          {
             heading: "Girls Into VC externship",
             body: "Externed with the CEO of upskill (\"the horizontal people-search layer for agents\"), did market research and helped move real client hiring work forward.",
           },
@@ -285,8 +289,7 @@ const PROJECTS = {
       },
       {
         heading: "Organizing Hackathons",
-        body: "Introduced K-12 students to the world of hardware through beginner-friendly workshops covering PCB design, JavaScript-based drawing, and CNC machines, hosted at FUTO in Austin and Amazon in Seattle.",
-        bullets: ["More at: https://daysofservice.hackclub.com/"],
+        body: "Introduced K-12 students to the world of hardware through beginner-friendly workshops covering PCB design, JavaScript-based drawing, and CNC machines. Hosted at FUTO in Austin and Amazon in Seattle through Hack Club's Days of Service; https://daysofservice.hackclub.com/",
         image: {
           src: "images/blot.JPG",
         },
