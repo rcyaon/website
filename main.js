@@ -99,8 +99,6 @@ const PROJECTS = {
     <li><a href="#" onclick="openProjectModal('concert-archive'); return false;">Photos from concerts</a></li>
     <li><a href="https://substack.com/@lenaphobia" target="_blank" rel="noopener">Substack</a></li>
   </ul>
-  And here's my current (messy) laptop sticker situation!
-  <img src="images/IMG_9493.jpeg" width="95%" style="border: 1px solid #6f6f6f; margin-top: 10px;">
 `,
       },
     ],
