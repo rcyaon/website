@@ -89,16 +89,18 @@ const PROJECTS = {
     noMedia: true,
     sections: [
       {
-        body: 'A personal mixtape of my favorite media, live music, and occasional writing.',
+        body: 'A personal mixtape of favorite media, live music, and the occasional bit of writing.',
       },
       {
         isHtml: true,
         body: `
   <ul class="project-modal__bullet-list">
-    <li><a href="#" onclick="openProjectModal('favorites'); return false;">A few favorites</a></li>
+    <li><a href="#" onclick="openProjectModal('favorites'); return false;">Some favorites</a></li>
     <li><a href="#" onclick="openProjectModal('concert-archive'); return false;">Photos from concerts</a></li>
     <li><a href="https://substack.com/@lenaphobia" target="_blank" rel="noopener">Substack</a></li>
   </ul>
+  And here's my current (messy) laptop sticker situation!
+  <img src="images/IMG_9493.jpeg" width="95%" style="border: 1px solid #6f6f6f; margin-top: 10px;">
 `,
       },
     ],
@@ -247,7 +249,7 @@ const PROJECTS = {
         blocks: [
           {
             heading: "Dorm Room Fund Blueprint Investor Track",
-            body: "Learned to evaluate early-stage startups from an investor's lens through sessions with VCs including CRV (DoorDash, Twitter, HubSpot) and First Round Capital (Uber, Square, Notion).",
+            body: "Learned to evaluate early-stage startups from an investor's lens through sessions with VCs including CRV and First Round Capital.",
           },
           {
             heading: "Girls Into VC externship",
