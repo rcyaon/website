@@ -62,8 +62,9 @@ const PROJECTS = {
       },
     ],
   },
+
   "brokaw-bandgap-ptat": {
-    title: "Tiny_Tapeout.TXT — NOTEPAD.EXE",
+    title: "TINY_TAPEOUT.TXT — NOTEPAD.EXE",
     images: [{ src: "images/chip.png", alt: "Bandgap design photo 1" }],
     sections: [
       {
@@ -84,7 +85,28 @@ const PROJECTS = {
     ],
   },
 
-  setlist: {
+  "ieee-chipathon": {
+    title: "IEEE_CHIPATHON.TXT — NOTEPAD.EXE",
+    noMedia: true,
+    sections: [
+      {
+        heading: "WORK IN PROGRESS",
+        body: "This project is a 2-channel time-interleaved ADC I'm building with my team. We run two slower 8-bit ADCs side by side and stagger their timing to hit 50 MS/s combined. The analog side is mostly done: the track-and-hold circuit, comparator, and CDAC are all designed and simulated, and the CDAC results look clean and linear with just a small, fixable gain error. My teammates have also written digital correction logic for gain and offset mismatch, and early tests show it works.",
+      },
+      {
+        heading: "",
+        body: "Through the IEEE Chipathon, I'm building on my analog design background by diving deeper into full-chip integration, specifically how digital calibration logic has to work with analog blocks in real time. ",
+      },
+      {
+        heading: "Links",
+        bullets: [
+          "GitHub: https://github.com/rcyaon/chipathon-2026-ti-adc",
+        ],
+      },
+    ],
+  },
+
+  /* setlist: {
     title: "mixtape.TXT — NOTEPAD.EXE",
     noMedia: true,
     sections: [
@@ -102,7 +124,7 @@ const PROJECTS = {
 `,
       },
     ],
-  },
+  }, */
 
   favorites: {
     title: "FAVORITES.TXT — NOTEPAD.EXE",
@@ -165,10 +187,9 @@ const PROJECTS = {
 `,
       },
     ],
-    afterMedia: `<br><p class="favorites-return"><a href="#" onclick="openProjectModal('setlist'); return false;">Return</a></p>`,
   },
 
-  "concert-archive": {
+  /* "concert-archive": {
     title: "Photo_Viewer.EXE",
     sections: [
       {
@@ -235,7 +256,7 @@ const PROJECTS = {
       },
     ],
     afterMedia: `<p class="favorites-return"><a href="#" onclick="openProjectModal('setlist'); return false;">Return</a></p>`,
-  },
+  }, */
   "more-work": {
     title: "TERMINAL.EXE",
     sections: [
