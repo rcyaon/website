@@ -268,7 +268,7 @@ const PROJECTS = {
         blocks: [
           {
             heading: "Dorm Room Fund Blueprint Investor Track",
-            body: "Learned to evaluate early-stage startups from an investor's lens through sessions with VCs including CRV and First Round Capital.",
+            body: "Selected as 1 of 15 nationwide for a fellowship on evaluating early-stage startups from an investor's lens, with sessions led by VCs including CRV and First Round Capital.,
           },
           {
             heading: "Girls Into VC externship",
