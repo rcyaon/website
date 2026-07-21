@@ -43,6 +43,7 @@ const PROJECTS = {
         heading: "Links",
         bullets: [
           "GitHub: https://github.com/cornell-c2s2",
+          "Reflection: https://rcyaon.github.io/notebook/c2s2.html",
           "More about Cornell Custom Silicon Systems: https://www.c2s2.dev",
         ],
       },
@@ -58,7 +59,10 @@ const PROJECTS = {
       },
       {
         heading: "Links",
-        body: "GitHub: https://github.com/cornellmotionstudio",
+        bullets: [
+          "GitHub: https://github.com/cornellmotionstudio",
+          "Reflection: https://rcyaon.github.io/notebook/teachingworkshops.html",
+        ],
       },
     ],
   },
