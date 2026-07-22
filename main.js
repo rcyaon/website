@@ -26,18 +26,18 @@ const PROJECTS = {
   "chip-design": {
     title: "Chip_design.TXT — NOTEPAD.EXE",
     images: [
-      { src: "images/chip_one.JPG", alt: "Chip design photo 1" },
-      { src: "images/chip_two.JPG", alt: "Chip design photo 2" },
+      { src: "images/IMG_9642.JPG", alt: "Chip design photo 1" },
+      { src: "images/IMG_9643.JPG", alt: "Chip design photo 2" },
       { src: "images/firstRender.png", alt: "Chip design photo 3" },
     ],
     sections: [
       {
         heading: "",
-        body: "On Cornell's all-undergrad analog team, we taped out a 4.44 MS/s 8-bit differential SAR ADC in TSMC 180nm. No one was going to hand us the design files, so we figured it out ourselves working through Cadence Virtuoso and a lot of shared notes. One of the only undergraduate teams in the country doing this, it works!",
+        body: "On Cornell's all-undergrad analog team, we taped out a 4.44 MS/s 8-bit differential SAR ADC in TSMC 180nm. No one was going to hand us the design files, so we figured it out ourselves, working through Cadence Virtuoso and a lot of shared notes. One of the only undergraduate teams in the country doing this, and it worked.",
       },
       {
         heading: "",
-        body: "From there we've been exploring two side projects: a novel adiabatic Flash ADC that hits ~80 µW total power (~30× lower than our SAR) using charge-recovery logic, and an asynchronous SAR ADC that self-times between bit decisions instead of waiting on a clock.",
+        body: "From there we explored two side projects: a novel adiabatic Flash ADC that hit ~80 µW total power (~30× lower than our SAR) using charge-recovery logic, and an asynchronous SAR ADC that self-timed between bit decisions instead of waiting on a clock.",
       },
       {
         heading: "Links",
@@ -61,7 +61,6 @@ const PROJECTS = {
         heading: "Links",
         bullets: [
           "GitHub: https://github.com/cornellmotionstudio",
-          "Reflection: https://rcyaon.github.io/notebook/teachingworkshops.html",
         ],
       },
     ],
@@ -94,12 +93,12 @@ const PROJECTS = {
     noMedia: true,
     sections: [
       {
-        heading: "WORK IN PROGRESS",
-        body: "This project is a 2-channel time-interleaved ADC I'm building with my team. We run two slower 8-bit ADCs side by side and stagger their timing to hit 50 MS/s combined. The analog side is mostly done: the track-and-hold circuit, comparator, and CDAC are all designed and simulated, and the CDAC results look clean and linear with just a small, fixable gain error. My teammates have also written digital correction logic for gain and offset mismatch, and early tests show it works.",
+        heading: "In Progress: 2-Channel Time-Interleaved ADC",
+        body: "This project is a 2-channel time-interleaved ADC I'm building with my team (Aevulog) for the IEEE Chipathon, on GF180MCU. We run two 8-bit SAR ADCs side by side, each sampling at 25 MS/s, and stagger their timing to hit 50 MS/s combined.",
       },
       {
         heading: "",
-        body: "Through the IEEE Chipathon, I'm building on my analog design background by diving deeper into full-chip integration, specifically how digital calibration logic has to work with analog blocks in real time. ",
+        body: "Through the Chipathon I'm building on my analog design background by diving deeper into full-chip integration, specifically how digital calibration logic has to work with analog blocks in real time.",
       },
       {
         heading: "Links",
@@ -187,7 +186,6 @@ const PROJECTS = {
 <p>Cocteau Twins and Harold Budd, The Moon and the Melodies</p>
 <img src="https://cdn.sonemic.net/i/600/s/11933c15df434e27c222809d2f782d76/14433302/harold-budd-elizabeth-fraser-robin-guthrie-and-simon-raymonde-the-moon-and-the-melodies-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
 <br>
-
 `,
       },
     ],
@@ -276,7 +274,7 @@ const PROJECTS = {
           },
           {
             heading: "Girls Into VC externship",
-            body: "Externed with the CEO of upskill (\"the horizontal people-search layer for agents\"), did market research and helped move real client hiring work forward.",
+            body: "Externed with the CEO of upskill (\"the horizontal people-search layer for agents\") doing market research and helping out with real client hiring work.",
           },
           {
             heading: "Google Code Next",
