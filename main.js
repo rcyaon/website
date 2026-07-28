@@ -103,7 +103,7 @@ const PROJECTS = {
         heading: "Links",
         bullets: [
           "GitHub: https://github.com/rcyaon/chipathon-2026-ti-adc",
-          "I like making helpful tools as I build, like this layout planner!: https://github.com/rcyaon/layout-planner"
+          "Building other helpful tools as I build, like this layout planner: https://github.com/rcyaon/layout-planner"
         ],
       },
     ],
