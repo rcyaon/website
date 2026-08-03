@@ -4,6 +4,18 @@ function withCors(res) {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 }
 
+const SPOTIFY_TIMEOUT_MS = 6000;
+
+async function spotifyFetch(url, options = {}, timeoutMs = SPOTIFY_TIMEOUT_MS) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+        return await fetch(url, { ...options, signal: controller.signal });
+    } finally {
+        clearTimeout(timer);
+    }
+}
+
 async function getAccessToken() {
     const clientId = process.env.SPOTIFY_CLIENT_ID;
     const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -18,7 +30,7 @@ async function getAccessToken() {
         refresh_token: refreshToken,
     });
 
-    const response = await fetch('https://accounts.spotify.com/api/token', {
+    const response = await spotifyFetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
         headers: {
             Authorization: `Basic ${basic}`,
@@ -35,40 +47,101 @@ async function getAccessToken() {
         } catch (_) {
             /* ignore parse failures */
         }
-        throw new Error(reason);
+        const error = new Error(reason);
+        error.retryAfterSeconds = retryAfterSeconds(response);
+        throw error;
     }
 
     const data = await response.json();
     return data.access_token;
 }
 
-async function getNowPlaying(accessToken) {
-    const response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-        headers: { Authorization: `Bearer ${accessToken}` },
-    });
-
-    if (response.status === 204) return null;
-    if (!response.ok) {
-        let reason = 'Failed fetching Spotify now playing.';
-        try {
-            const err = await response.json();
-            if (err?.error?.message) reason = `${reason} ${err.error.message}`;
-        } catch (_) {
-            /* ignore parse failures */
-        }
-        throw new Error(reason);
-    }
-    return response.json();
+function retryAfterSeconds(response) {
+    const header = response.headers?.get?.('retry-after');
+    const seconds = Number(header);
+    return Number.isFinite(seconds) && seconds > 0 ? seconds : null;
 }
 
+/**
+ * Never throws: a failure here must not stop the recently-played fallback,
+ * which is what keeps the panel populated when nothing is streaming.
+ * @returns {Promise<{ item: object|null, isPlaying: boolean, error: string|null, retryAfterSeconds: number|null }>}
+ */
+async function getNowPlaying(accessToken) {
+    const empty = { item: null, isPlaying: false, error: null, retryAfterSeconds: null };
+    try {
+        const response = await spotifyFetch(
+            'https://api.spotify.com/v1/me/player/currently-playing?additional_types=track,episode',
+            { headers: { Authorization: `Bearer ${accessToken}` } },
+        );
+
+        // 204 = nothing playing; 202 = player state not ready yet.
+        if (response.status === 204 || response.status === 202) return empty;
+        if (!response.ok) {
+            let reason = `Spotify now-playing request failed (${response.status}).`;
+            try {
+                const err = await response.json();
+                if (err?.error?.message) reason = `${reason} ${err.error.message}`;
+            } catch (_) {
+                /* ignore parse failures */
+            }
+            return { ...empty, error: reason, retryAfterSeconds: retryAfterSeconds(response) };
+        }
+
+        const text = await response.text();
+        if (!text.trim()) return empty;
+        const data = JSON.parse(text);
+        return {
+            item: data?.item || null,
+            isPlaying: Boolean(data?.is_playing),
+            error: null,
+            retryAfterSeconds: null,
+        };
+    } catch (error) {
+        return { ...empty, error: String(error?.message || error) };
+    }
+}
+
+/** Never throws. Returns the most recent playable track, or null. */
 async function getLastPlayed(accessToken) {
-    const response = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=1', {
-        headers: { Authorization: `Bearer ${accessToken}` },
-    });
-    if (!response.ok) return null;
-    const data = await response.json();
-    const first = data?.items?.[0]?.track || null;
-    return first;
+    try {
+        const response = await spotifyFetch(
+            'https://api.spotify.com/v1/me/player/recently-played?limit=5',
+            { headers: { Authorization: `Bearer ${accessToken}` } },
+        );
+        if (!response.ok) return null;
+        const data = await response.json();
+        const items = Array.isArray(data?.items) ? data.items : [];
+        for (const entry of items) {
+            if (entry?.track?.name) return entry.track;
+        }
+        return null;
+    } catch (_) {
+        return null;
+    }
+}
+
+/** Normalize a track or podcast episode into the shape the front end renders. */
+function normalizeItem(item) {
+    if (!item) return null;
+
+    if (item.type === 'episode') {
+        const images = item.images || item.show?.images || [];
+        return {
+            title: item.name || '',
+            artist: item.show?.name || '',
+            albumImageUrl: images[1]?.url || images[0]?.url || '',
+            songUrl: item.external_urls?.spotify || '',
+        };
+    }
+
+    const images = item.album?.images || [];
+    return {
+        title: item.name || '',
+        artist: (item.artists || []).map((a) => a.name).filter(Boolean).join(', '),
+        albumImageUrl: images[1]?.url || images[0]?.url || '',
+        songUrl: item.external_urls?.spotify || '',
+    };
 }
 
 export default async function handler(req, res) {
@@ -82,39 +155,38 @@ export default async function handler(req, res) {
         const accessToken = await getAccessToken();
         const nowPlaying = await getNowPlaying(accessToken);
 
-        let item = nowPlaying?.item || null;
-        let isPlaying = Boolean(nowPlaying?.is_playing);
-        if (!item) {
-            item = await getLastPlayed(accessToken);
+        let normalized = normalizeItem(nowPlaying.item);
+        let isPlaying = nowPlaying.isPlaying;
+
+        // Fall back whenever there is no usable current item — including when the
+        // now-playing call itself failed, or is playing an ad (item is null).
+        if (!normalized?.title) {
+            normalized = normalizeItem(await getLastPlayed(accessToken));
             isPlaying = false;
         }
-        if (!item) {
+
+        if (!normalized?.title) {
             return res.status(200).json({
                 ok: true,
                 isPlaying: false,
                 isLastPlayed: false,
-                message: 'Nothing playing right now.',
+                message: nowPlaying.error || 'Nothing playing right now.',
+                retryAfterSeconds: nowPlaying.retryAfterSeconds || undefined,
             });
         }
-
-        const artist = (item.artists || []).map((a) => a.name).join(', ');
-        const albumImageUrl = item.album?.images?.[1]?.url || item.album?.images?.[0]?.url || '';
-        const songUrl = item.external_urls?.spotify || '';
 
         return res.status(200).json({
             ok: true,
             isPlaying,
             isLastPlayed: !isPlaying,
-            title: item.name || '',
-            artist,
-            albumImageUrl,
-            songUrl,
+            ...normalized,
         });
     } catch (error) {
         const message = String(error && error.message ? error.message : error);
         return res.status(500).json({
             ok: false,
             message,
+            retryAfterSeconds: error?.retryAfterSeconds || undefined,
         });
     }
 }

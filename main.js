@@ -42,8 +42,8 @@ const PROJECTS = {
       {
         heading: "Links",
         bullets: [
-          "GitHub: https://github.com/cornell-c2s2",
-          "More about Cornell Custom Silicon Systems: https://www.c2s2.dev",
+          "<a href='https://github.com/cornell-c2s2'>GitHub</a>",
+          "<a href='https://www.c2s2.dev'>Cornell Custom Silicon Systems</a>",
         ],
       },
     ],
@@ -59,7 +59,7 @@ const PROJECTS = {
       {
         heading: "Links",
         bullets: [
-          "GitHub: https://github.com/cornellmotionstudio",
+          "<a href='https://github.com/cornellmotionstudio'>GitHub</a>",
         ],
       },
     ],
@@ -80,8 +80,8 @@ const PROJECTS = {
       {
         heading: "Links",
         bullets: [
-          "GitHub: https://github.com/rcyaon/brokaw-bandgap",
-          "GDS viewer: https://rcyaon.github.io/brokaw-bandgap/ ",
+          "<a href='https://github.com/rcyaon/brokaw-bandgap'>GitHub</a>",
+          "<a href='https://rcyaon.github.io/brokaw-bandgap/'>GDS viewer</a>",
         ],
       },
     ],
@@ -100,34 +100,14 @@ const PROJECTS = {
         body: "Through the Chipathon I'm building on my analog design background by diving deeper into full-chip integration, specifically how digital calibration logic has to work with analog blocks in real time.",
       },
       {
+        isHtml: true,
         heading: "Links",
         bullets: [
-          "GitHub: https://github.com/rcyaon/chipathon-2026-ti-adc",
-          "Building other tools as we go, like this layout planner: https://github.com/rcyaon/layout-planner",
+          "<a href='https://github.com/rcyaon/chipathon-2026-ti-adc'>GitHub</a>",
         ],
       },
     ],
   },
-
-  /* setlist: {
-    title: "mixtape.TXT — NOTEPAD.EXE",
-    noMedia: true,
-    sections: [
-      {
-        body: 'A personal mixtape of favorite media, live music, and the occasional bit of writing.',
-      },
-      {
-        isHtml: true,
-        body: `
-  <ul class="project-modal__bullet-list">
-    <li><a href="#" onclick="openProjectModal('favorites'); return false;">Some favorites</a></li>
-    <li><a href="#" onclick="openProjectModal('concert-archive'); return false;">Photos from concerts</a></li>
-    <li><a href="https://substack.com/@lenaphobia" target="_blank" rel="noopener">Substack</a></li>
-  </ul>
-`,
-      },
-    ],
-  }, */
 
   favorites: {
     title: "FAVORITES.TXT — NOTEPAD.EXE",
@@ -139,155 +119,79 @@ const PROJECTS = {
         <h3>Film</h3>
 
 <p>Alice Rohrwacher, La Chimera</p>
-<img src="https://live-production.wcms.abc-cdn.net.au/958e48b10996283cef81d6fc724c8628?impolicy=wcms_crop_resize&cropH=1841&cropW=2762&xPos=656&yPos=319&width=862&height=575" width="200" style="border: 1px solid #6f6f6f;">
+<img src="https://live-production.wcms.abc-cdn.net.au/958e48b10996283cef81d6fc724c8628?impolicy=wcms_crop_resize&cropH=1841&cropW=2762&xPos=656&yPos=319&width=862&height=575" width="300" style="border: 1px solid #6f6f6f;" alt="">
 <br>
 
 <p>Ken Loach, Kes</p>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS53CcnHsUQzDJWp05O7_KhDtGPdBU5v9xFNQ4iN3SsUd-RJ65AsHXu_4l&s=10" width="200" style="border: 1px solid #6f6f6f;"> 
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS53CcnHsUQzDJWp05O7_KhDtGPdBU5v9xFNQ4iN3SsUd-RJ65AsHXu_4l&s=10" width="300" style="border: 1px solid #6f6f6f;" alt=""> 
 <br>
 
 <p>Joseph Losey, Mr. Klein</p>
-<img src="https://criterion-production.s3.amazonaws.com/carousel-files/9PKdE5EHSiVAZekr3z4As2CdNlV7Enu5SWDZgoPm.jpeg" width="200" style="border: 1px solid #6f6f6f;">
+<img src="https://criterion-production.s3.amazonaws.com/carousel-files/9PKdE5EHSiVAZekr3z4As2CdNlV7Enu5SWDZgoPm.jpeg" width="300" style="border: 1px solid #6f6f6f;" alt="">
 <br>
 
 <p>Abbas Kiarostami, طعم گيلاس</p>
-<img src="https://d1nslcd7m2225b.cloudfront.net/Pictures/1024x536/4/7/1/1231471_taste-of-cherry-still.jpg" width="200" style="border: 1px solid #6f6f6f;">
+<img src="https://d1nslcd7m2225b.cloudfront.net/Pictures/1024x536/4/7/1/1231471_taste-of-cherry-still.jpg" width="300" style="border: 1px solid #6f6f6f;" alt="">
 <br>
 
 <p>Robert Bresson, Le Diable probablement</p>
-<img src ="https://cinemapublic.ca/wp-content/uploads/2025/06/le_diable_probablement_10.jpeg" width="200" style="border: 1px solid #6f6f6f;">
+<img src ="https://cinemapublic.ca/wp-content/uploads/2025/06/le_diable_probablement_10.jpeg" width="300" style="border: 1px solid #6f6f6f;" alt="">
 <br>
 
 <p>Matt Johnson, BlackBerry</p>
-<img src="https://www.hollywoodreporter.com/wp-content/uploads/2023/01/202310362_1-H-2023.jpg?w=1296&h=730&crop=1" width="200" style="border: 1px solid #6f6f6f;">
+<img src="https://www.hollywoodreporter.com/wp-content/uploads/2023/01/202310362_1-H-2023.jpg?w=1296&h=730&crop=1" width="300" style="border: 1px solid #6f6f6f;" alt="">
 <br>
 
 <h3>Music</h3>
 
 <p>caroline, caroline 2</p>
-<img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
+<img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
 <br>
 
 <p>what is your name?, beyond old names; everyone's song.</p>
-<img src ="https://cdn.sonemic.net/i/600/s/cf12a7608b264c4a66ae3ca42d768c7e/12080760/what-is-your-name-beyond-old-names-everyones-song-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
+<img src ="https://cdn.sonemic.net/i/600/s/cf12a7608b264c4a66ae3ca42d768c7e/12080760/what-is-your-name-beyond-old-names-everyones-song-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
 <br>
 
 <p>she's green, wisteria</p>
-<img src="https://cdn.sonemic.net/i/600/w/1406882e68da33a72be76b2b2fdd96e1/13277208/shes-green-wisteria-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
+<img src="https://cdn.sonemic.net/i/600/w/1406882e68da33a72be76b2b2fdd96e1/13277208/shes-green-wisteria-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
 <br>
 
 <p> Black Country, New Road, For the First Time</p>
-<img src="https://cdn.sonemic.net/i/600/s/6bd10c3d453bd5516e1472dca97d7fee/8538705/black-country-new-road-for-the-first-time-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
+<img src="https://cdn.sonemic.net/i/600/s/6bd10c3d453bd5516e1472dca97d7fee/8538705/black-country-new-road-for-the-first-time-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
 <br>
 
 <p>Her New Knife, chrome is lullaby</p>
-<img src="https://cdn.sonemic.net/i/600/s/83cc8c6c2efa8df79bb40be2172a3d66/12587676/her-new-knife-chrome-is-lullaby-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;"> 
+<img src="https://cdn.sonemic.net/i/600/s/83cc8c6c2efa8df79bb40be2172a3d66/12587676/her-new-knife-chrome-is-lullaby-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
 
 <p>Cocteau Twins and Harold Budd, The Moon and the Melodies</p>
-<img src="https://cdn.sonemic.net/i/600/s/11933c15df434e27c222809d2f782d76/14433302/harold-budd-elizabeth-fraser-robin-guthrie-and-simon-raymonde-the-moon-and-the-melodies-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;">  
+<img src="https://cdn.sonemic.net/i/600/s/11933c15df434e27c222809d2f782d76/14433302/harold-budd-elizabeth-fraser-robin-guthrie-and-simon-raymonde-the-moon-and-the-melodies-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
 <br>
 `,
       },
     ],
   },
 
-  /* "concert-archive": {
-    title: "Photo_Viewer.EXE",
-    sections: [
-      {
-        heading: "",
-        body: "A photo dump of some of the concerts I've gone to!",
-      },
-    ],
-
-    gallery: [
-      {
-        type: "image",
-        src: "images/concerts/100_1304.JPG",
-        caption: "Julie in Buffalo",
-      },
-      {
-        type: "image",
-        src: "images/concerts/100_1272.JPG",
-        caption: "Midrift in Buffalo",
-      },
-      {
-        type: "image",
-        src: "images/concerts/100_1285.JPG",
-        caption: "Julie in Buffalo",
-      },
-      {
-        type: "image",
-        src: "images/concerts/IMG_6861.jpeg",
-        caption: "Julie in Seattle",
-      },
-      {
-        type: "image",
-        src: "images/concerts/IMG_6898.jpeg",
-        caption: "The Marías in Seattle",
-      },
-      {
-        type: "image",
-        src: "images/concerts/IMG_6922.jpeg",
-        caption: "The Marías in Seattle",
-      },
-      {
-        type: "image",
-        src: "images/concerts/IMG_6972.jpeg",
-        caption: "The Marías in Seattle",
-      },
-      {
-        type: "image",
-        src: "images/concerts/IMG_0469.jpeg",
-        caption: "Zzzahara in Houston",
-      },
-      {
-        type: "image",
-        src: "images/concerts/100_0569_Original.jpeg",
-        caption: "Panchiko in Seattle",
-      },
-      {
-        type: "image",
-        src: "images/concerts/IMG_6365.jpeg",
-        caption: "Panchiko in Seattle",
-      },
-      {
-        type: "image",
-        src: "images/concerts/IMG_7449.jpeg",
-        caption: "Fleshwater in Buffalo",
-      },
-    ],
-    afterMedia: `<p class="favorites-return"><a href="#" onclick="openProjectModal('setlist'); return false;">Return</a></p>`,
-  }, */
   "more-work": {
     title: "TERMINAL.EXE",
     sections: [
       {
+        isHtml: true,
         variant: "panel",
         panelHeadingStyle: "band",
         treeBlocks: true,
-        heading: "‎ Programs",
+        heading: "‎ technical_programs",
         blocks: [
           {
-            heading: "Dorm Room Fund Blueprint Investor Track",
-            body: "Selected as 1 of 15 nationwide for a fellowship on evaluating early-stage startups from an investor's lens, with sessions led by VCs including CRV and First Round Capital.",
-          },
-          {
-            heading: "Girls Into VC externship",
-            body: "Externed with the CEO of upskill (\"the horizontal people-search layer for agents\") doing market research and helping out with real client hiring work.",
-          },
-          {
             heading: "Google Code Next",
-            body: "Paid to learn to code! Exploring creative coding and digital music through algorithmic composition and audio synthesis in JavaScript taught by Google engineers.",
+            body: "Selected for Google's creative coding program: algorithmic composition and audio synthesis in JavaScript, taught by Google engineers.",
           },
           {
             heading: "MATLAB Ambassador",
             body: "Paid work delivering hands-on MATLAB and Simulink workshops while evaluating pre-release features.",
           },
           {
-            heading:
-              "MIT Introduction to Technology, Engineering, and Science (MITES)",
-            body: "Built autonomous robots and explored the intersection of biomimicry and train physics. Now an ambassador helping grow my favorite network! ",
+            heading: "MIT Introduction to Technology, Engineering, and Science (MITES)",
+            body: "Built autonomous robots and wrote about biomimicry in train design. Now an ambassador for my favorite network, <a href='https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/'>apply to MITES</a>!",
           },
           {
             heading:
@@ -297,6 +201,23 @@ const PROJECTS = {
         ],
       },
       {
+        variant: "panel",
+        panelHeadingStyle: "band",
+        treeBlocks: true,
+        heading: "‎ venture_programs",
+        blocks: [
+          {
+            heading: "Dorm Room Fund Blueprint Investor Track",
+            body: "Selected as 1 of 15 nationwide for a fellowship on evaluating early-stage startups from an investor's lens.",
+          },
+          {
+            heading: "Girls Into VC externship",
+            body: "Externed with the CEO of upskill (\"the horizontal people-search layer for agents\") doing market research and helping out with client hiring work.",
+          },
+        ],
+      },
+      {
+        isHtml: true,
         variant: "panel",
         panelHeadingStyle: "band",
         heading: "‎ MISCELLANEOUS",
@@ -312,12 +233,13 @@ const PROJECTS = {
       },
       {
         heading: "Organizing Hackathons",
-        body: "Introduced K-12 students to the world of hardware through beginner-friendly workshops covering PCB design, JavaScript-based drawing, and CNC machines. Hosted at FUTO in Austin and Amazon in Seattle through Hack Club's Days of Service; https://daysofservice.hackclub.com/",
+        body: "Taught K-12 students hardware basics through workshops on PCB design, JavaScript drawing, and CNC machining. Hosted at FUTO Austin and Amazon Seattle through <a href='https://daysofservice.hackclub.com/'>Hack Club's Days of Service</a>. Also ran logistics for <a href=\"https://www.bigredhacks.com/\">BigRed//Hacks</a>, Cornell's largest hackathon.",
         image: {
           src: "images/blot.JPG",
         },
       },
       {
+        isHtml: true,
         variant: "panel",
         panelHeadingStyle: "band",
         treeBlocks: true,
@@ -338,8 +260,7 @@ const PROJECTS = {
           {
             heading: "Societal Impact and Hardware Winner at YHack",
             bullets: [
-              "Built Canary, a real-time mine hazard detection system with Raspberry Pi, gas sensors, and depth cameras. 3rd in Societal Impact and 4th in Hardware out of 700+ participants.",
-              "Devpost: https://devpost.com/software/canary-axf7o2",
+              "Built Canary, a real-time mine hazard detector using a Raspberry Pi, gas sensors, and depth cameras. Placed 3rd in Societal Impact and 4th in Hardware out of 700+ participants. <a href=\"https://devpost.com/software/canary-axf7o2\"> Devpost here</a>.",
             ],
           },
         ],
@@ -769,6 +690,7 @@ function updateLauncherState() {
       win.classList.contains("is-closed") ||
       win.classList.contains("is-minimized");
     btn.classList.toggle("is-window-hidden", hidden);
+    btn.setAttribute("aria-expanded", String(!hidden));
     if (hidden) btn.classList.remove("is-window-active");
   });
 }
@@ -885,11 +807,27 @@ function openProjectModal(projectId) {
   }
 
   bodyEl.scrollTop = 0;
+  // Return focus to whatever opened the modal once it closes.
+  modal._returnFocusTo =
+    document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null;
   modal.hidden = false;
   document.body.classList.add("modal-open");
+  setBackgroundInert(true);
 
   const closeBtn = modal.querySelector(".project-modal__close");
   closeBtn?.focus();
+}
+
+/** Hide the desktop behind the modal from keyboard and screen-reader users. */
+function setBackgroundInert(inert) {
+  const targets = [...windows(), document.getElementById("windowLauncher")];
+  targets.forEach((el) => {
+    if (!el) return;
+    if (inert) el.setAttribute("inert", "");
+    else el.removeAttribute("inert");
+  });
 }
 
 function renderProjectPanelBlock(b) {
@@ -1032,6 +970,36 @@ function renderSectionWithSideImage(s) {
 }
 
 function linkifyText(str) {
+  // Let hand-written <a> tags through (sanitized); escape + auto-link the rest.
+  const anchorRegex = /<a\s[^>]*>[\s\S]*?<\/a>/gi;
+  let lastIndex = 0;
+  let result = "";
+  let match;
+
+  while ((match = anchorRegex.exec(str)) !== null) {
+    result += linkifyPlainText(str.slice(lastIndex, match.index));
+    result += sanitizeAnchor(match[0]);
+    lastIndex = match.index + match[0].length;
+  }
+
+  result += linkifyPlainText(str.slice(lastIndex));
+  return result;
+}
+
+function sanitizeAnchor(tag) {
+  const hrefMatch = tag.match(/href\s*=\s*(?:"([^"]*)"|'([^']*)')/i);
+  const href = hrefMatch ? (hrefMatch[1] ?? hrefMatch[2] ?? "") : "";
+  const text = tag.replace(/<\/?a\b[^>]*>/gi, "");
+  if (!/^(https?:\/\/|mailto:|#|\/)/i.test(href)) return escapeHtml(text);
+  const external = /^https?:\/\//i.test(href);
+  return (
+    `<a href="${escapeAttr(href)}"` +
+    (external ? ` target="_blank" rel="noopener noreferrer"` : "") +
+    `>${escapeHtml(text)}</a>`
+  );
+}
+
+function linkifyPlainText(str) {
   const urlRegex = /(https?:\/\/[^\s<]+)/g;
   let lastIndex = 0;
   let result = "";
@@ -1323,11 +1291,15 @@ function closeProjectModal() {
   modalPanel?.classList.remove("project-modal__panel--more-work");
   modal.hidden = true;
   document.body.classList.remove("modal-open");
+  setBackgroundInert(false);
   const bodyEl = document.getElementById("projectModalBody");
   if (bodyEl) {
     bodyEl.innerHTML = "";
     bodyEl.classList.remove("project-modal__body--more-work");
   }
+  const returnTo = modal._returnFocusTo;
+  delete modal._returnFocusTo;
+  if (returnTo && document.contains(returnTo)) returnTo.focus();
 }
 
 function layoutProjectIconCluster() {
@@ -1463,6 +1435,52 @@ function wireProjectModal() {
       closeProjectModal();
     }
   });
+
+  // Keep Tab inside the dialog while it is open.
+  modal.addEventListener("keydown", (e) => {
+    if (e.key !== "Tab" || modal.hidden) return;
+    const panel = modal.querySelector(".project-modal__panel");
+    if (!panel) return;
+    const focusable = [
+      ...panel.querySelectorAll(
+        'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      ),
+    ].filter((el) => el.offsetParent !== null || el === document.activeElement);
+    if (focusable.length === 0) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+}
+
+/** Skip link jumps to the About window, restoring it if it was closed. */
+function wireSkipLink() {
+  const link = document.querySelector(".skip-link");
+  const target = document.getElementById("notepad");
+  if (!link || !target) return;
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    restoreWindow(target);
+    setActiveLauncher(target);
+    target.focus();
+  });
+}
+
+/** In-page buttons (outside the file explorer) that open a project window. */
+function wireProjectOpeners() {
+  document.querySelectorAll("[data-open-project]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-open-project");
+      if (id) openProjectModal(id);
+    });
+  });
 }
 
 function wireSpotifyNowPlaying() {
@@ -1470,24 +1488,51 @@ function wireSpotifyNowPlaying() {
   const artworkEl = document.getElementById("spotifyArtwork");
   const trackEl = document.getElementById("spotifyTrackText");
   const artistEl = document.getElementById("spotifyArtistText");
-  const linkEl = document.getElementById("spotifyTrackLink");
   if (!statusEl || !artworkEl || !trackEl || !artistEl) return;
 
   const NOW_PLAYING_API_URL = "/api/now-playing";
+  const CACHE_KEY = "spotify:last-played";
   let refreshTimer = null;
   let hasLoadedAtLeastOnce = false;
   let hasTrackData = false;
+
+  /** Last track we successfully rendered, kept so errors never blank the panel. */
+  function readCachedTrack() {
+    try {
+      const raw = localStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      const data = JSON.parse(raw);
+      return data && (data.title || data.artist) ? data : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function writeCachedTrack(data) {
+    try {
+      localStorage.setItem(
+        CACHE_KEY,
+        JSON.stringify({
+          title: data.title || "",
+          artist: data.artist || "",
+          albumImageUrl: data.albumImageUrl || "",
+        }),
+      );
+    } catch (_) {
+      /* private mode / quota — cache is best effort */
+    }
+  }
 
   function setStatus(text) {
     statusEl.textContent = text;
   }
 
-  function clearTrack() {
-    trackEl.textContent = "";
-    artistEl.textContent = "";
-    artworkEl.hidden = true;
-    if (linkEl) linkEl.hidden = true;
-    hasTrackData = false;
+  /** Fall back to the cached track instead of showing an empty panel. */
+  function showFallback(message) {
+    const cached = hasTrackData ? null : readCachedTrack();
+    if (cached) setTrack(cached);
+    if (hasTrackData) setStatus("Last played");
+    else setStatus(message);
   }
 
   function setTrack(data) {
@@ -1496,16 +1541,12 @@ function wireSpotifyNowPlaying() {
 
     if (data.albumImageUrl) {
       artworkEl.src = data.albumImageUrl;
+      artworkEl.alt = data.title
+        ? `Album artwork for ${data.title}`
+        : "Album artwork";
       artworkEl.hidden = false;
     } else {
       artworkEl.hidden = true;
-    }
-
-    if (linkEl && data.songUrl) {
-      linkEl.href = data.songUrl;
-      linkEl.hidden = false;
-    } else if (linkEl) {
-      linkEl.hidden = true;
     }
 
     hasTrackData = Boolean(data.title || data.artist || data.albumImageUrl);
@@ -1525,46 +1566,25 @@ function wireSpotifyNowPlaying() {
           Number.isFinite(Number(data.retryAfterSeconds))
             ? ` Retry in ~${Number(data.retryAfterSeconds)}s.`
             : "";
-        if (hasTrackData) {
-          setStatus(`${baseMessage}${rateLimitHint} Showing last known track.`);
-        } else {
-          setStatus(`${baseMessage}${rateLimitHint}`.trim());
-          clearTrack();
-        }
+        showFallback(`${baseMessage}${rateLimitHint}`.trim());
         hasLoadedAtLeastOnce = true;
         return;
       }
       if (!data?.ok) {
-        const message = data?.message || "Spotify status unavailable.";
-        if (hasTrackData) setStatus(`${message} Showing last known track.`);
-        else {
-          setStatus(message);
-          clearTrack();
-        }
+        showFallback(data?.message || "Spotify status unavailable.");
         hasLoadedAtLeastOnce = true;
         return;
       }
       if (data.title || data.artist || data.albumImageUrl) {
         setStatus(data?.isPlaying ? "Now playing" : "Last played");
         setTrack(data);
+        writeCachedTrack(data);
       } else {
-        const message = data?.message || "No recent Spotify activity.";
-        if (hasTrackData) setStatus(`${message} Showing last known track.`);
-        else {
-          setStatus(message);
-          clearTrack();
-        }
+        showFallback(data?.message || "No recent Spotify activity.");
       }
       hasLoadedAtLeastOnce = true;
     } catch (_) {
-      if (hasTrackData)
-        setStatus(
-          "Network error while contacting Spotify. Showing last known track.",
-        );
-      else {
-        setStatus("Network error while contacting Spotify.");
-        clearTrack();
-      }
+      showFallback("Network error while contacting Spotify.");
       hasLoadedAtLeastOnce = true;
     }
   }
@@ -1574,60 +1594,15 @@ function wireSpotifyNowPlaying() {
     refreshTimer = setInterval(loadNowPlaying, 20000);
   }
 
+  // Paint the cached track first so the panel is never empty while loading.
+  const cached = readCachedTrack();
+  if (cached) {
+    setTrack(cached);
+    setStatus("Last played");
+  }
+
   loadNowPlaying();
   startAutoRefresh();
-}
-
-function wireLinkSparkles() {
-  const GLYPHS = [
-    "\u2726",
-    "\u2727",
-    "\u2726",
-    "+",
-    "\u00d7",
-    "*",
-    "\u00b7",
-    "\u2726",
-  ];
-  const COLORS = [
-    "#1a1a1a",
-    "#6f6f6f",
-    "#6f6f6f",
-    "#9a9a9a",
-    "#1a1a1a",
-    "#6f6f6f",
-  ];
-  let lastTime = 0;
-
-  function isLink(el) {
-    return !!el?.closest("a") && !!el?.closest("#notepad");
-  }
-
-  function spawn(x, y) {
-    // occasionally drop 2 at once for a burstier feel
-    const count = Math.random() < 0.35 ? 2 : 1;
-    for (let i = 0; i < count; i++) {
-      const el = document.createElement("span");
-      el.className = "link-sparkle";
-      el.textContent = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
-      el.style.left = x + (Math.random() - 0.5) * 22 + "px";
-      el.style.top = y + (Math.random() - 0.5) * 22 + "px";
-      el.style.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-      el.style.fontSize = 8 + Math.floor(Math.random() * 8) + "px";
-      el.style.setProperty("--sx", (Math.random() - 0.5) * 22 + "px");
-      el.style.setProperty("--sy", -(10 + Math.random() * 20) + "px");
-      document.body.appendChild(el);
-      el.addEventListener("animationend", () => el.remove(), { once: true });
-    }
-  }
-
-  document.addEventListener("mousemove", (e) => {
-    if (!isLink(e.target)) return;
-    const now = Date.now();
-    if (now - lastTime < 75) return;
-    lastTime = now;
-    spawn(e.clientX, e.clientY);
-  });
 }
 
 function initWindows() {
@@ -1652,14 +1627,15 @@ window.addEventListener("resize", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   windows().forEach(applyDefaultDimensions);
-  const defaultMobileWindow = document.getElementById("notepad");
+  const notepadWin = document.getElementById("notepad");
   initWindows();
   wireLauncher();
   wireWindowFocus();
   wireProjectIcons();
   wireProjectModal();
+  wireProjectOpeners();
+  wireSkipLink();
   wireSpotifyNowPlaying();
-  wireLinkSparkles();
   updateLauncherState();
 
   const spotifyWin = document
@@ -1673,7 +1649,6 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(layoutProjectIconCluster);
   });
 
-  const notepadWin = document.getElementById("notepad");
   if (
     notepadWin &&
     !notepadWin.classList.contains("is-closed") &&
@@ -1682,5 +1657,5 @@ document.addEventListener("DOMContentLoaded", () => {
     bringToFront(notepadWin);
     setActiveLauncher(notepadWin);
   }
-  syncDesktopLayoutMode(defaultMobileWindow || notepadWin);
+  syncDesktopLayoutMode(notepadWin);
 });

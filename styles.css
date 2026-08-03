@@ -605,21 +605,6 @@ body {
     margin-bottom: 0;
 }
 
-/* Hollow-circle sub-bullets (Writing sub-items in setlist) */
-.project-modal__sub-bullet-list {
-    list-style: circle;
-    padding-left: 1.25em;
-    margin: 4px 0 0;
-}
-
-.project-modal__sub-bullet-list li {
-    margin-bottom: 4px;
-}
-
-.project-modal__sub-bullet-list li:last-child {
-    margin-bottom: 0;
-}
-
 .project-modal__media {
     margin-top: 20px;
     padding-top: 16px;
@@ -1097,18 +1082,6 @@ body {
     border: 1px solid #b0b0b0;
 }
 
-/* Setlist / Favorites navigation links */
-.favorites-return {
-    margin: 8px 0 0;
-    text-align: left;
-}
-
-.favorites-return a {
-    font-size: 11px;
-    text-decoration: underline;
-    letter-spacing: 0.04em;
-}
-
 /* Allow anchor tags inside tree headings to inherit the heading style */
 .project-modal__tree-ht a {
     font-weight: inherit;
@@ -1125,13 +1098,6 @@ body {
 
 .project-modal__tree-ht a:hover {
     color: #6f6f6f;
-}
-
-/* Plain (non-uppercase, normal-weight) variant for top-level setlist tree entries */
-.project-modal__tree-ht--plain {
-    font-weight: 400;
-    text-transform: none;
-    letter-spacing: 0;
 }
 
 /* Notepad Window — default stack above other chrome windows; JS bringToFront on load reinforces */
@@ -1219,19 +1185,6 @@ body {
     }
 }
 
-.info-label {
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-.about-text {
-    margin: 24px 0;
-    font-size: 12px;
-    line-height: 1.7;
-    font-family: "IBM Plex Mono", monospace;
-    color: #1a1a1a;
-}
-
 .section {
     margin: 24px 0;
 }
@@ -1307,14 +1260,6 @@ body {
     line-height: 1.6;
 }
 
-.section-content--work > .work-entry {
-    margin-bottom: 8px;
-}
-
-.section-content--work > .work-entry:last-child {
-    margin-bottom: 0;
-}
-
 .work-entry__title {
     font-family: "IBM Plex Mono", monospace;
     font-weight: 600;
@@ -1323,29 +1268,6 @@ body {
     line-height: 1.8;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-}
-
-.work-entry__subtitle {
-    font-size: 12px;
-    line-height: 1.8;
-    color: #1a1a1a;
-}
-
-.indent {
-    margin-left: 20px;
-}
-
-.background-text {
-    position: absolute;
-    bottom: 100px;
-    right: 50px;
-    font-size: clamp(48px, 18vw, 120px);
-    font-weight: bold;
-    color: rgba(26, 26, 26, 0.03);
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    pointer-events: none;
-    z-index: 0;
-    transform: rotate(-5deg);
 }
 
 /* Contact Window */
@@ -1370,10 +1292,24 @@ body {
     color: #1a1a1a;
 }
 
+.contact-list {
+    list-style: none;
+}
+
 .contact-item {
     font-family: "IBM Plex Mono", monospace;
     margin-bottom: 7px;
     word-break: break-word;
+}
+
+.contact-art {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: pre;
+    display: inline-block;
+    vertical-align: baseline;
+    margin-right: 6px;
 }
 
 .contact-item:last-child {
@@ -1382,19 +1318,6 @@ body {
 
 .contact-label {
     font-weight: 600;
-}
-
-.contact-ascii {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 8px;
-    line-height: 1;
-    white-space: pre;
-    margin: 10px 0 8px 0;
-    padding: 0;
-    color: #1a1a1a;
-    background: transparent;
-    border: none;
-    overflow: visible;
 }
 
 /* Spotify Window */
@@ -1414,48 +1337,6 @@ body {
     gap: 12px;
     font-size: 12px;
     line-height: 1.5;
-}
-
-.spotify-label {
-    font-family: "IBM Plex Mono", monospace;
-    display: block;
-    font-weight: 600;
-    margin-bottom: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-}
-
-.spotify-actions {
-    font-family: "IBM Plex Mono", monospace;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.spotify-btn {
-    border: 1px solid #6f6f6f;
-    background: #f3f3f3;
-    color: #1a1a1a;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 11px;
-    padding: 4px 8px;
-    cursor: pointer;
-}
-
-.spotify-btn:hover {
-    background: #bfbfbf;
-}
-
-.spotify-help {
-    margin-top: 8px;
-    font-size: 10px;
-    line-height: 1.45;
-}
-
-.spotify-help code {
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid #b0b0b0;
-    padding: 0 3px;
 }
 
 .spotify-status {
@@ -1480,12 +1361,6 @@ body {
 .spotify-artist {
     font-family: "IBM Plex Mono", monospace;
     margin-top: 2px;
-}
-
-.spotify-link {
-    font-family: "IBM Plex Mono", monospace;
-    display: inline-block;
-    margin-top: 8px;
 }
 
 /* Window launcher (restore closed / minimized) */
@@ -1563,37 +1438,6 @@ body {
     white-space: nowrap;
 }
 
-.status-right {
-    font-family: "IBM Plex Mono", monospace;
-}
-
-/* ── 2000s sparkle trail cursor ── */
-.link-sparkle {
-    position: fixed;
-    pointer-events: none;
-    z-index: 99999;
-    font-family: "IBM Plex Mono", "Courier New", monospace;
-    line-height: 1;
-    user-select: none;
-    white-space: pre;
-    animation: sparkle-fly 650ms ease-out forwards;
-    will-change: transform, opacity;
-}
-
-@keyframes sparkle-fly {
-    0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-    }
-    35% {
-        opacity: 1;
-    }
-    100% {
-        transform: translate(var(--sx), var(--sy)) scale(0);
-        opacity: 0;
-    }
-}
-
 a {
     color: #1a1a1a;
     text-decoration: underline;
@@ -1605,6 +1449,63 @@ a:visited {
 
 a:hover {
     color: #6f6f6f;
+}
+
+/* ── Accessibility helpers ── */
+
+/* Available to screen readers, hidden visually (e.g. "opens in a new tab"). */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100000;
+    transform: translateY(-150%);
+    background: #f3f3f3;
+    border: 1px solid #1a1a1a;
+    color: #1a1a1a;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 6px 10px;
+    text-decoration: underline;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* Button that reads as inline text (opens a project window). */
+.link-button {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: #1a1a1a;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link-button:hover {
+    color: #6f6f6f;
+}
+
+/* Visible keyboard focus on every interactive element. */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid #1a1a1a;
+    outline-offset: 2px;
 }
 
 /* Mobile tab layout (class toggled by main.js when viewport <= --layout-mobile-max) */

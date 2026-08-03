@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <title>Lena's Desktop</title>
+        <meta
+            name="description"
+            content="Lena Conde Araujo — ECE student at Olin. Chip design, PCBs, firmware, and other projects."
+        />
         <link rel="icon" href="favicon.png" type="image/png" />
         <link rel="apple-touch-icon" href="favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,17 +47,22 @@
                 </symbol>
             </defs>
         </svg>
-        <div class="desktop" id="desktop">
+        <a class="skip-link" href="#notepad">Skip to About</a>
+        <main class="desktop" id="desktop">
             <!-- File Explorer Window -->
-            <div
+            <section
                 class="window file-explorer active"
                 id="fileExplorer"
                 data-window-label="Projects"
                 data-default-width="420"
                 data-default-height="300"
+                aria-labelledby="fileExplorerTitle"
+                tabindex="-1"
             >
                 <div class="title-bar">
-                    <span class="title-bar-text">FILE_EXPLORER.EXE</span>
+                    <span class="title-bar-text" id="fileExplorerTitle"
+                        >FILE_EXPLORER.EXE</span
+                    >
                     <div class="window-controls">
                         <button
                             type="button"
@@ -84,7 +93,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="menu-bar">
+                <div class="menu-bar" aria-hidden="true">
                     <span class="menu-item">HOME</span>
                     <span class="menu-item">OPTIONS</span>
                     <span class="menu-item">WINDOW</span>
@@ -94,6 +103,7 @@
                     <div
                         class="project-icons-surface"
                         id="projectIconsSurface"
+                        role="group"
                         aria-label="Project folders"
                     >
                         <button
@@ -197,10 +207,6 @@
                             </svg>
                             <span class="project-icon__label">other</span>
                         </button>
-                        <!-- <button type="button" class="project-icon-btn" data-project-id="pcb" title="Drag to move, click to open" aria-label="PCB design project">
-                        <svg class="project-folder__icon" viewBox="0 0 52 46" width="48" height="42" aria-hidden="true" focusable="false"><use href="#icon-folder"/></svg>
-                        <span class="project-icon__label">PCB design</span>
-                    </button> -->
                     </div>
                 </div>
                 <div class="resize-layer" aria-hidden="true">
@@ -213,18 +219,22 @@
                     <div class="resize-handle resize-w" data-dir="w"></div>
                     <div class="resize-handle resize-nw" data-dir="nw"></div>
                 </div>
-            </div>
+            </section>
 
             <!-- Notepad Window -->
-            <div
+            <section
                 class="window notepad-window active"
                 id="notepad"
                 data-window-label="About"
                 data-default-width="620"
                 data-default-height="480"
+                aria-labelledby="notepadTitle"
+                tabindex="-1"
             >
                 <div class="title-bar">
-                    <span class="title-bar-text">ABOUT_ME.TXT — NOTEPAD.EXE</span>
+                    <span class="title-bar-text" id="notepadTitle"
+                        >ABOUT_ME.TXT — NOTEPAD.EXE</span
+                    >
                     <div class="window-controls">
                         <button
                             type="button"
@@ -255,7 +265,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="menu-bar">
+                <div class="menu-bar" aria-hidden="true">
                     <span class="menu-item">FILE</span>
                     <span class="menu-item">OPTIONS</span>
                     <span class="menu-item">WINDOW</span>
@@ -266,7 +276,7 @@
                         <div class="profile-image">
                             <img
                                 src="images/profile.jpeg"
-                                alt="Profile"
+                                alt="Portrait of Lena"
                                 class="profile-photo"
                             />
                         </div>
@@ -280,30 +290,51 @@
 
                             </div>
                             <div class="info-line about-intro">
-                                In my free time, I watch films (see <a href="#" onclick="openProjectModal('favorites'); return false;">some of my favorites</a></li>) 
-                                and play and make pedals for my electric guitar.
+                                In my free time, I watch films (see
+                                <button
+                                    type="button"
+                                    class="link-button"
+                                    data-open-project="favorites"
+                                >
+                                    some of my favorites</button
+                                >) and play and make pedals for my electric
+                                guitar.
                             </div>
                         </div>
                     </div>
 
                     <div class="section">
                         <div class="section-content">
-                            <div class="section-title about-subtitle">
+                            <h2 class="section-title about-subtitle">
                                 Currently
-                            </div>
+                            </h2>
                             <ul class="about-list">
                                 <li>
                                     Interning at GlobalFoundries this summer doing device engineering on next-gen eNVM (MRAM/RRAM)
                                 </li>
                                 <li>
-                                    Incoming fellow at <a href="https://humbaventures.com/" target="_blank" rel="noopener"
-                                        >Humba Ventures</a>, learning about early-stage investing in deep tech and American Dynamism
+                                    Incoming fellow at
+                                    <a
+                                        href="https://humbaventures.com/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        >Humba Ventures<span
+                                            class="visually-hidden"
+                                        >
+                                            (opens in a new tab)</span
+                                        ></a
+                                    >, learning about early-stage investing in
+                                    deep tech and American Dynamism
                                 </li>
                                 <li>
                                     Recreating a
                                     <a
-                                        href="https://x.com/ObsoleteSony/status/1780128999781314852" target="_blank" rel="noopener"
-                                        >Funbbit</a
+                                        href="https://x.com/ObsoleteSony/status/1780128999781314852"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        >Funbbit<span class="visually-hidden">
+                                            (opens in a new tab)</span
+                                        ></a
                                     > (from PCB to firmware) for my Sony CD Walkman to make listening to albums a little more fun!
                                 </li>
                             </ul>
@@ -326,18 +357,22 @@
                     <div class="resize-handle resize-w" data-dir="w"></div>
                     <div class="resize-handle resize-nw" data-dir="nw"></div>
                 </div>
-            </div>
+            </section>
 
             <!-- Contact Window -->
-            <div
+            <section
                 class="window contact-window active"
                 id="contact"
                 data-window-label="Contact"
                 data-default-width="320"
                 data-default-height="275"
+                aria-labelledby="contactTitle"
+                tabindex="-1"
             >
                 <div class="title-bar">
-                    <span class="title-bar-text">CONTACT.TXT — NOTEPAD.EXE</span>
+                    <span class="title-bar-text" id="contactTitle"
+                        >CONTACT.TXT — NOTEPAD.EXE</span
+                    >
                     <div class="window-controls">
                         <button
                             type="button"
@@ -369,36 +404,68 @@
                     </div>
                 </div>
                 <div class="window-content contact-content">
-                    <div class="contact-item">
-                        <span class="contact-label">Email:</span>
-                        <a href="mailto:lena.conde-araujo@csedge.org"
-                            >lena.conde-araujo@csedge.org</a
-                        >
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">GitHub:</span>
-                        <a href="https://github.com/rcyaon" target="_blank"
-                            >@rcyaon</a
-                        >
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">LinkedIn:</span>
-                        <a
-                            href="https://www.linkedin.com/in/lena-conde-araujo/"
-                            target="_blank"
-                            >lena-conde-araujo</a
-                        >
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">X:</span> <a href="https://x.com/rcyaon" target="_blank">@rcyaon</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">Notebook:</span> <a href="https://rcyaon.github.io/notebook/" target="_blank">rcyaon.github.io/notebook</a>
-                    </div>
-                    <pre class="contact-item">
+                    <ul class="contact-list">
+                        <li class="contact-item">
+                            <span class="contact-label">Email:</span>
+                            <a href="mailto:lena.conde-araujo@csedge.org"
+                                >lena.conde-araujo@csedge.org</a
+                            >
+                        </li>
+                        <li class="contact-item">
+                            <span class="contact-label">GitHub:</span>
+                            <a
+                                href="https://github.com/rcyaon"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >@rcyaon<span class="visually-hidden">
+                                    (opens in a new tab)</span
+                                ></a
+                            >
+                        </li>
+                        <li class="contact-item">
+                            <span class="contact-label">LinkedIn:</span>
+                            <a
+                                href="https://www.linkedin.com/in/lena-conde-araujo/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >lena-conde-araujo<span class="visually-hidden">
+                                    (opens in a new tab)</span
+                                ></a
+                            >
+                        </li>
+                        <li class="contact-item">
+                            <span class="contact-label">X:</span>
+                            <a
+                                href="https://x.com/rcyaon"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >@rcyaon<span class="visually-hidden">
+                                    (opens in a new tab)</span
+                                ></a
+                            >
+                        </li>
+                        <li class="contact-item">
+                            <span class="contact-label">Notebook:</span>
+                            <a
+                                href="https://rcyaon.github.io/notebook/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >rcyaon.github.io/notebook<span
+                                    class="visually-hidden"
+                                >
+                                    (opens in a new tab)</span
+                                ></a
+                            >
+                        </li>
+                        <li class="contact-item contact-item--callsign">
+                            <pre class="contact-art" aria-hidden="true">
  /)  /)
 ( . . )
-(   つ📡 ˒﹚)  <span class="contact-label">Callsign:</span> KJ5ITZ
+(   つ📡 ˒﹚)</pre
+                            >
+                            <span class="contact-label">Callsign:</span> KJ5ITZ
+                        </li>
+                    </ul>
                 </div>
                 <div class="resize-layer" aria-hidden="true">
                     <div class="resize-handle resize-n" data-dir="n"></div>
@@ -410,18 +477,22 @@
                     <div class="resize-handle resize-w" data-dir="w"></div>
                     <div class="resize-handle resize-nw" data-dir="nw"></div>
                 </div>
-            </div>
+            </section>
 
             <!-- Spotify Window -->
-            <div
+            <section
                 class="window spotify-window active"
                 id="spotify"
                 data-window-label="Spotify"
                 data-default-width="360"
                 data-default-height="280"
+                aria-labelledby="spotifyTitle"
+                tabindex="-1"
             >
                 <div class="title-bar">
-                    <span class="title-bar-text">SPOTIFY.EXE</span>
+                    <span class="title-bar-text" id="spotifyTitle"
+                        >SPOTIFY.EXE</span
+                    >
                     <div class="window-controls">
                         <button
                             type="button"
@@ -453,9 +524,14 @@
                     </div>
                 </div>
                 <div class="window-content spotify-content">
-                    <div class="spotify-now-playing" id="spotifyNowPlaying">
+                    <div
+                        class="spotify-now-playing"
+                        id="spotifyNowPlaying"
+                        role="status"
+                        aria-live="polite"
+                    >
                         <p class="spotify-status" id="spotifyStatusText">
-                            Waiting for token...
+                            Loading now playing...
                         </p>
                         <img
                             id="spotifyArtwork"
@@ -477,7 +553,7 @@
                     <div class="resize-handle resize-w" data-dir="w"></div>
                     <div class="resize-handle resize-nw" data-dir="nw"></div>
                 </div>
-            </div>
+            </section>
 
             <!-- Project detail modal -->
             <div
@@ -525,6 +601,7 @@
                     class="launcher-btn"
                     data-launch="fileExplorer"
                     aria-controls="fileExplorer"
+                    aria-expanded="true"
                 >
                     <span class="launcher-btn__label">Projects</span>
                 </button>
@@ -533,6 +610,7 @@
                     class="launcher-btn"
                     data-launch="notepad"
                     aria-controls="notepad"
+                    aria-expanded="true"
                 >
                     <span class="launcher-btn__label">About</span>
                 </button>
@@ -541,6 +619,7 @@
                     class="launcher-btn"
                     data-launch="contact"
                     aria-controls="contact"
+                    aria-expanded="true"
                 >
                     <span class="launcher-btn__label">Contact</span>
                 </button>
@@ -549,16 +628,17 @@
                     class="launcher-btn"
                     data-launch="spotify"
                     aria-controls="spotify"
+                    aria-expanded="true"
                 >
                     <span class="launcher-btn__label">Spotify</span>
                 </button>
             </nav>
 
             <!-- Status Bar -->
-            <div class="status-bar">
+            <div class="status-bar" aria-hidden="true">
                 <div class="status-left">C:\portfolio\about_me.txt</div>
             </div>
-        </div>
+        </main>
 
         <script src="main.js"></script>
     </body>
