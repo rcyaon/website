@@ -179,7 +179,7 @@ const PROJECTS = {
         variant: "panel",
         panelHeadingStyle: "band",
         treeBlocks: true,
-        heading: "‎ technical_programs",
+        heading: "‎ programs/technical",
         blocks: [
           {
             heading: "Google Code Next",
@@ -204,7 +204,7 @@ const PROJECTS = {
         variant: "panel",
         panelHeadingStyle: "band",
         treeBlocks: true,
-        heading: "‎ venture_programs",
+        heading: "‎ programs/venture",
         blocks: [
           {
             heading: "Dorm Room Fund Blueprint Investor Track",
