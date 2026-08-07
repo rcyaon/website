@@ -12,7 +12,7 @@
         var(--status-bar-height) + var(--launcher-height)
     );
     --window-min-width: 220px;
-    --window-min-height: 160px;
+    --window-min-height: 145px;
     --resize-hit: 8px;
     --font-mono: "IBM Plex Mono", "Courier New", monospace;
     /* Viewport at or below this width uses single-window / fluid layout */
