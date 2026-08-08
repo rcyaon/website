@@ -1105,7 +1105,7 @@ body {
     top: 340px;
     left: 170px;
     width: 620px;
-    height: 465px !important;
+    height: 455px !important;
     z-index: 50;
 }
 
@@ -1276,7 +1276,7 @@ body {
     right: 130px;
     left: auto;
     width: 350px;
-    height: 270px !important;
+    height: 255px !important;
     z-index: 30;
 }
 

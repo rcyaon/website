@@ -43,7 +43,7 @@ const PROJECTS = {
         heading: "Links",
         bullets: [
           "<a href='https://github.com/cornell-c2s2'>GitHub</a>",
-          "<a href='https://www.c2s2.dev'>Cornell Custom Silicon Systems</a>",
+          "<a href='https://www.c2s2.dev'>Team site</a>",
         ],
       },
     ],
