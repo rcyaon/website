@@ -260,7 +260,13 @@ const PROJECTS = {
           {
             heading: "Societal Impact and Hardware Winner at YHack",
             bullets: [
-              "Built Canary, a real-time mine hazard detector using a Raspberry Pi, gas sensors, and depth cameras. Placed 3rd in Societal Impact and 4th in Hardware out of 700+ participants. <a href=\"https://devpost.com/software/canary-axf7o2\"> Devpost here</a>.",
+              "Built Canary, a real-time mine hazard detector using a Raspberry Pi, gas sensors, and depth cameras. Placed 3rd in Societal Impact and 4th in Hardware out of 700+ participants. <a href=\"https://devpost.com/software/canary-axf7o2\">Learn more on Devpost</a>.",
+            ],
+          },
+          {
+            heading: "$500 GripTape Grant",
+            bullets: [
+              "ML race-strategy project using synthetic sensor data and 3D-printed model cars.",
             ],
           },
         ],
