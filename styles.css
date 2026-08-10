@@ -1105,7 +1105,7 @@ body {
     top: 340px;
     left: 170px;
     width: 620px;
-    height: 455px !important;
+    height: 460px !important;
     z-index: 50;
 }
 
@@ -1272,7 +1272,7 @@ body {
 
 /* Contact Window */
 .contact-window {
-    top: 52px;
+    top: 72px;
     right: 130px;
     left: auto;
     width: 350px;
