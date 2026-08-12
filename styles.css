@@ -699,10 +699,14 @@ body {
 
 /* Tree-style block list (Programs, Technical Awards) */
 .project-modal__experience-panel-body--tree {
+    --tree-lh: 1.8;
+    --tree-indent: 4ch;
+    /* Centre of the first glyph cell, where │ ├ └ all draw their stroke. */
+    --tree-stroke-x: calc(0.5ch - 0.5px);
     display: flex;
     flex-direction: column;
     gap: 0;
-    line-height: 1.8;
+    line-height: var(--tree-lh);
 }
 
 .project-modal__tree-row {
@@ -710,40 +714,83 @@ body {
     align-items: flex-start;
 }
 
-.project-modal__tree-tc {
+/* One indent level of an ancestor: blank, or a │ spanning the whole row
+   (wrapped lines included). */
+.project-modal__tree-gutter {
+    position: relative;
     flex-shrink: 0;
+    width: var(--tree-indent);
+    align-self: stretch;
+}
+
+.project-modal__tree-gutter--bar::before {
+    content: "";
+    position: absolute;
+    left: var(--tree-stroke-x);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: #9a9a9a;
+}
+
+/* "├── " / "└── ". */
+.project-modal__tree-branch {
+    position: relative;
+    flex-shrink: 0;
+    width: var(--tree-indent);
     white-space: pre;
     color: #9a9a9a;
     font-weight: 400;
-    line-height: 1.8;
+    line-height: var(--tree-lh);
+    align-self: stretch;
+}
+
+/* A ├ entry continues its bar past the first line, so wrapped text stays
+   visibly attached to the branch. └ entries terminate, so they get nothing. */
+.project-modal__tree-branch:not(.project-modal__tree-branch--end)::before {
+    content: "";
+    position: absolute;
+    left: var(--tree-stroke-x);
+    top: calc(1em * var(--tree-lh));
+    bottom: 0;
+    width: 1px;
+    background-color: #9a9a9a;
 }
 
 .project-modal__tree-ht {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    line-height: 1.8;
+    line-height: var(--tree-lh);
 }
 
-/* Stretching │ bar — grows to full row height including wrapped lines */
-.project-modal__tree-pipe {
-    flex-shrink: 0;
-    width: 1px;
-    background-color: #9a9a9a;
-    align-self: stretch;
-    margin-left: calc(0.5ch - 0.5px);
-    margin-right: calc(0.5ch - 0.5px);
+/* Panels whose entries are full sentences rather than short labels need air
+   between them. The gap goes inside the row (as padding on the text) so the
+   stretched │ bars grow with it and the rail stays unbroken. */
+.project-modal__experience-panel-body--tree-spaced {
+    --tree-entry-gap: 0.5em;
 }
 
-.project-modal__tree-pipe--last {
-    background-color: transparent;
+.project-modal__experience-panel-body--tree-spaced .project-modal__tree-row p {
+    padding-bottom: var(--tree-entry-gap);
+}
+
+.project-modal__experience-panel-body--tree-spaced
+    .project-modal__tree-row:last-child
+    p {
+    padding-bottom: 0;
+}
+
+/* Same for the gap under a heading row, before its first child. */
+.project-modal__experience-panel-body--tree-spaced .project-modal__tree-ht {
+    padding-bottom: calc(var(--tree-entry-gap) * 0.5);
 }
 
 .project-modal__tree-row p {
     margin: 0;
     flex: 1;
     min-width: 0;
-    line-height: 1.8;
+    line-height: var(--tree-lh);
 }
 
 /* Canary / TinyRV: half text, half image (stacks on narrow viewports). */
@@ -1105,7 +1152,7 @@ body {
     top: 340px;
     left: 170px;
     width: 620px;
-    height: 460px !important;
+    height: 440px !important;
     z-index: 50;
 }
 
@@ -1276,7 +1323,7 @@ body {
     right: 130px;
     left: auto;
     width: 350px;
-    height: 255px !important;
+    height: 230px !important;
     z-index: 30;
 }
 

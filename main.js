@@ -16,10 +16,15 @@ const MIN_H = 160;
  *   variant?: 'divider' | 'panel';
  *   blocks?: ProjectPanelBlock[];
  *   panelHeadingStyle?: 'band';
+ *   treeBlocks?: boolean;
+ *   treeSpaced?: boolean;
  * }} ProjectSection
  * @typedef {{ type: 'image' | 'video' | 'embed'; src: string; alt?: string; caption?: string; youtubeShowControls?: boolean; youtubeAutoplay?: boolean; youtubeLoop?: boolean }} ProjectGalleryItem
  * @typedef {{ title: string; sections: ProjectSection[]; imageSrc?: string; imageAlt?: string; images?: ProjectImage[]; gallery?: ProjectGalleryItem[]; noMedia?: boolean }} ProjectDetail
  */
+
+/** Projects rendered with the terminal layout (wide panel, ls bands, tree rows). */
+const TERMINAL_PROJECTS = new Set(["more-work", "work-exp"]);
 
 /** @type {Record<string, ProjectDetail>} */
 const PROJECTS = {
@@ -167,6 +172,48 @@ const PROJECTS = {
 <img src="https://cdn.sonemic.net/i/600/s/11933c15df434e27c222809d2f782d76/14433302/harold-budd-elizabeth-fraser-robin-guthrie-and-simon-raymonde-the-moon-and-the-melodies-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
 <br>
 `,
+      },
+    ],
+  },
+
+  "work-exp": {
+    title: "TERMINAL.EXE",
+    noMedia: true,
+    sections: [
+      {
+        variant: "panel",
+        panelHeadingStyle: "band",
+        treeBlocks: true,
+        treeSpaced: true,
+        heading: "‎ amazon",
+        blocks: [
+          {
+            heading: "Software Engineering Intern (summer 2025)",
+            bullets: [
+              "Built OfferAnalytics, a service that watches cross-border offers for anomalies, on AWS with Lambda, Kotlin, and DynamoDB.",
+              "Real-time pipelines from the data warehouse and DynamoDB into CloudWatch and S3 brought detection latency down from 8 days to under 24 hours.",
+              "Reworking cross-region alert escalation took mean incident resolution from 7 days to 6 hours across distributed service teams.",
+              "Made it plugin-based, so new metrics can be added without touching the core service.",
+            ],
+          },
+        ],
+      },
+      {
+        variant: "panel",
+        panelHeadingStyle: "band",
+        treeBlocks: true,
+        treeSpaced: true,
+        heading: "‎ globalfoundries",
+        blocks: [
+          {
+            heading: "Device Engineering Intern (summer 2026)",
+            bullets: [
+              "Developed a pulse-write-enabled eNVM test IP for 22FDX with a 1-kbit miniarray, 10-bit decoder, and 8-line parallel write, enabling MRAM and RRAM characterization. It's now a reusable platform the team is extending to new memory technologies and device types.",
+              "Designed low-droop write-path circuitry (up to 3.5 V/5 mA), verified across DC, transient, and PVT corners in Cadence Virtuoso.",
+              "Qualified 12LP MRAM/RRAM access transistors with DMAC simulations, guiding device selection for fabrication and measurement.",
+            ],
+          },
+        ],
       },
     ],
   },
@@ -766,7 +813,7 @@ function openProjectModal(projectId) {
     else panel.classList.remove("project-modal__panel--gallery");
     panel.classList.toggle(
       "project-modal__panel--more-work",
-      projectId === "more-work",
+      TERMINAL_PROJECTS.has(projectId),
     );
   }
 
@@ -778,7 +825,7 @@ function openProjectModal(projectId) {
     data.sections.some((s) => s.image);
 
   if (useSectionImages) {
-    const splitSideImages = projectId === "more-work";
+    const splitSideImages = TERMINAL_PROJECTS.has(projectId);
     bodyEl.innerHTML = data.sections
       .map((s) => {
         if (splitSideImages && s.image) {
@@ -804,7 +851,7 @@ function openProjectModal(projectId) {
 
   bodyEl.classList.toggle(
     "project-modal__body--more-work",
-    projectId === "more-work",
+    TERMINAL_PROJECTS.has(projectId),
   );
 
   if (data.gallery && data.gallery.length > 0) {
@@ -858,13 +905,27 @@ function renderProjectPanelBlock(b) {
   return `<div class="project-modal__experience-block">${html}</div>`;
 }
 
+const TREE_TEE = "\u251c\u2500\u2500 "; // "\u251c\u2500\u2500 ", an entry with siblings after it
+const TREE_ELBOW = "\u2514\u2500\u2500 "; // "\u2514\u2500\u2500 ", the last entry at its level
+
+/**
+ * Branch glyph for one entry. Non-last entries also carry their bar down
+ * through wrapped text (see the ::before rule in styles.css).
+ */
+function renderTreeBranch(isLast) {
+  const cls = isLast
+    ? "project-modal__tree-branch project-modal__tree-branch--end"
+    : "project-modal__tree-branch";
+  return `<span class="${cls}">${isLast ? TREE_ELBOW : TREE_TEE}</span>`;
+}
+
+/** Blocks as `tree` output: heading is a directory, its lines are children. */
 function renderProjectPanelTreeBlocks(blocks) {
   const filtered = blocks.filter((b) => b.heading && String(b.heading).trim());
   if (filtered.length === 0) return "";
   return filtered
     .map((b, i) => {
-      const isLast = i === filtered.length - 1;
-      const branchChar = isLast ? "\u2514\u2500\u2500 " : "\u251c\u2500\u2500 ";
+      const blockIsLast = i === filtered.length - 1;
       const lines = [];
       if (b.body && String(b.body).trim()) lines.push(String(b.body).trim());
       if (b.bullets && b.bullets.length > 0) {
@@ -874,21 +935,19 @@ function renderProjectPanelTreeBlocks(blocks) {
       }
       let html =
         `<div class="project-modal__tree-row">` +
-        `<span class="project-modal__tree-tc">${branchChar}</span>` +
+        renderTreeBranch(blockIsLast) +
         `<span class="project-modal__tree-ht">${escapeHtml(b.heading)}</span>` +
         `</div>`;
+      // Children indent one level: the parent's column keeps its bar only
+      // while more entries follow it, exactly like real `tree` output.
+      const gutterClass = blockIsLast
+        ? "project-modal__tree-gutter"
+        : "project-modal__tree-gutter project-modal__tree-gutter--bar";
       lines.forEach((line, lineIndex) => {
-        const isLastLine = lineIndex === lines.length - 1;
-        const hidePipe = lineIndex === 0 && lines.length > 1;
-        const pipeClass = hidePipe
-          ? "project-modal__tree-pipe project-modal__tree-pipe--last"
-          : isLast && isLastLine
-            ? "project-modal__tree-pipe project-modal__tree-pipe--last"
-            : "project-modal__tree-pipe";
         html +=
           `<div class="project-modal__tree-row">` +
-          `<span class="${pipeClass}"></span>` +
-          `<span class="project-modal__tree-tc">  \u2514\u2500\u2500 </span>` +
+          `<span class="${gutterClass}"></span>` +
+          renderTreeBranch(lineIndex === lines.length - 1) +
           `<p>${linkifyText(line)}</p>` +
           `</div>`;
       });
@@ -913,7 +972,8 @@ function renderProjectPanel(s) {
     ? "project-modal__experience-panel project-modal__experience-panel--title-only"
     : "project-modal__experience-panel";
   const bodyClass = s.treeBlocks
-    ? "project-modal__experience-panel-body project-modal__experience-panel-body--tree"
+    ? "project-modal__experience-panel-body project-modal__experience-panel-body--tree" +
+      (s.treeSpaced ? " project-modal__experience-panel-body--tree-spaced" : "")
     : "project-modal__experience-panel-body";
   return (
     `<div class="${wrapClass}">` +
