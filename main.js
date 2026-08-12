@@ -17,7 +17,6 @@ const MIN_H = 160;
  *   blocks?: ProjectPanelBlock[];
  *   panelHeadingStyle?: 'band';
  *   treeBlocks?: boolean;
- *   treeSpaced?: boolean;
  * }} ProjectSection
  * @typedef {{ type: 'image' | 'video' | 'embed'; src: string; alt?: string; caption?: string; youtubeShowControls?: boolean; youtubeAutoplay?: boolean; youtubeLoop?: boolean }} ProjectGalleryItem
  * @typedef {{ title: string; sections: ProjectSection[]; imageSrc?: string; imageAlt?: string; images?: ProjectImage[]; gallery?: ProjectGalleryItem[]; noMedia?: boolean }} ProjectDetail
@@ -184,7 +183,6 @@ const PROJECTS = {
         variant: "panel",
         panelHeadingStyle: "band",
         treeBlocks: true,
-        treeSpaced: true,
         heading: "‎ amazon",
         blocks: [
           {
@@ -202,7 +200,6 @@ const PROJECTS = {
         variant: "panel",
         panelHeadingStyle: "band",
         treeBlocks: true,
-        treeSpaced: true,
         heading: "‎ globalfoundries",
         blocks: [
           {
@@ -972,8 +969,7 @@ function renderProjectPanel(s) {
     ? "project-modal__experience-panel project-modal__experience-panel--title-only"
     : "project-modal__experience-panel";
   const bodyClass = s.treeBlocks
-    ? "project-modal__experience-panel-body project-modal__experience-panel-body--tree" +
-      (s.treeSpaced ? " project-modal__experience-panel-body--tree-spaced" : "")
+    ? "project-modal__experience-panel-body project-modal__experience-panel-body--tree"
     : "project-modal__experience-panel-body";
   return (
     `<div class="${wrapClass}">` +

@@ -764,28 +764,6 @@ body {
     line-height: var(--tree-lh);
 }
 
-/* Panels whose entries are full sentences rather than short labels need air
-   between them. The gap goes inside the row (as padding on the text) so the
-   stretched │ bars grow with it and the rail stays unbroken. */
-.project-modal__experience-panel-body--tree-spaced {
-    --tree-entry-gap: 0.5em;
-}
-
-.project-modal__experience-panel-body--tree-spaced .project-modal__tree-row p {
-    padding-bottom: var(--tree-entry-gap);
-}
-
-.project-modal__experience-panel-body--tree-spaced
-    .project-modal__tree-row:last-child
-    p {
-    padding-bottom: 0;
-}
-
-/* Same for the gap under a heading row, before its first child. */
-.project-modal__experience-panel-body--tree-spaced .project-modal__tree-ht {
-    padding-bottom: calc(var(--tree-entry-gap) * 0.5);
-}
-
 .project-modal__tree-row p {
     margin: 0;
     flex: 1;
