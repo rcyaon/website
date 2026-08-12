@@ -205,9 +205,10 @@ const PROJECTS = {
           {
             heading: "Device Engineering Intern (summer 2026)",
             bullets: [
-              "Developed a pulse-write-enabled eNVM test IP for 22FDX with a 1-kbit miniarray, 10-bit decoder, and 8-line parallel write, enabling MRAM and RRAM characterization. It's now a reusable platform the team is extending to new memory technologies and device types.",
-              "Designed low-droop write-path circuitry (up to 3.5 V/5 mA), verified across DC, transient, and PVT corners in Cadence Virtuoso.",
-              "Qualified 12LP MRAM/RRAM access transistors with DMAC simulations, guiding device selection for fabrication and measurement.",
+              "Spent the summer at GlobalFoundries Dresden building test silicon infrastructure for emerging memory: a pulse-write eNVM test IP on 22FDX, with one configurable path routing programmable write pulses or analog bias to any BL/WL/SL in the array.",
+              "Scaled it from a single device to an addressable 1-kbit array with 1/2/4/8-line parallel programming, chasing voltage droop through drivers, pass switches, and routing until the write current actually arrived.",
+              "Ran multi-temperature Id-Vd sweeps on 12LP access transistor candidates, trading write current against leakage to pick devices worth using as access transistors for MRAM and RRAM.",
+              "Wrote the handoff doc. Platform is being taped out post-internship and extended to new memory technologies.",
             ],
           },
         ],
