@@ -64,7 +64,7 @@ const PROJECTS = {
         heading: "Links",
         bullets: [
           "<a href='https://github.com/cornellmotionstudio'>GitHub</a>",
-          "<a href='https://rcyaon.github.io/notebook/teachingworkshops.html'>Learnings from running workshops</a>"
+          "<a href='https://rcyaon.github.io/notebook/teachingworkshops.html'>Lessons from running workshops</a>"
         ],
       },
     ],
