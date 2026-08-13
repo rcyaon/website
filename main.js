@@ -189,10 +189,9 @@ const PROJECTS = {
           {
             heading: "Software Engineering Intern (summer 2025)",
             bullets: [
-              "Built OfferAnalytics, a service that watches cross-border offers for anomalies, on AWS with Lambda, Kotlin, and DynamoDB.",
+              "Built OfferAnalytics, a service that watches cross-border offers for anomalies, on AWS with Lambda, Kotlin, and DynamoDB and made it plugin-based, so new metrics can be added without touching the core service.",
               "Real-time pipelines from the data warehouse and DynamoDB into CloudWatch and S3 brought detection latency down from 8 days to under 24 hours.",
               "Reworking cross-region alert escalation took mean incident resolution from 7 days to 6 hours across distributed service teams.",
-              "Made it plugin-based, so new metrics can be added without touching the core service.",
             ],
           },
         ],
@@ -206,10 +205,9 @@ const PROJECTS = {
           {
             heading: "Device Engineering Intern (summer 2026)",
             bullets: [
-              "Spent the summer at GlobalFoundries Dresden building test silicon infrastructure for emerging memory: a pulse-write eNVM test IP on 22FDX, with one configurable path routing programmable write pulses or analog bias to any BL/WL/SL in the array.",
-              "Scaled it from a single device to an addressable 1-kbit array with 1/2/4/8-line parallel programming, chasing voltage droop through drivers, pass switches, and routing until the write current actually arrived.",
+              "Spent the summer at GlobalFoundries building test silicon infrastructure for emerging memory, entailing a pulse-write eNVM test IP on 22FDX, with one configurable path routing programmable write pulses or analog bias to any BL/WL/SL in the array.",
               "Ran multi-temperature Id-Vd sweeps on 12LP access transistor candidates, trading write current against leakage to pick devices worth using as access transistors for MRAM and RRAM.",
-              "Wrote the handoff doc. Platform is being taped out post-internship and extended to new memory technologies.",
+              "Authored handoff document. Platform is being taped out post-internship and extended to new memory technologies.",
             ],
           },
         ],
