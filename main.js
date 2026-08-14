@@ -48,6 +48,7 @@ const PROJECTS = {
         bullets: [
           "<a href='https://github.com/cornell-c2s2'>GitHub</a>",
           "<a href='https://www.c2s2.dev'>Team site</a>",
+          "<a href='https://rcyaon.github.io/notebook/c2s2.html'>Post-silicon test summary</a>",
         ],
       },
     ],
@@ -153,16 +154,16 @@ const PROJECTS = {
 <img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
 <br>
 
-<p>what is your name?, beyond old names; everyone's song.</p>
-<img src ="https://cdn.sonemic.net/i/600/s/cf12a7608b264c4a66ae3ca42d768c7e/12080760/what-is-your-name-beyond-old-names-everyones-song-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
-<br>
-
 <p>she's green, wisteria</p>
 <img src="https://cdn.sonemic.net/i/600/w/1406882e68da33a72be76b2b2fdd96e1/13277208/shes-green-wisteria-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
 <br>
 
-<p> Black Country, New Road, For the First Time</p>
-<img src="https://cdn.sonemic.net/i/600/s/6bd10c3d453bd5516e1472dca97d7fee/8538705/black-country-new-road-for-the-first-time-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
+<p>Racing Mount Pleasant, self-titled</p>
+<img src ="https://cdn.sonemic.net/i/600/s/4c98a64aa235c18effbf0cc2423e0177/13672127/racing-mount-pleasant-racing-mount-pleasant-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
+<br>
+
+<p>feeble little horse, bitknot</p>
+<img src="https://cdn.sonemic.net/i/600/s/0c4bc308007d6cd2556699cf055b6760/14652726/feeble-little-horse-bitknot-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
 <br>
 
 <p>Her New Knife, chrome is lullaby</p>
@@ -184,14 +185,14 @@ const PROJECTS = {
         variant: "panel",
         panelHeadingStyle: "band",
         treeBlocks: true,
-        heading: "‎ amazon",
+        heading: "‎ globalfoundries",
         blocks: [
           {
-            heading: "Software Engineering Intern (summer 2025)",
+            heading: "Device Engineering Intern (summer 2026)",
             bullets: [
-              "Built OfferAnalytics, a service that watches cross-border offers for anomalies, on AWS with Lambda, Kotlin, and DynamoDB and made it plugin-based, so new metrics can be added without touching the core service.",
-              "Real-time pipelines from the data warehouse and DynamoDB into CloudWatch and S3 brought detection latency down from 8 days to under 24 hours.",
-              "Reworking cross-region alert escalation took mean incident resolution from 7 days to 6 hours across distributed service teams.",
+              "Spent the summer at GlobalFoundries building test silicon infrastructure for emerging memory, entailing a pulse-write eNVM test IP on 22FDX, with one configurable path routing programmable write pulses or analog bias to any BL/WL/SL in the array.",
+              "Characterized 12LP access transistor candidates via Id-Vd sweeps, weighing write current against leakage to select devices for MRAM and RRAM cells.",
+              "Authored handoff document. Platform is being taped out post-internship and extended to new memory technologies.",
             ],
           },
         ],
@@ -200,14 +201,14 @@ const PROJECTS = {
         variant: "panel",
         panelHeadingStyle: "band",
         treeBlocks: true,
-        heading: "‎ globalfoundries",
+        heading: "‎ amazon",
         blocks: [
           {
-            heading: "Device Engineering Intern (summer 2026)",
+            heading: "Software Engineering Intern (summer 2025)",
             bullets: [
-              "Spent the summer at GlobalFoundries building test silicon infrastructure for emerging memory, entailing a pulse-write eNVM test IP on 22FDX, with one configurable path routing programmable write pulses or analog bias to any BL/WL/SL in the array.",
-              "Ran multi-temperature Id-Vd sweeps on 12LP access transistor candidates, trading write current against leakage to pick devices worth using as access transistors for MRAM and RRAM.",
-              "Authored handoff document. Platform is being taped out post-internship and extended to new memory technologies.",
+              "Designed and built OfferAnalytics, an anomaly monitoring service for cross-border offers on AWS (Lambda, Kotlin, DynamoDB), with a plugin architecture that decouples new metrics from the core service.",
+              "Real-time pipelines from the data warehouse and DynamoDB into CloudWatch and S3 brought detection latency down from 8 days to under 24 hours.",
+              "Reworking cross-region alert escalation took mean incident resolution from 7 days to 6 hours across distributed service teams.",
             ],
           },
         ],
