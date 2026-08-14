@@ -1347,7 +1347,7 @@ body {
 
 /* Spotify Window */
 .spotify-window {
-    top: 500px;
+    top: 200px;
     right: 40px;
     left: auto;
     width: 280px !important;
