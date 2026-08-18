@@ -236,7 +236,7 @@ const PROJECTS = {
           },
           {
             heading: "MIT Introduction to Technology, Engineering, and Science (MITES)",
-            body: "Built autonomous robots and wrote about biomimicry in train design. Now an ambassador for my favorite network, <a href='https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/'>apply to MITES</a>!",
+            body: "Built autonomous Arduino robots and wrote about biomimicry in train engineering. ",
           },
           {
             heading:
