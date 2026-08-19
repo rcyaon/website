@@ -1297,7 +1297,7 @@ body {
 
 /* Contact Window */
 .contact-window {
-    top: 72px;
+    top: 30px;
     right: 130px;
     left: auto;
     width: 350px;
@@ -1347,7 +1347,7 @@ body {
 
 /* Spotify Window */
 .spotify-window {
-    top: 325px;
+    top: 280px;
     right: 40px;
     left: auto;
     width: 280px !important;
