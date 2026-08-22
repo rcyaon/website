@@ -158,12 +158,8 @@ const PROJECTS = {
 <img src="https://cdn.sonemic.net/i/600/w/1406882e68da33a72be76b2b2fdd96e1/13277208/shes-green-wisteria-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
 <br>
 
-<p>Racing Mount Pleasant, self-titled</p>
-<img src ="https://cdn.sonemic.net/i/600/s/4c98a64aa235c18effbf0cc2423e0177/13672127/racing-mount-pleasant-racing-mount-pleasant-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
-<br>
-
-<p>feeble little horse, bitknot</p>
-<img src="https://cdn.sonemic.net/i/600/s/0c4bc308007d6cd2556699cf055b6760/14652726/feeble-little-horse-bitknot-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
+<p>Water From Your Eyes, It's a Beautiful Place</p>
+<img src ="https://cdn.sonemic.net/i/600/s/943c26e0637001270dea6ffbb94691b8/14042710/water-from-your-eyes-its-a-beautiful-place-Cover-Art.png" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
 <br>
 
 <p>Her New Knife, chrome is lullaby</p>
