@@ -37,7 +37,7 @@ const PROJECTS = {
     sections: [
       {
         heading: "",
-        body: "On Cornell's all-undergrad analog team, we taped out a 4.44 MS/s 8-bit differential SAR ADC in TSMC 180nm. No one was going to hand us the design files, so we figured it out ourselves, working through Cadence Virtuoso and a lot of shared notes. One of the only undergraduate teams in the country doing this, and it worked.",
+        body: "On Cornell's all-undergrad analog team, we taped out a 4.44 MS/s 8-bit differential SAR ADC in TSMC 180 nm. No one was going to hand us the design files, so we figured it out ourselves, working through Cadence Virtuoso and a lot of shared notes. One of the only undergraduate teams in the country doing this, and it worked.",
       },
       {
         heading: "",
@@ -150,24 +150,20 @@ const PROJECTS = {
 
 <h3>Music</h3>
 
-<p>caroline, caroline 2</p>
-<img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
+<p>Greg Freeman, I Looked Out </p>
+<img src="https://cdn.sonemic.net/i/600/s/a2d6f08bfb5ec1033204639a0e25e3a0/10515635/greg-freeman-i-looked-out-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
 <br>
 
-<p>she's green, wisteria</p>
-<img src="https://cdn.sonemic.net/i/600/w/1406882e68da33a72be76b2b2fdd96e1/13277208/shes-green-wisteria-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
+<p>caroline, caroline 2</p>
+<img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
 <br>
 
 <p>Water From Your Eyes, It's a Beautiful Place</p>
 <img src ="https://cdn.sonemic.net/i/600/s/943c26e0637001270dea6ffbb94691b8/14042710/water-from-your-eyes-its-a-beautiful-place-Cover-Art.png" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
 <br>
 
-<p>Her New Knife, chrome is lullaby</p>
-<img src="https://cdn.sonemic.net/i/600/s/83cc8c6c2efa8df79bb40be2172a3d66/12587676/her-new-knife-chrome-is-lullaby-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
-
-<p>Cocteau Twins and Harold Budd, The Moon and the Melodies</p>
-<img src="https://cdn.sonemic.net/i/600/s/11933c15df434e27c222809d2f782d76/14433302/harold-budd-elizabeth-fraser-robin-guthrie-and-simon-raymonde-the-moon-and-the-melodies-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
-<br>
+<p>what is your name?, the now now and never</p>
+<img src="https://cdn.sonemic.net/i/600/s/a21a436204b531f720db6eccb32379a4/10901440/what-is-your-name-the-now-now-and-never-cover-art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
 `,
       },
     ],
