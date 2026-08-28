@@ -1463,6 +1463,18 @@ body {
     white-space: nowrap;
 }
 
+.webring {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 0 auto;
+}
+
+.webring a {
+    letter-spacing: 0.04em;
+}
+
 a {
     color: #1a1a1a;
     text-decoration: underline;
