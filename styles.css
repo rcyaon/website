@@ -1130,7 +1130,7 @@ body {
     top: 340px;
     left: 170px;
     width: 620px;
-    height: 440px !important;
+    height: 450px !important;
     z-index: 50;
 }
 
@@ -1473,10 +1473,6 @@ body {
 
 .webring a {
     letter-spacing: 0.04em;
-}
-
-.webring a[aria-label] {
-    text-decoration: none;
 }
 
 a {
