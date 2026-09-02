@@ -569,6 +569,12 @@ body {
     opacity: 0.55;
 }
 
+/* Unlabelled divider: one continuous rule separating two projects. */
+.project-modal__section-divider--plain {
+    gap: 0;
+    margin: 20px 0 18px;
+}
+
 .project-modal__section-divider-text {
     flex-shrink: 0;
     font-family: "IBM Plex Mono", monospace;
@@ -813,6 +819,44 @@ body {
 
 @media (max-width: 560px) {
     .project-modal__body--more-work .project-modal__section-split {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Standard project bodies: copy beside its image (Tiny Tapeout bandgap). */
+.project-modal__body:not(.project-modal__body--more-work)
+    .project-modal__section-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+}
+
+
+.project-modal__body:not(.project-modal__body--more-work)
+    .project-modal__section-split-copy,
+.project-modal__body:not(.project-modal__body--more-work)
+    .project-modal__section-split-media {
+    min-width: 0;
+}
+
+/* No rule/spacing around an image that sits inside a split or stacked row. */
+.project-modal__body:not(.project-modal__body--more-work)
+    .project-modal__section-split
+    .project-modal__media--section,
+.project-modal__section-stack .project-modal__media--section {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.project-modal__section-stack .project-modal__media--section {
+    margin-bottom: 12px;
+}
+
+@media (max-width: 560px) {
+    .project-modal__body:not(.project-modal__body--more-work)
+        .project-modal__section-split {
         grid-template-columns: 1fr;
     }
 }

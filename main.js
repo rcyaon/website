@@ -14,6 +14,9 @@ const MIN_H = 160;
  *   bullets?: string[];
  *   image?: ProjectImage;
  *   variant?: 'divider' | 'panel';
+ *   imageSide?: boolean;
+ *   bulletsHeading?: string;
+ *   imageFirst?: boolean;
  *   blocks?: ProjectPanelBlock[];
  *   panelHeadingStyle?: 'band';
  *   treeBlocks?: boolean;
@@ -73,21 +76,39 @@ const PROJECTS = {
 
   "brokaw-bandgap-ptat": {
     title: "TINY_TAPEOUT.TXT — NOTEPAD.EXE",
-    images: [{ src: "images/chip.png", alt: "Bandgap design photo 1" }],
     sections: [
       {
-        heading: "",
-        body: "Built a bandgap voltage reference (a circuit that holds a stable ~1.2V output across temperature, process, and supply variation) on the SKY130 PDK for Tiny Tapeout. The Brokaw topology works by balancing two effects that cancel: a voltage that falls with temperature against a current that rises with it. Then, a summing amplifier mixes them together.",
+        imageSide: true,
+        heading: "Brokaw Bandgap Voltage Reference",
+        body:
+          "A bandgap voltage reference on the SKY130 PDK, holding a stable ~1.2V across temperature, process, and supply variation. The Brokaw topology cancels a voltage that falls with temperature against a current that rises with it, then sums the two. Designed, simulated, and laid out in Cadence, xschem, and Magic VLSI.",
+        bulletsHeading: "Links",
+        bullets: [
+          "<a href='https://github.com/rcyaon/brokaw-bandgap'>GitHub repository</a>",
+          "<a href='https://rcyaon.github.io/brokaw-bandgap/'>GDS viewer</a>",
+        ],
+        image: {
+          src: "images/chip.png",
+          alt: "Brokaw bandgap reference GDS layout",
+        },
       },
+      { variant: "divider" },
+      { heading: "All-digital Voltage Droop Monitor" },
       {
-        heading: "",
-        body: "Getting that to work off a 1.8V supply with limited headroom ruled out the usual circuit tricks, so the feedback amplifier runs self-biased with a startup circuit to keep it from just... staying off. Designed, simulated, and laid out in a mix of Cadence, xschem, and Magic VLSI.",
+        imageFirst: true,
+        image: {
+          src: "images/droop_gds.png",
+          alt: "Voltage droop monitor GDS layout",
+          fit: "wide",
+        },
+        body:
+          "When a chip suddenly draws a lot of current, the supply rail sags for a moment, and that droop is what makes timing fail before anything else does. It measures the supply indirectly through delay: logic runs slower on a drooping rail, so a tuned delay line clocked against a reference edge turns a voltage dip into a digital code.",
       },
       {
         heading: "Links",
         bullets: [
-          "<a href='https://github.com/rcyaon/brokaw-bandgap'>GitHub</a>",
-          "<a href='https://rcyaon.github.io/brokaw-bandgap/'>GDS viewer</a>",
+          "<a href='https://github.com/rcyaon/droop-detector'>GitHub repository</a>",
+          "<a href='https://gds-viewer.tinytapeout.com/?pdk=sky130A&model=https%3A%2F%2Frcyaon.github.io%2Fdroop-detector%2F%2Ftinytapeout.oas'>GDS viewer</a>",
         ],
       },
     ],
@@ -109,7 +130,7 @@ const PROJECTS = {
         isHtml: true,
         heading: "Links",
         bullets: [
-          "<a href='https://github.com/rcyaon/chipathon-2026-ti-adc'>GitHub</a>",
+          "<a href='https://github.com/rcyaon/chipathon-2026-ti-adc'>GitHub repository</a>",
         ],
       },
     ],
@@ -818,8 +839,17 @@ function openProjectModal(projectId) {
     const splitSideImages = TERMINAL_PROJECTS.has(projectId);
     bodyEl.innerHTML = data.sections
       .map((s) => {
-        if (splitSideImages && s.image) {
+        if (s.image && (splitSideImages || s.imageSide)) {
           return renderSectionWithSideImage(s);
+        }
+        // Image above its copy instead of below it.
+        if (s.image && s.imageFirst) {
+          return (
+            `<div class="project-modal__section-stack">` +
+            renderSectionImageBlock(s.image) +
+            renderProjectSection(s) +
+            `</div>`
+          );
         }
         return (
           renderProjectSection(s) +
@@ -978,7 +1008,11 @@ function renderProjectSection(s) {
   }
   if (s.variant === "divider") {
     const label = s.heading && String(s.heading).trim() ? s.heading : "";
-    if (!label) return "";
+    if (!label) {
+      return (
+        `<div class="project-modal__section-divider project-modal__section-divider--plain" role="presentation"></div>`
+      );
+    }
     return (
       `<div class="project-modal__section-divider" role="presentation">` +
       `<span class="project-modal__section-divider-text">${escapeHtml(label)}</span>` +
@@ -1003,6 +1037,9 @@ function renderProjectSection(s) {
     }
   }
   if (s.bullets && s.bullets.length > 0) {
+    if (s.bulletsHeading && String(s.bulletsHeading).trim()) {
+      html += `<h3>${escapeHtml(s.bulletsHeading)}</h3>`;
+    }
     html +=
       '<ul class="project-modal__bullet-list">' +
       s.bullets.map((item) => `<li>${linkifyText(item)}</li>`).join("") +
@@ -1012,7 +1049,7 @@ function renderProjectSection(s) {
   return html;
 }
 
-/** Section copy (heading, body, bullets) beside image — More work layout only. */
+/** Section copy (heading, body, bullets) beside its image. */
 function renderSectionWithSideImage(s) {
   const copyHtml = renderProjectSection(s);
   const mediaHtml = s.image ? renderSectionImageBlock(s.image) : "";
